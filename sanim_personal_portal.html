@@ -1,0 +1,6200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#f4f5f7"><meta name="description" content="The personal portal of Abrar Hasan Sanim.">
+<title>Abrar Hasan Sanim — Personal Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   01. DESIGN TOKENS — edit these to change the whole theme
+========================================================= */
+:root{--bg:#f4f5f7;--surface:rgba(255,255,255,.66);--surface-solid:#fff;--text:#151923;--muted:#687080;--line:rgba(24,31,45,.12);--accent:#2855d9;--accent-2:#e34d4d;--nav-bg:rgba(255,255,255,.68);--shadow:0 22px 70px rgba(28,37,57,.10);--shadow-c:rgba(28,37,57,.17);--spot:rgba(40,85,217,.10);--radius:24px;--ease:cubic-bezier(.22,1,.36,1)}
+body.dark{--bg:#0c1018;--surface:rgba(22,28,40,.72);--surface-solid:#151b27;--text:#f1f3f8;--muted:#a2aaba;--line:rgba(226,233,246,.13);--accent:#8da8ff;--accent-2:#ff7979;--nav-bg:rgba(17,22,32,.72);--shadow:0 22px 70px rgba(0,0,0,.28);--shadow-c:rgba(0,0,0,.5);--spot:rgba(141,168,255,.13)}
+/* 02. RESET + GLOBAL */
+*,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:110px}body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font-family:Inter,"Segoe UI",Helvetica,Arial,sans-serif;transition:background .45s ease,color .45s ease;overflow-x:hidden}body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 8% 12%,rgba(40,85,217,.09),transparent 34%),radial-gradient(ellipse at 92% 34%,rgba(227,77,77,.07),transparent 32%),radial-gradient(ellipse at 55% 100%,rgba(40,85,217,.06),transparent 38%)}a{color:inherit;text-decoration:none}button{font:inherit}img{max-width:100%;display:block}::selection{background:var(--accent);color:#fff}.site-shell{width:min(1440px,100%);margin:0 auto;padding:0 clamp(18px,4.2vw,68px)}
+/* cursor spotlight (follows the pointer while it is inside the hero) */
+.hero-spot{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .6s ease;background:radial-gradient(560px circle at var(--spx,50%) var(--spy,50%),var(--spot),transparent 62%)}.hero-spot.on{opacity:1}
+/* 03. FLOATING GLASS NAV */
+.site-header{position:fixed;z-index:1000;top:18px;left:0;width:100%;padding:0 18px;animation:nav-arrive .9s var(--ease) both}.nav-wrap{width:min(1260px,100%);min-height:66px;margin:0 auto;display:flex;align-items:center;gap:18px;padding:9px 12px 9px 20px;border:1px solid var(--line);border-radius:20px;background:var(--nav-bg);backdrop-filter:blur(24px) saturate(155%);-webkit-backdrop-filter:blur(24px) saturate(155%);box-shadow:0 12px 38px rgba(20,28,43,.08);transition:background .4s,border-color .4s,box-shadow .4s}.brand{display:inline-flex;align-items:center;gap:10px;flex-shrink:0;font-size:.88rem;font-weight:850;letter-spacing:-.045em}.brand-mark{display:grid;place-items:center;width:35px;height:35px;border-radius:11px;color:#fff;background:linear-gradient(135deg,var(--accent),#6d83e9);font-size:.77rem;letter-spacing:-.05em;box-shadow:0 5px 16px rgba(40,85,217,.22)}.nav-links{display:flex;align-items:center;justify-content:center;gap:3px;flex:1;min-width:0}.nav-link{position:relative;padding:11px 12px;border-radius:12px;color:var(--muted);font-size:.78rem;font-weight:650;white-space:nowrap;transition:color .25s,background .25s,transform .25s var(--ease)}.nav-link::after{content:"";position:absolute;left:13px;right:13px;bottom:5px;height:2px;border-radius:10px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}.nav-link:hover{color:var(--text);background:var(--surface);transform:translateY(-2px)}.nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}.nav-link.active{color:var(--text)}.nav-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}.theme-toggle,.menu-toggle{width:42px;height:42px;display:grid;place-items:center;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--text);cursor:pointer;transition:transform .25s var(--ease),background .25s,border-color .25s}.theme-toggle:hover,.menu-toggle:hover{transform:translateY(-2px) rotate(-4deg)}.theme-toggle svg{width:18px;height:18px}.menu-toggle{display:none}
+/* 04. HOME / HERO */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding-top:118px;padding-bottom:64px;isolation:isolate}.hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(330px,.92fr);align-items:center;gap:clamp(20px,4vw,64px);width:100%;min-height:610px}.hero-copy{position:relative;z-index:4;padding:30px 0 60px;animation:copy-arrive 1.05s .15s var(--ease) both}.eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:25px;color:var(--muted);font-size:.74rem;font-weight:800;letter-spacing:.17em;text-transform:uppercase}.eyebrow::before{content:"";width:28px;height:2px;background:var(--accent-2);border-radius:10px}
+
+/* ---- Name: display font + soft layered 3D shadow (direction follows the cursor) ---- */
+.hero-name{max-width:760px;margin:0;font-family:"Bricolage Grotesque","Inter","Segoe UI",Helvetica,Arial,sans-serif;font-size:clamp(3.3rem,7.1vw,7.1rem);line-height:.93;font-weight:800;letter-spacing:-.055em;text-transform:uppercase;transform-style:preserve-3d;transform-origin:0 60%;will-change:transform;
+  --lx:0;--ly:0;--dx:calc(var(--lx)*-1.1px);--dy:calc(1px + var(--ly)*-.7px);
+  --ext:rgba(21,25,35,.065);--ext-blur:rgba(21,25,35,.17);--hl:rgba(255,255,255,.9)}
+.hero-name>span{display:block;transform-style:preserve-3d;
+  text-shadow:
+    calc(var(--dx)*-.6) calc(var(--dy)*-.6) 0 var(--hl),
+    var(--dx) var(--dy) 0 var(--ext),
+    calc(var(--dx)*2) calc(var(--dy)*2) 0 var(--ext),
+    calc(var(--dx)*3) calc(var(--dy)*3) 0 var(--ext),
+    calc(var(--dx)*4) calc(var(--dy)*4) 0 var(--ext),
+    calc(var(--dx)*5) calc(var(--dy)*5) 0 var(--ext),
+    calc(var(--dx)*6) calc(var(--dy)*6) 0 var(--ext),
+    calc(var(--dx)*10) calc(var(--dy)*11) 26px var(--ext-blur)}
+.hero-name .letter{display:inline-block;transition:transform .38s var(--ease);animation:letter-in .95s var(--ease) backwards;animation-delay:calc(.28s + var(--i,0)*45ms)}
+.hero-name .name-accent{color:var(--accent);position:relative;width:fit-content;--ext:rgba(40,85,217,.10);--ext-blur:rgba(40,85,217,.25)}.hero-name .name-accent::after{content:"";position:absolute;height:.075em;width:56%;right:1%;bottom:-.12em;border-radius:999px;background:var(--accent-2);transform:rotate(-2deg);opacity:.9}
+body.dark .hero-name{--ext:rgba(0,0,0,.32);--ext-blur:rgba(0,0,0,.55);--hl:rgba(255,255,255,0)}body.dark .hero-name .name-accent{--ext:rgba(8,16,60,.5);--ext-blur:rgba(15,30,110,.55)}
+
+.hero-role{margin:32px 0 19px;display:flex;align-items:center;flex-wrap:wrap;gap:10px;color:var(--text);font-size:.88rem;font-weight:750;letter-spacing:.025em}.hero-role span+span::before{content:"/";color:var(--accent-2);margin-right:10px;font-weight:900}.hero-statement{max-width:475px;margin:0;color:var(--muted);font-size:clamp(.98rem,1.2vw,1.1rem);line-height:1.85;font-weight:450}.hero-statement strong{color:var(--text);font-weight:750}.hero-bottomline{display:flex;align-items:center;gap:17px;margin-top:34px}
+.explore-link{display:inline-flex;align-items:center;gap:12px;padding:13px 18px;border-radius:14px;color:#fff;background:var(--text);font-size:.82rem;font-weight:750;transform:translate(var(--bx,0px),var(--by,0px));transition:transform .3s var(--ease),box-shadow .3s,background .3s;box-shadow:0 10px 24px rgba(15,20,30,.12)}body.dark .explore-link{color:#10131b}.explore-link:hover{transform:translate(var(--bx,0px),calc(var(--by,0px) - 4px));box-shadow:0 17px 30px rgba(15,20,30,.18)}.explore-link svg{width:16px;height:16px;transition:transform .3s var(--ease)}.explore-link:hover svg{transform:translate(3px,-3px)}.hero-index{color:var(--muted);font-size:.72rem;font-weight:750;letter-spacing:.12em}
+
+/* ---- Portrait stage: 3D tilt card (anchor = perspective, tilt = rotating layer, stage = the card) ---- */
+.hero-visual{position:relative;align-self:stretch;min-height:590px;display:flex;align-items:flex-end;justify-content:center;animation:portrait-arrive 1.25s .08s var(--ease) both}
+.portrait-anchor{position:absolute;width:min(100%,570px);height:min(76vh,650px);min-height:460px;bottom:0;right:0;perspective:1100px;touch-action:pan-y;-webkit-tap-highlight-color:transparent}
+.portrait-tilt{position:absolute;inset:0;transform-style:preserve-3d;transform-origin:50% 55%;will-change:transform}
+.portrait-stage{position:absolute;inset:0;isolation:isolate;overflow:hidden;border-radius:48% 48% 18px 18px / 38% 38% 18px 18px;background:radial-gradient(ellipse at 55% 28%,rgba(255,255,255,.78),transparent 38%),linear-gradient(145deg,rgba(40,85,217,.14),rgba(227,77,77,.12) 72%,rgba(40,85,217,.07));border:1px solid var(--line);box-shadow:calc(var(--nx,0)*-26px) calc(26px + var(--ny,0)*-18px) 70px var(--shadow-c)}body.dark .portrait-stage{background:radial-gradient(ellipse at 55% 28%,rgba(255,255,255,.08),transparent 38%),linear-gradient(145deg,rgba(90,117,219,.18),rgba(227,77,77,.09) 72%,rgba(40,85,217,.06))}.portrait-stage::before{content:"";position:absolute;inset:15px;border:1px solid rgba(255,255,255,.5);border-radius:inherit;pointer-events:none;z-index:2}
+.portrait-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;padding:25px;text-align:center;color:var(--muted)}.portrait-placeholder svg{width:70px;height:70px;opacity:.72}.portrait-placeholder strong{color:var(--text);font-size:.92rem}.portrait-placeholder small{max-width:210px;line-height:1.6;font-size:.75rem}
+.portrait-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:1;display:none;-webkit-user-drag:none;user-select:none;transform:translate3d(calc(var(--nx,0)*-9px),calc(var(--ny,0)*-9px),0) scale(1.07)}.portrait-image.loaded{display:block}.portrait-stage.has-image .portrait-placeholder{display:none}
+.portrait-glare{position:absolute;inset:0;z-index:2;pointer-events:none;border-radius:inherit;opacity:var(--glare,.35);background:radial-gradient(circle at var(--gx,50%) var(--gy,30%),rgba(255,255,255,.36),rgba(255,255,255,.08) 38%,transparent 62%)}
+.visual-orbit{position:absolute;width:83%;aspect-ratio:1;top:4%;right:-4%;border:1px solid var(--line);border-radius:50%;transform:translate(calc(var(--nx,0)*-18px),calc(var(--ny,0)*-18px)) rotate(-23deg)}.visual-orbit::before,.visual-orbit::after{content:"";position:absolute;border-radius:50%}.visual-orbit::before{width:11px;height:11px;top:18%;left:9%;background:var(--accent-2);box-shadow:0 0 0 7px rgba(227,77,77,.12)}.visual-orbit::after{width:7px;height:7px;bottom:17%;right:7%;background:var(--accent);box-shadow:0 0 0 6px rgba(40,85,217,.12)}
+.visual-label{position:absolute;z-index:3;right:-14px;top:23%;padding:12px 15px;border:1px solid var(--line);border-radius:14px;background:var(--surface-solid);color:var(--text);font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;box-shadow:calc(var(--nx,0)*-14px) calc(14px + var(--ny,0)*-8px) 30px var(--shadow-c);transform:translateZ(70px) rotate(4deg)}.visual-label span{color:var(--accent-2)}
+.hero-scroll{position:absolute;left:0;bottom:24px;display:flex;align-items:center;gap:12px;color:var(--muted);font-size:.67rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}.scroll-line{position:relative;width:46px;height:1px;background:var(--line);overflow:hidden}.scroll-line::after{content:"";position:absolute;inset:0;background:var(--accent);animation:scroll-line 2s ease-in-out infinite}
+/* 05. SECTION PLACEHOLDERS — content will be added later */
+.portal-section{position:relative;min-height:76vh;padding:130px 0 100px;border-top:1px solid var(--line);scroll-margin-top:90px}.section-shell{width:100%}.section-kicker{margin:0 0 16px;color:var(--accent-2);font-size:.72rem;font-weight:850;letter-spacing:.18em;text-transform:uppercase}.section-title{margin:0;max-width:800px;font-size:clamp(2.5rem,6vw,5.6rem);line-height:.98;letter-spacing:-.075em;font-weight:900}.section-title span{color:var(--accent)}.section-empty{min-height:190px;margin-top:42px;border:1px dashed var(--line);border-radius:var(--radius);display:grid;place-items:center;color:var(--muted);background:var(--surface);font-size:.86rem}.section-empty::before{content:"SECTION CONTENT WILL BE ADDED HERE";letter-spacing:.12em;font-size:.65rem;font-weight:800}
+/* 06. FOOTER */
+.site-footer{padding:26px 0 34px;border-top:1px solid var(--line);color:var(--muted);font-size:.72rem}.footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center}.footer-mark{color:var(--text);font-weight:850;letter-spacing:-.03em}
+/* 07. MOTION */
+@keyframes nav-arrive{from{opacity:0;transform:translateY(-22px)}to{opacity:1;transform:translateY(0)}}@keyframes copy-arrive{from{opacity:0;transform:translate(-28px,24px);filter:blur(8px)}to{opacity:1;transform:translate(0,0);filter:none}}@keyframes portrait-arrive{from{opacity:0;transform:translate(28px,35px) scale(.96);filter:blur(9px)}to{opacity:1;transform:translate(0,0) scale(1);filter:none}}@keyframes scroll-line{0%{transform:translateX(-100%)}55%,100%{transform:translateX(100%)}}@keyframes letter-in{from{opacity:0;transform:translate3d(0,.45em,-70px) rotateX(-70deg)}to{opacity:1;transform:translate3d(0,0,0) rotateX(0)}}.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}.reveal.visible{opacity:1;transform:translateY(0)}
+/* 08. RESPONSIVE */
+@media(max-width:1120px){.nav-wrap{gap:10px}.nav-links{gap:0}.nav-link{padding:10px 8px;font-size:.72rem}.brand-name{display:none}.hero-grid{grid-template-columns:minmax(0,1fr) minmax(290px,.82fr);gap:18px}.hero-name{font-size:clamp(3.2rem,7.3vw,6rem)}.hero-visual{min-height:530px}.portrait-anchor{min-height:430px}}
+@media(max-width:820px){.site-header{top:12px;padding:0 12px}.nav-wrap{min-height:60px;padding:8px 9px 8px 13px;border-radius:17px}.brand-name{display:inline}.menu-toggle{display:grid}.nav-actions{margin-left:auto}.nav-links{position:absolute;top:calc(100% + 9px);left:12px;right:12px;display:flex;flex-direction:column;align-items:stretch;gap:3px;padding:10px;border:1px solid var(--line);border-radius:18px;background:var(--nav-bg);backdrop-filter:blur(24px) saturate(155%);-webkit-backdrop-filter:blur(24px) saturate(155%);box-shadow:var(--shadow);opacity:0;visibility:hidden;transform:translateY(-8px) scale(.98);transform-origin:top;transition:opacity .22s,transform .22s var(--ease),visibility .22s;max-height:min(72vh,560px);overflow-y:auto}.nav-links.open{opacity:1;visibility:visible;transform:translateY(0) scale(1)}.nav-link{padding:12px 13px;font-size:.84rem}.nav-link::after{left:13px;right:auto;width:28px;bottom:6px}.hero{padding-top:108px;padding-bottom:80px;min-height:auto}.hero-grid{grid-template-columns:1fr;gap:0}.hero-copy{padding:34px 0 0;order:2}.hero-visual{min-height:min(72vh,590px);order:1}.portrait-anchor{width:min(86%,500px);height:min(66vh,550px);min-height:380px;right:50%;transform:translateX(50%)}.visual-orbit{width:min(83%,430px);right:3%;top:3%}.visual-label{right:-3%;top:20%}.hero-name{font-size:clamp(3.2rem,13vw,6rem)}.hero-scroll{bottom:27px}.portal-section{min-height:60vh;padding:100px 0 75px}}
+@media(max-width:480px){.brand-name{font-size:.78rem}.brand-mark{width:33px;height:33px}.theme-toggle,.menu-toggle{width:38px;height:38px;border-radius:12px}.hero-visual{min-height:430px}.portrait-anchor{min-height:355px;height:410px;width:88%}.visual-label{font-size:.61rem;padding:10px 11px}.hero-copy{padding-top:22px}.eyebrow{font-size:.64rem;margin-bottom:21px}.hero-name{font-size:clamp(2.9rem,13vw,4.3rem)}.hero-role{margin-top:27px;font-size:.78rem;gap:7px}.hero-role span+span::before{margin-right:7px}.hero-statement{font-size:.94rem;line-height:1.75}.hero-bottomline{margin-top:27px}.hero-scroll{left:0;bottom:27px}.section-title{font-size:clamp(2.5rem,13vw,4rem)}.footer-inner{align-items:flex-start;flex-direction:column;gap:9px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+
+/* =========================================================
+   ABOUT ME — EDITORIAL / INTERACTIVE REDESIGN
+   Compatible with existing HTML and theme variables
+========================================================= */
+
+.about-section {
+  position: relative;
+  isolation: isolate;
+  padding-top: clamp(100px, 12vw, 170px);
+  padding-bottom: clamp(90px, 12vw, 160px);
+}
+
+.about-section::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 10%;
+  left: -10%;
+  width: 45vw;
+  height: 45vw;
+  max-width: 600px;
+  max-height: 600px;
+  border-radius: 50%;
+  background: var(--spot);
+  filter: blur(100px);
+  opacity: .55;
+  pointer-events: none;
+}
+
+/* INTRO */
+
+.about-intro {
+  display: grid;
+  grid-template-columns: minmax(120px, .34fr) 1fr;
+  gap: clamp(25px, 5vw, 75px);
+  padding-bottom: clamp(75px, 11vw, 145px);
+}
+
+.about-intro-label,
+.journey-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding-top: 10px;
+  color: var(--muted);
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+.about-intro-label span:first-child {
+  color: var(--accent-2);
+}
+
+.about-kicker {
+  margin: 0 0 25px;
+  color: var(--accent-2);
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+}
+
+.about-intro-heading h2 {
+  margin: 0;
+  font-family: "Bricolage Grotesque", Inter, sans-serif;
+  font-size: clamp(3.2rem, 8.2vw, 8rem);
+  line-height: .91;
+  letter-spacing: -.085em;
+  font-weight: 800;
+}
+
+.about-intro-heading h2 span {
+  color: var(--accent);
+}
+
+/* STORY BLOCKS */
+
+.about-block {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(35px, 7vw, 110px);
+  padding: clamp(70px, 9vw, 125px) 0;
+  border-top: 1px solid var(--line);
+}
+
+.about-image-wrap {
+  position: relative;
+  min-width: 0;
+}
+
+.about-image-left {
+  padding-right: 4%;
+}
+
+.about-image-right {
+  padding-left: 4%;
+}
+
+.about-image-frame {
+  position: relative;
+  height: clamp(360px, 43vw, 590px);
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid var(--line);
+  border-radius: 12px 12px 110px 12px;
+  background:
+    radial-gradient(circle at 25% 20%, var(--spot), transparent 55%),
+    var(--surface);
+  box-shadow: var(--shadow);
+  transform: translateZ(0);
+  transition:
+    border-radius .55s var(--ease),
+    box-shadow .45s ease,
+    transform .55s var(--ease);
+}
+
+.about-image-frame::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 12px;
+  border: 1px solid rgba(255,255,255,.42);
+  border-radius: inherit;
+  pointer-events: none;
+  transition: inset .45s var(--ease);
+}
+
+.about-image-frame::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 45% 0 0;
+  background: linear-gradient(transparent, rgba(0,0,0,.16));
+  opacity: .6;
+  pointer-events: none;
+}
+
+.about-image-frame:hover {
+  border-radius: 12px 12px 55px 12px;
+  box-shadow: 0 35px 90px var(--shadow-c);
+  transform: translateY(-5px);
+}
+
+.about-image-frame:hover::before {
+  inset: 17px;
+}
+
+.about-image-frame img {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s var(--ease), filter .5s ease;
+}
+
+.about-image-frame:hover img {
+  transform: scale(1.055);
+}
+
+.about-image-number {
+  position: absolute;
+  z-index: 3;
+  right: 25px;
+  bottom: 23px;
+  color: #fff;
+  font-family: "Bricolage Grotesque", Inter, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -.06em;
+  text-shadow: 0 3px 18px rgba(0,0,0,.3);
+}
+
+.about-text {
+  max-width: 620px;
+  min-width: 0;
+}
+
+.about-section-number {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 27px;
+  color: var(--accent-2);
+  font-size: .65rem;
+  font-weight: 850;
+  letter-spacing: .16em;
+}
+
+.about-section-number::before {
+  content: "";
+  width: 23px;
+  height: 1px;
+  background: currentColor;
+}
+
+.about-text h3 {
+  margin: 0 0 28px;
+  font-family: "Bricolage Grotesque", Inter, sans-serif;
+  font-size: clamp(2.8rem, 5.3vw, 5.4rem);
+  line-height: .94;
+  letter-spacing: -.075em;
+  font-weight: 800;
+  text-wrap: balance;
+}
+
+.about-text h3 span,
+.interests-heading h3 span,
+.belief-content h3 span {
+  color: var(--accent);
+}
+
+.about-text p,
+.belief-content p {
+  max-width: 570px;
+  margin: 0 0 17px;
+  color: var(--muted);
+  font-size: .94rem;
+  line-height: 1.95;
+}
+
+.about-mini-line {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 32px;
+}
+
+.about-mini-line span {
+  width: 34px;
+  height: 2px;
+  background: var(--accent-2);
+  transition: width .4s var(--ease);
+}
+
+.about-mini-line:hover span {
+  width: 65px;
+}
+
+.about-mini-line small {
+  color: var(--text);
+  font-size: .65rem;
+  font-weight: 800;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+/* ALTERNATING STORY RHYTHM */
+
+.about-academic .about-text,
+.about-college .about-text {
+  order: 1;
+}
+
+.about-academic .about-image-wrap,
+.about-college .about-image-wrap {
+  order: 2;
+}
+
+.about-school .about-image-wrap {
+  order: 1;
+}
+
+.about-school .about-text {
+  order: 2;
+}
+
+/* COLLEGE DETAILS */
+
+.college-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 34px;
+  padding-top: 23px;
+  border-top: 1px solid var(--line);
+}
+
+.college-meta div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.college-meta strong {
+  font-size: .78rem;
+  font-weight: 800;
+}
+
+.college-meta span {
+  color: var(--muted);
+  font-size: .68rem;
+  line-height: 1.6;
+}
+
+/* INTERESTS */
+
+.about-interests {
+  padding: clamp(90px, 12vw, 155px) 0;
+  border-top: 1px solid var(--line);
+}
+
+.interests-heading {
+  display: grid;
+  grid-template-columns: minmax(120px, .34fr) 1fr;
+  gap: clamp(25px, 5vw, 75px);
+  align-items: start;
+  margin-bottom: 65px;
+}
+
+.interests-heading > .about-section-number {
+  margin-top: 12px;
+}
+
+.interests-heading h3 {
+  margin: 0;
+  font-family: "Bricolage Grotesque", Inter, sans-serif;
+  font-size: clamp(3.1rem, 7vw, 6.8rem);
+  line-height: .91;
+  letter-spacing: -.085em;
+  font-weight: 800;
+}
+
+.interest-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.interest-card {
+  position: relative;
+  min-height: 260px;
+  padding: clamp(22px, 3vw, 36px);
+  overflow: hidden;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+  transition:
+    background .35s ease,
+    transform .4s var(--ease),
+    box-shadow .4s ease;
+}
+
+.interest-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width .45s var(--ease);
+}
+
+.interest-card:hover {
+  z-index: 2;
+  background: var(--surface-solid);
+  transform: translateY(-5px);
+  box-shadow: 0 18px 45px var(--shadow-c);
+}
+
+.interest-card:hover::before {
+  width: 100%;
+}
+
+.interest-index {
+  display: block;
+  margin-bottom: 43px;
+  color: var(--accent-2);
+  font-size: .65rem;
+  font-weight: 850;
+  letter-spacing: .13em;
+}
+
+.interest-card h4 {
+  margin: 0 0 13px;
+  font-family: "Bricolage Grotesque", Inter, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -.05em;
+}
+
+.interest-card p {
+  max-width: 320px;
+  margin: 0;
+  color: var(--muted);
+  font-size: .82rem;
+  line-height: 1.85;
+}
+
+/* WHAT I BELIEVE */
+
+.about-belief {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(45px, 9vw, 135px);
+  padding: clamp(95px, 12vw, 155px) 0 35px;
+  border-top: 1px solid var(--line);
+}
+
+.belief-visual {
+  position: relative;
+  width: min(100%, 460px);
+  aspect-ratio: 1;
+  margin: auto;
+  display: grid;
+  place-items: center;
+}
+
+.belief-circle {
+  position: absolute;
+  inset: 5%;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  animation: belief-rotate 32s linear infinite;
+}
+
+.belief-circle::before {
+  content: "";
+  position: absolute;
+  inset: 13%;
+  border: 1px dashed var(--line);
+  border-radius: 50%;
+}
+
+.belief-circle span {
+  position: absolute;
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  background: var(--bg);
+  color: var(--muted);
+  font-size: .57rem;
+  font-weight: 850;
+  letter-spacing: .12em;
+  white-space: nowrap;
+}
+
+.belief-circle span:nth-child(1) {
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.belief-circle span:nth-child(2) {
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.belief-circle span:nth-child(3) {
+  bottom: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.belief-circle span:nth-child(4) {
+  left: -18px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.belief-center {
+  position: relative;
+  z-index: 2;
+  width: clamp(145px, 16vw, 195px);
+  aspect-ratio: 1;
+  display: grid;
+  place-content: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface-solid);
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: transform .5s var(--ease), box-shadow .5s ease;
+}
+
+.belief-visual:hover .belief-center {
+  transform: scale(1.055);
+  box-shadow: 0 25px 65px var(--shadow-c);
+}
+
+.belief-center span {
+  color: var(--accent-2);
+  font-size: .57rem;
+  font-weight: 850;
+  letter-spacing: .2em;
+}
+
+.belief-center strong {
+  margin-top: 8px;
+  font-family: "Bricolage Grotesque", Inter, sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  line-height: .84;
+  letter-spacing: -.08em;
+}
+
+.belief-content h3 {
+  margin: 0 0 27px;
+  font-family: "Bricolage Grotesque", Inter, sans-serif;
+  font-size: clamp(3.1rem, 5.8vw, 6rem);
+  line-height: .9;
+  letter-spacing: -.085em;
+  font-weight: 800;
+}
+
+.belief-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 29px;
+}
+
+.belief-words span {
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  color: var(--text);
+  background: var(--surface);
+  font-size: .65rem;
+  font-weight: 800;
+  transition:
+    color .3s ease,
+    background .3s ease,
+    border-color .3s ease,
+    transform .3s var(--ease);
+}
+
+.belief-words span:hover {
+  color: var(--bg);
+  background: var(--text);
+  border-color: var(--text);
+  transform: translateY(-3px);
+}
+
+/* SCROLL REVEAL — progressively enhanced */
+
+@supports (animation-timeline: view()) {
+  .about-block,
+  .about-interests,
+  .about-belief {
+    animation: about-section-enter linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 28%;
+  }
+}
+
+@keyframes about-section-enter {
+  from {
+    opacity: .3;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes belief-rotate {
+  to { transform: rotate(360deg); }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .about-intro,
+  .interests-heading {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .about-block {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 42px;
+  }
+
+  .about-image-left,
+  .about-image-right {
+    padding: 0;
+  }
+
+  .about-academic .about-text,
+  .about-college .about-text,
+  .about-school .about-text {
+    order: initial;
+  }
+
+  .about-academic .about-image-wrap,
+  .about-college .about-image-wrap,
+  .about-school .about-image-wrap {
+    order: initial;
+  }
+
+  .about-text {
+    max-width: 720px;
+  }
+
+  .about-image-frame {
+    height: clamp(360px, 65vw, 540px);
+  }
+
+  .interest-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-belief {
+    grid-template-columns: 1fr;
+    gap: 65px;
+  }
+
+  .belief-visual {
+    width: min(85%, 420px);
+  }
+}
+
+@media (max-width: 560px) {
+  .about-section {
+    padding-top: 95px;
+    padding-bottom: 90px;
+  }
+
+  .about-intro {
+    padding-bottom: 75px;
+  }
+
+  .about-intro-heading h2 {
+    font-size: clamp(3.1rem, 13vw, 5rem);
+  }
+
+  .about-block {
+    padding: 65px 0;
+    gap: 35px;
+  }
+
+  .about-image-frame {
+    height: 420px;
+    border-radius: 10px 10px 70px 10px;
+  }
+
+  .about-text h3 {
+    font-size: clamp(2.7rem, 12vw, 3.6rem);
+  }
+
+  .about-text p,
+  .belief-content p {
+    font-size: .9rem;
+  }
+
+  .college-meta {
+    gap: 22px;
+  }
+
+  .about-interests {
+    padding: 85px 0;
+  }
+
+  .interests-heading {
+    margin-bottom: 42px;
+  }
+
+  .interests-heading h3 {
+    font-size: clamp(3rem, 12vw, 4.5rem);
+  }
+
+  .interest-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .interest-card {
+    min-height: 215px;
+    padding: 26px;
+  }
+
+  .interest-index {
+    margin-bottom: 30px;
+  }
+
+  .about-belief {
+    padding-top: 85px;
+    gap: 55px;
+  }
+
+  .belief-visual {
+    width: 88%;
+  }
+
+  .belief-center {
+    width: 145px;
+  }
+
+  .belief-center strong {
+    font-size: 1.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-section *,
+  .about-section *::before,
+  .about-section *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* =========================================
+   SCROLL REVEAL & INTERACTIVE ANIMATIONS
+   Add this at the END of your existing CSS
+   ========================================= */
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+/* Base reveal animation */
+@keyframes reveal-left {
+    from {
+        opacity: 0;
+        transform: translateX(-65px);
+        filter: blur(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes reveal-right {
+    from {
+        opacity: 0;
+        transform: translateX(65px);
+        filter: blur(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes reveal-up {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+        filter: blur(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* Hero entrance */
+.hero-copy {
+    animation: reveal-left 1s cubic-bezier(.2,.7,.2,1) both;
+}
+
+.hero-visual {
+    animation: reveal-right 1.1s cubic-bezier(.2,.7,.2,1) both;
+    animation-delay: .15s;
+}
+
+/* Portrait interaction */
+.portrait-stage {
+    transition: transform .5s ease, box-shadow .5s ease;
+    will-change: transform;
+}
+
+.portrait-stage:hover {
+    transform: translateY(-6px) scale(1.025);
+}
+
+.portrait-image {
+    transition: transform .7s cubic-bezier(.2,.7,.2,1);
+}
+
+.portrait-stage:hover .portrait-image {
+    transform: scale(1.045);
+}
+
+/* Navigation hover */
+.nav-link {
+    transition:
+        color .3s ease,
+        background-color .3s ease,
+        transform .3s ease;
+}
+
+.nav-link:hover {
+    transform: translateY(-2px);
+}
+
+/* Section title effects */
+.section-title {
+    transition: letter-spacing .4s ease;
+}
+
+.portal-section:hover .section-title {
+    letter-spacing: -.025em;
+}
+
+/* Scroll-triggered animation
+   Supported in modern Chromium browsers */
+@supports (animation-timeline: view()) {
+
+    .portal-section .section-kicker,
+    .portal-section .section-title,
+    .portal-section .section-empty {
+        animation: reveal-up linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 65%;
+    }
+
+    /* Alternate section entrance directions */
+    .portal-section:nth-of-type(even) .section-title {
+        animation-name: reveal-right;
+    }
+
+    .portal-section:nth-of-type(odd) .section-title {
+        animation-name: reveal-left;
+    }
+
+    .portal-section .section-kicker {
+        animation-name: reveal-up;
+        animation-range: entry 0% entry 75%;
+    }
+
+    .portal-section .section-empty {
+        animation-name: reveal-up;
+        animation-range: entry 0% entry 70%;
+    }
+}
+
+/* Footer entrance */
+.site-footer {
+    animation: reveal-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 60%;
+}
+
+/* Accessible motion settings */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+    .hero-copy,
+    .hero-visual {
+        animation-duration: .8s;
+    }
+
+    .portrait-stage:hover {
+        transform: none;
+    }
+
+    @supports (animation-timeline: view()) {
+        .portal-section .section-title {
+            animation-name: reveal-up;
+        }
+    }
+}
+/* From Uiverse.io by Spacious74 */ 
+.button {
+  cursor: pointer;
+  font-size: 1.4rem;
+  border-radius: 16px;
+  border: none;
+  padding: 2px;
+  background: radial-gradient(circle 80px at 80% -10%, #ffffff, #181b1b);
+  position: relative;
+}
+.button::after {
+  content: "";
+  position: absolute;
+  width: 65%;
+  height: 60%;
+  border-radius: 120px;
+  top: 0;
+  right: 0;
+  box-shadow: 0 0 20px #ffffff38;
+  z-index: -1;
+}
+
+.blob1 {
+  position: absolute;
+  width: 70px;
+  height: 100%;
+  border-radius: 16px;
+  bottom: 0;
+  left: 0;
+  background: radial-gradient(
+    circle 60px at 0% 100%,
+    #3fe9ff,
+    #0000ff80,
+    transparent
+  );
+  box-shadow: -10px 10px 30px #0051ff2d;
+}
+
+.inner {
+  padding: 14px 25px;
+  border-radius: 14px;
+  color: #fff;
+  z-index: 3;
+  position: relative;
+  background: radial-gradient(circle 80px at 80% -50%, #777777, #0f1111);
+}
+.inner::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 14px;
+  background: radial-gradient(
+    circle 60px at 0% 100%,
+    #00e1ff1a,
+    #0000ff11,
+    transparent
+  );
+  position: absolute;
+}
+/* =========================================================
+   EDUCATION WALL
+========================================================= */
+
+.education-section {
+    position: relative;
+
+    min-height: 100vh;
+
+    padding:
+        150px
+        0
+        130px;
+
+    overflow: hidden;
+
+    background:
+        var(--bg);
+}
+
+
+/* =========================================================
+   WALL
+========================================================= */
+
+.education-wall {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    opacity: .35;
+
+    background:
+        radial-gradient(
+            circle at 50% 38%,
+            rgba(40,85,217,.08),
+            transparent 35%
+        );
+
+    pointer-events: none;
+}
+
+
+/* subtle wall grain */
+
+.education-wall::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    opacity: .08;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.education-header {
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 900px;
+
+    margin:
+        0
+        auto
+        80px;
+
+    text-align: center;
+}
+
+.education-index {
+    display: block;
+
+    margin-bottom: 22px;
+
+    color:
+        var(--accent);
+
+    font-size: .62rem;
+
+    font-weight: 900;
+
+    letter-spacing: .18em;
+}
+
+.education-header h2 {
+    margin: 0;
+
+    font-size:
+        clamp(
+            4rem,
+            8vw,
+            8rem
+        );
+
+    line-height: .82;
+
+    letter-spacing: -.095em;
+
+    font-weight: 900;
+}
+
+.education-header h2 span {
+    color:
+        var(--accent);
+}
+
+.education-header p {
+    max-width: 520px;
+
+    margin:
+        30px
+        auto
+        0;
+
+    color:
+        var(--muted);
+
+    font-size: .85rem;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   CLOCK STAGE
+========================================================= */
+
+.education-clock-stage {
+    position: relative;
+
+    z-index: 3;
+
+    width:
+        min(
+            850px,
+            90vw
+        );
+
+    aspect-ratio: 1;
+
+    margin:
+        0
+        auto;
+}
+
+
+/* =========================================================
+   CHAPTER LABELS
+========================================================= */
+
+.clock-chapter-label {
+    position: absolute;
+
+    z-index: 10;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    color:
+        var(--muted);
+
+    cursor: pointer;
+
+    transition:
+        color .4s ease,
+        transform .4s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+.clock-chapter-label span {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius: 50%;
+
+    font-size: .5rem;
+
+    font-weight: 900;
+}
+
+.clock-chapter-label strong {
+    font-size: .55rem;
+
+    letter-spacing: .13em;
+
+    font-weight: 900;
+}
+
+.clock-chapter-label:hover {
+    color:
+        var(--text);
+
+    transform:
+        scale(1.08);
+}
+
+.clock-chapter-label.active {
+    color:
+        var(--accent);
+}
+
+
+/* positions */
+
+.label-top {
+    top: 0;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+}
+
+.label-right {
+    top: 50%;
+    right: -20px;
+
+    transform:
+        translateY(-50%);
+}
+
+.label-bottom {
+    bottom: 0;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+}
+
+.label-left {
+    top: 50%;
+    left: -20px;
+
+    transform:
+        translateY(-50%);
+}
+
+
+/* =========================================================
+   SVG NAVIGATION
+========================================================= */
+
+.clock-navigation {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    overflow: visible;
+}
+
+.nav-curve {
+    fill: none;
+
+    stroke:
+        var(--accent);
+
+    stroke-width: 1.2;
+
+    stroke-linecap: round;
+
+    stroke-dasharray:
+        5 9;
+
+    opacity: .45;
+
+    transition:
+        opacity .35s ease;
+}
+
+.nav-arrow {
+    fill: none;
+
+    stroke:
+        var(--accent);
+
+    stroke-width: 2;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+
+    opacity: .8;
+}
+
+
+/* =========================================================
+   3D CLOCK
+========================================================= */
+
+.education-clock-3d {
+    position: absolute;
+
+    width: 67%;
+
+    aspect-ratio: 1;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    perspective: 1200px;
+
+    cursor: grab;
+
+    touch-action: none;
+
+    z-index: 5;
+}
+
+.education-clock-3d:active {
+    cursor: grabbing;
+}
+
+
+/* =========================================================
+   SHADOW
+========================================================= */
+
+.clock-shadow {
+    position: absolute;
+
+    width: 88%;
+    height: 88%;
+
+    top: 11%;
+    left: 8%;
+
+    border-radius: 50%;
+
+    background:
+        rgba(0,0,0,.25);
+
+    filter:
+        blur(25px);
+
+    transform:
+        translateZ(-80px)
+        rotateX(4deg);
+
+    opacity: .6;
+}
+
+
+/* =========================================================
+   CLOCK BODY
+========================================================= */
+
+.clock-body {
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 50%;
+
+    transform:
+        rotateX(5deg)
+        rotateY(-4deg);
+
+    transform-style:
+        preserve-3d;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #c9cdd4 42%,
+            #8f949d 65%,
+            #e5e7ea
+        );
+
+    padding: 13px;
+
+    box-shadow:
+        25px 35px 45px
+        rgba(0,0,0,.2),
+
+        inset
+        4px 5px 8px
+        rgba(255,255,255,.8),
+
+        inset
+        -5px -7px 12px
+        rgba(0,0,0,.18);
+}
+
+
+/* =========================================================
+   BEZEL
+========================================================= */
+
+.clock-bezel {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    padding: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6f747d,
+            #dfe2e5,
+            #777c85,
+            #f2f3f4
+        );
+
+    box-shadow:
+        inset
+        3px 3px 7px
+        rgba(255,255,255,.8),
+
+        inset
+        -4px -4px 8px
+        rgba(0,0,0,.25);
+}
+
+
+/* =========================================================
+   GLASS
+========================================================= */
+
+.clock-glass {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 30% 20%,
+            rgba(255,255,255,.22),
+            transparent 30%
+        ),
+
+        rgba(255,255,255,.035);
+
+    box-shadow:
+        inset
+        0 0 25px
+        rgba(255,255,255,.25);
+
+    backdrop-filter:
+        blur(2px);
+}
+
+
+/* =========================================================
+   FACE
+========================================================= */
+
+.clock-face {
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 50% 48%,
+            #fdfdfd,
+            #e8e9eb 62%,
+            #c8cbd0
+        );
+
+    box-shadow:
+        inset
+        0 0 30px
+        rgba(0,0,0,.15);
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   CLOCK TICKS
+========================================================= */
+
+.clock-ticks {
+    position: absolute;
+
+    inset: 5%;
+
+    border-radius: 50%;
+}
+
+.clock-tick {
+    position: absolute;
+
+    width: 1px;
+    height: 7px;
+
+    top: 0;
+    left: 50%;
+
+    transform-origin:
+        50%
+        200px;
+
+    background:
+        rgba(0,0,0,.28);
+}
+
+.clock-tick.major {
+    width: 2px;
+    height: 13px;
+
+    background:
+        rgba(0,0,0,.6);
+}
+
+
+/* =========================================================
+   CLOCK MARKERS
+========================================================= */
+
+.clock-marker {
+    position: absolute;
+
+    z-index: 8;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(0,0,0,.15);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.5);
+
+    backdrop-filter:
+        blur(8px);
+
+    color:
+        rgba(0,0,0,.55);
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 10px
+        rgba(0,0,0,.1);
+
+    transition:
+        .35s ease;
+}
+
+.clock-marker span {
+    font-size: .55rem;
+
+    font-weight: 900;
+}
+
+.clock-marker:hover {
+    transform:
+        scale(1.15);
+}
+
+.clock-marker.active {
+    color:
+        white;
+
+    background:
+        var(--accent);
+
+    border-color:
+        var(--accent);
+
+    box-shadow:
+        0 0 0 8px
+        rgba(40,85,217,.1);
+}
+
+
+/* positions */
+
+.marker-1 {
+    top: 7%;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+}
+
+.marker-2 {
+    top: 50%;
+    right: 7%;
+
+    transform:
+        translateY(-50%);
+}
+
+.marker-3 {
+    bottom: 7%;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+}
+
+.marker-4 {
+    top: 50%;
+    left: 7%;
+
+    transform:
+        translateY(-50%);
+}
+
+
+/* =========================================================
+   HAND
+========================================================= */
+
+.clock-hand {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 7;
+
+    transform:
+        rotate(-90deg);
+
+    transform-origin:
+        center;
+
+    transition:
+        transform
+        .8s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+.hour-hand {
+    position: absolute;
+
+    width: 23%;
+
+    height: 5px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    transform-origin:
+        left center;
+
+    border-radius: 10px;
+
+    background:
+        #292d33;
+
+    box-shadow:
+        0 2px 3px
+        rgba(0,0,0,.25);
+}
+
+.minute-hand {
+    position: absolute;
+
+    width: 34%;
+
+    height: 3px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    transform-origin:
+        left center;
+
+    border-radius: 10px;
+
+    background:
+        var(--accent);
+
+    box-shadow:
+        0 2px 4px
+        rgba(0,0,0,.2);
+}
+
+.center-pin {
+    position: absolute;
+
+    width: 18px;
+    height: 18px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #555,
+            #111
+        );
+
+    border:
+        3px solid
+        #d7d9dc;
+
+    box-shadow:
+        0 2px 5px
+        rgba(0,0,0,.35);
+}
+
+
+/* =========================================================
+   CLOCK CENTER
+========================================================= */
+
+.clock-center {
+    position: absolute;
+
+    z-index: 6;
+
+    width: 27%;
+    height: 27%;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.62);
+
+    border:
+        1px solid
+        rgba(0,0,0,.1);
+
+    box-shadow:
+        inset
+        0 0 20px
+        rgba(0,0,0,.06),
+
+        0 8px 15px
+        rgba(0,0,0,.08);
+
+    backdrop-filter:
+        blur(5px);
+}
+
+.clock-center span {
+    color:
+        rgba(0,0,0,.4);
+
+    font-size: .42rem;
+
+    font-weight: 900;
+
+    letter-spacing: .14em;
+}
+
+.clock-center strong {
+    margin: 5px 0;
+
+    color:
+        var(--accent);
+
+    font-size:
+        clamp(
+            1.8rem,
+            4vw,
+            3.2rem
+        );
+
+    line-height: 1;
+}
+
+.clock-center small {
+    color:
+        rgba(0,0,0,.35);
+
+    font-size: .34rem;
+
+    font-weight: 900;
+
+    letter-spacing: .1em;
+}
+
+
+/* =========================================================
+   DRAG HINT
+========================================================= */
+
+.clock-drag-hint {
+    position: absolute;
+
+    z-index: 20;
+
+    bottom: 3%;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color:
+        var(--muted);
+
+    font-size: .5rem;
+
+    font-weight: 900;
+
+    letter-spacing: .13em;
+
+    white-space: nowrap;
+}
+
+.drag-icon {
+    font-size: 1rem;
+
+    color:
+        var(--accent);
+
+    animation:
+        dragRotate 2s
+        linear
+        infinite;
+}
+
+@keyframes dragRotate {
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+
+}
+
+
+/* =========================================================
+   EDUCATION STORY
+========================================================= */
+
+.education-story {
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 1050px;
+
+    margin:
+        120px
+        auto
+        0;
+
+    display: grid;
+
+    grid-template-columns:
+        .85fr
+        1.15fr;
+
+    gap: 90px;
+
+    align-items: center;
+}
+
+
+/* =========================================================
+   PORTRAIT
+========================================================= */
+
+.education-portrait {
+    position: relative;
+}
+
+.portrait-frame {
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio:
+        4 / 5;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        var(--line);
+
+    background:
+        var(--surface);
+
+    box-shadow:
+        25px 30px 50px
+        rgba(0,0,0,.12);
+}
+
+.portrait-frame::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.12),
+            transparent 35%,
+            rgba(0,0,0,.1)
+        );
+
+    pointer-events: none;
+}
+
+.portrait-frame img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform
+        1s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+.portrait-frame:hover img {
+    transform:
+        scale(1.04);
+}
+
+.portrait-index {
+    position: absolute;
+
+    bottom: 15px;
+    right: 15px;
+
+    z-index: 5;
+
+    padding:
+        8px
+        12px;
+
+    color: white;
+
+    background:
+        rgba(0,0,0,.35);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    backdrop-filter:
+        blur(12px);
+
+    border-radius: 100px;
+
+    font-size: .5rem;
+
+    font-weight: 900;
+
+    letter-spacing: .1em;
+}
+
+
+/* =========================================================
+   ARTICLE
+========================================================= */
+
+.education-article {
+    min-height: 430px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.article-meta {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding-bottom: 18px;
+
+    border-bottom:
+        1px solid
+        var(--line);
+}
+
+.article-meta span {
+    color:
+        var(--muted);
+
+    font-size: .52rem;
+
+    font-weight: 900;
+
+    letter-spacing: .14em;
+}
+
+.article-meta span:first-child {
+    color:
+        var(--accent);
+}
+
+.education-article h3 {
+    margin:
+        45px
+        0
+        25px;
+
+    font-size:
+        clamp(
+            3rem,
+            5.5vw,
+            6rem
+        );
+
+    line-height: .88;
+
+    letter-spacing: -.085em;
+}
+
+.article-line {
+    width: 55px;
+
+    height: 2px;
+
+    margin-bottom: 30px;
+
+    background:
+        var(--accent);
+}
+
+.education-article p {
+    max-width: 560px;
+
+    margin: 0;
+
+    color:
+        var(--muted);
+
+    font-size: .88rem;
+
+    line-height: 1.9;
+}
+
+.article-footer {
+    display: flex;
+
+    gap: 35px;
+
+    margin-top: 45px;
+}
+
+.article-footer span {
+    color:
+        var(--muted);
+
+    font-size: .52rem;
+
+    font-weight: 900;
+
+    letter-spacing: .13em;
+}
+
+.article-footer span:first-child {
+    color:
+        var(--accent);
+}
+
+
+/* =========================================================
+   STORY TRANSITION
+========================================================= */
+
+.education-story.changing
+.education-portrait,
+.education-story.changing
+.education-article {
+    animation:
+        storyExit
+        .35s
+        ease
+        both;
+}
+
+.education-story.entering
+.education-portrait,
+.education-story.entering
+.education-article {
+    animation:
+        storyEnter
+        .7s
+        cubic-bezier(.2,.8,.2,1)
+        both;
+}
+
+@keyframes storyExit {
+
+    from {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+    to {
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+    }
+
+}
+
+@keyframes storyEnter {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.education-progress {
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 1050px;
+
+    margin:
+        70px
+        auto
+        0;
+
+    display: grid;
+
+    grid-template-columns:
+        auto
+        1fr
+        auto;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+.education-progress > span {
+    color:
+        var(--muted);
+
+    font-size: .52rem;
+
+    font-weight: 900;
+
+    letter-spacing: .12em;
+}
+
+.education-progress > span:first-child {
+    color:
+        var(--accent);
+}
+
+.progress-line {
+    height: 1px;
+
+    overflow: hidden;
+
+    background:
+        var(--line);
+}
+
+.progress-line span {
+    display: block;
+
+    width: 25%;
+
+    height: 100%;
+
+    background:
+        var(--accent);
+
+    transition:
+        width .7s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .education-section {
+        padding-top: 100px;
+    }
+
+    .education-clock-stage {
+        width: 94vw;
+    }
+
+    .education-story {
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+
+        margin-top: 90px;
+    }
+
+    .education-portrait {
+        max-width: 500px;
+
+        margin: auto;
+    }
+
+    .education-article {
+        min-height: auto;
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+    .education-header h2 {
+        font-size:
+            clamp(
+                3.5rem,
+                17vw,
+                6rem
+            );
+    }
+
+    .education-clock-stage {
+        width: 100vw;
+    }
+
+    .education-clock-3d {
+        width: 72%;
+    }
+
+    .clock-chapter-label strong {
+        display: none;
+    }
+
+    .label-right {
+        right: 2px;
+    }
+
+    .label-left {
+        left: 2px;
+    }
+
+    .clock-drag-hint {
+        font-size: .42rem;
+    }
+
+    .education-story {
+        padding:
+            0
+            20px;
+    }
+
+    .education-article h3 {
+        font-size: 3.2rem;
+    }
+
+}
+/* =========================================================
+   WORKS SECTION
+========================================================= */
+
+.works-section {
+    position: relative;
+
+    min-height: 100vh;
+
+    padding:
+        150px
+        7vw
+        140px;
+
+    overflow: hidden;
+
+    background:
+        var(--bg);
+}
+
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.works-bg {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(40,85,217,.08),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(220,40,60,.06),
+            transparent 28%
+        );
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.works-header {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 1000px;
+
+    margin:
+        0
+        auto
+        70px;
+}
+
+.works-kicker {
+    margin-bottom: 22px;
+
+    color:
+        var(--accent);
+
+    font-size: .6rem;
+
+    font-weight: 900;
+
+    letter-spacing: .18em;
+}
+
+.works-header h2 {
+    margin: 0;
+
+    font-size:
+        clamp(
+            4rem,
+            8vw,
+            8rem
+        );
+
+    line-height: .82;
+
+    letter-spacing: -.095em;
+
+    font-weight: 900;
+}
+
+.works-header h2 span {
+    color:
+        var(--accent);
+}
+
+.works-header p {
+    max-width: 550px;
+
+    margin-top: 30px;
+
+    color:
+        var(--muted);
+
+    font-size: .85rem;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+.works-filter {
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 1000px;
+
+    margin:
+        0
+        auto
+        50px;
+
+    display: flex;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+}
+
+.work-filter-btn {
+    padding:
+        11px
+        17px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius: 100px;
+
+    background:
+        transparent;
+
+    color:
+        var(--muted);
+
+    font-family: inherit;
+
+    font-size: .52rem;
+
+    font-weight: 900;
+
+    letter-spacing: .12em;
+
+    cursor: pointer;
+
+    transition:
+        .35s ease;
+}
+
+.work-filter-btn:hover,
+.work-filter-btn.active {
+    color:
+        white;
+
+    background:
+        var(--accent);
+
+    border-color:
+        var(--accent);
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.works-grid {
+    position: relative;
+
+    z-index: 3;
+
+    max-width: 1200px;
+
+    margin:
+        0
+        auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0,1fr)
+        );
+
+    gap: 18px;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.work-card {
+    position: relative;
+
+    min-height: 600px;
+
+    padding: 28px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        var(--line);
+
+    background:
+        color-mix(
+            in srgb,
+            var(--surface) 85%,
+            transparent
+        );
+
+    isolation: isolate;
+
+    cursor: default;
+
+    transition:
+        transform .6s
+        cubic-bezier(.2,.8,.2,1),
+
+        opacity .5s ease,
+
+        border-color .4s ease,
+
+        box-shadow .5s ease;
+}
+
+.work-card:hover {
+    transform:
+        translateY(-8px);
+
+    border-color:
+        color-mix(
+            in srgb,
+            var(--accent) 45%,
+            var(--line)
+        );
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,.12);
+}
+
+
+/* =========================================================
+   CARD NUMBER
+========================================================= */
+
+.work-number {
+    position: absolute;
+
+    top: 25px;
+    right: 28px;
+
+    color:
+        var(--muted);
+
+    font-size: .55rem;
+
+    font-weight: 900;
+
+    letter-spacing: .1em;
+}
+
+
+/* =========================================================
+   CARD TYPE
+========================================================= */
+
+.work-type {
+    position: relative;
+
+    z-index: 5;
+
+    color:
+        var(--accent);
+
+    font-size: .5rem;
+
+    font-weight: 900;
+
+    letter-spacing: .15em;
+}
+
+
+/* =========================================================
+   VISUAL
+========================================================= */
+
+.work-visual {
+    position: relative;
+
+    height: 270px;
+
+    margin:
+        25px
+        0
+        30px;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        var(--bg);
+
+    border:
+        1px solid
+        var(--line);
+}
+
+
+/* =========================================================
+   DCPC VISUAL
+========================================================= */
+
+.work-symbol {
+    font-size:
+        clamp(
+            4rem,
+            9vw,
+            8rem
+        );
+
+    font-weight: 900;
+
+    letter-spacing: -.08em;
+
+    color:
+        transparent;
+
+    -webkit-text-stroke:
+        1px
+        var(--accent);
+
+    transition:
+        transform .8s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+.work-card:hover
+.work-symbol {
+    transform:
+        scale(1.08)
+        rotate(-4deg);
+}
+
+.visual-line {
+    position: absolute;
+
+    width: 150%;
+
+    height: 1px;
+
+    background:
+        var(--accent);
+
+    transform:
+        rotate(-20deg);
+
+    opacity: .3;
+}
+
+
+/* =========================================================
+   TALENT HUNT
+========================================================= */
+
+.talent-visual {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    padding-left: 35px;
+}
+
+.talent-word {
+    font-size:
+        clamp(
+            3rem,
+            6vw,
+            6rem
+        );
+
+    line-height: .8;
+
+    font-weight: 900;
+
+    letter-spacing: -.08em;
+
+    color:
+        var(--text);
+
+    transition:
+        transform .7s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+.talent-word:last-child {
+    margin-left: 45px;
+
+    color:
+        var(--accent);
+}
+
+.work-card:hover
+.talent-word:first-child {
+    transform:
+        translateX(25px);
+}
+
+.work-card:hover
+.talent-word:last-child {
+    transform:
+        translateX(-20px);
+}
+
+
+/* =========================================================
+   BUSINESS
+========================================================= */
+
+.business-visual {
+    position: relative;
+
+    overflow: hidden;
+
+    align-items: flex-end;
+
+    justify-content: flex-end;
+
+    padding: 25px;
+}
+
+.business-grid {
+    position: absolute;
+
+    inset: 0;
+
+    opacity: .3;
+
+    background-image:
+        linear-gradient(
+            var(--line) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            var(--line) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        35px 35px;
+
+    transform:
+        perspective(500px)
+        rotateX(55deg)
+        scale(1.5);
+}
+
+.business-visual strong {
+    position: relative;
+
+    z-index: 2;
+
+    font-size:
+        clamp(
+            2rem,
+            5vw,
+            5rem
+        );
+
+    letter-spacing:
+        -.08em;
+
+    color:
+        var(--accent);
+}
+
+
+/* =========================================================
+   EXTERNAL
+========================================================= */
+
+.external-visual {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    padding-left: 40px;
+}
+
+.external-visual span {
+    font-size:
+        clamp(
+            1.5rem,
+            3vw,
+            3rem
+        );
+
+    line-height: .9;
+
+    font-weight: 900;
+
+    letter-spacing: -.06em;
+
+    transition:
+        transform .5s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+.external-visual span:nth-child(2) {
+    color:
+        var(--accent);
+
+    margin-left: 30px;
+}
+
+.external-visual span:nth-child(3) {
+    margin-left: 60px;
+}
+
+.work-card:hover
+.external-visual span {
+    transform:
+        translateX(15px);
+}
+
+
+/* =========================================================
+   PORTAL VISUAL
+========================================================= */
+
+.portal-visual {
+    perspective: 1000px;
+}
+
+.browser-frame {
+    width: 72%;
+
+    height: 70%;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        var(--line);
+
+    background:
+        var(--surface);
+
+    box-shadow:
+        20px 25px 40px
+        rgba(0,0,0,.16);
+
+    transform:
+        rotateX(8deg)
+        rotateY(-8deg);
+
+    transition:
+        transform .8s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+.work-card:hover
+.browser-frame {
+    transform:
+        rotateX(0deg)
+        rotateY(0deg)
+        translateY(-8px);
+}
+
+.browser-top {
+    height: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    padding-left: 10px;
+
+    border-bottom:
+        1px solid
+        var(--line);
+}
+
+.browser-top span {
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background:
+        var(--muted);
+}
+
+.browser-screen {
+    height: calc(100% - 25px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+}
+
+.browser-screen strong {
+    font-size: 2rem;
+
+    letter-spacing: -.08em;
+}
+
+.browser-screen small {
+    color:
+        var(--accent);
+
+    font-size: .45rem;
+
+    font-weight: 900;
+
+    letter-spacing: .15em;
+}
+
+
+/* =========================================================
+   TALENT PAGE
+========================================================= */
+
+.talent-page-visual {
+    overflow: hidden;
+}
+
+.page-stack {
+    position: absolute;
+
+    width: 60%;
+    height: 70%;
+}
+
+.page-stack div {
+    position: absolute;
+
+    inset: 0;
+
+    border:
+        1px solid
+        var(--line);
+
+    background:
+        var(--surface);
+
+    transform:
+        rotate(
+            calc(
+                (var(--i) - 2)
+                * 5deg
+            )
+        );
+}
+
+.page-stack div:nth-child(1) {
+    transform:
+        translate(
+            -18px,
+            10px
+        )
+        rotate(-8deg);
+}
+
+.page-stack div:nth-child(2) {
+    transform:
+        translate(
+            10px,
+            5px
+        )
+        rotate(5deg);
+}
+
+.page-stack div:nth-child(3) {
+    transform:
+        translate(
+            0,
+            0
+        );
+}
+
+.talent-page-visual strong {
+    position: relative;
+
+    z-index: 4;
+
+    font-size:
+        clamp(
+            2.5rem,
+            5vw,
+            5rem
+        );
+
+    line-height: .8;
+
+    letter-spacing: -.08em;
+
+    color:
+        var(--accent);
+}
+
+
+/* =========================================================
+   SOFTWARE
+========================================================= */
+
+.software-visual {
+    perspective: 1000px;
+}
+
+.software-panel {
+    width: 70%;
+    height: 68%;
+
+    padding: 25px;
+
+    border:
+        1px solid
+        var(--line);
+
+    background:
+        var(--surface);
+
+    box-shadow:
+        20px 25px 45px
+        rgba(0,0,0,.12);
+
+    transform:
+        rotateX(7deg)
+        rotateY(8deg);
+
+    transition:
+        transform .8s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+.work-card:hover
+.software-panel {
+    transform:
+        rotateX(0)
+        rotateY(0)
+        translateY(-7px);
+}
+
+.software-bars {
+    display: flex;
+
+    gap: 7px;
+
+    margin-bottom: 25px;
+}
+
+.software-bars span {
+    width: 35px;
+    height: 5px;
+
+    background:
+        var(--line);
+}
+
+.software-bars span:first-child {
+    background:
+        var(--accent);
+}
+
+.software-chart {
+    height: 100px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 12px;
+}
+
+.software-chart i {
+    display: block;
+
+    width: 18px;
+
+    height:
+        calc(
+            30px +
+            var(--height, 30px)
+        );
+
+    background:
+        var(--accent);
+
+    opacity: .7;
+}
+
+.software-chart i:nth-child(1) {
+    height: 35px;
+}
+
+.software-chart i:nth-child(2) {
+    height: 65px;
+}
+
+.software-chart i:nth-child(3) {
+    height: 48px;
+}
+
+.software-chart i:nth-child(4) {
+    height: 85px;
+}
+
+.software-chart i:nth-child(5) {
+    height: 105px;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.work-content {
+    position: relative;
+
+    z-index: 5;
+}
+
+.work-meta {
+    display: block;
+
+    margin-bottom: 15px;
+
+    color:
+        var(--muted);
+
+    font-size: .48rem;
+
+    font-weight: 900;
+
+    letter-spacing: .13em;
+}
+
+.work-content h3 {
+    margin: 0 0 20px;
+
+    font-size:
+        clamp(
+            2.2rem,
+            4vw,
+            4rem
+        );
+
+    line-height: .88;
+
+    letter-spacing: -.07em;
+}
+
+.work-content p {
+    max-width: 470px;
+
+    margin: 0;
+
+    color:
+        var(--muted);
+
+    font-size: .78rem;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   OPEN BUTTON
+========================================================= */
+
+.work-open {
+    margin-top: 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 0;
+
+    border: 0;
+
+    background:
+        transparent;
+
+    color:
+        var(--text);
+
+    font-family: inherit;
+
+    font-size: .5rem;
+
+    font-weight: 900;
+
+    letter-spacing: .14em;
+
+    cursor: pointer;
+}
+
+.work-open i {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius: 50%;
+
+    font-style: normal;
+
+    transition:
+        .35s ease;
+}
+
+.work-open:hover i {
+    color: white;
+
+    background:
+        var(--accent);
+
+    border-color:
+        var(--accent);
+
+    transform:
+        rotate(45deg);
+}
+
+
+/* =========================================================
+   HIDDEN FILTER
+========================================================= */
+
+.work-card.filtered-out {
+    display: none;
+}
+
+
+/* =========================================================
+   DETAIL OVERLAY
+========================================================= */
+
+.work-detail-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    background:
+        rgba(0,0,0,.55);
+
+    backdrop-filter:
+        blur(18px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity .4s ease,
+        visibility .4s ease;
+}
+
+.work-detail-overlay.active {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+.work-detail-panel {
+    position: relative;
+
+    width:
+        min(
+            750px,
+            95vw
+        );
+
+    padding:
+        60px;
+
+    background:
+        var(--surface);
+
+    border:
+        1px solid
+        var(--line);
+
+    box-shadow:
+        0 40px 100px
+        rgba(0,0,0,.3);
+
+    transform:
+        translateY(35px)
+        scale(.97);
+
+    transition:
+        transform .5s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+.work-detail-overlay.active
+.work-detail-panel {
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+.detail-close {
+    position: absolute;
+
+    top: 22px;
+    right: 25px;
+
+    width: 40px;
+    height: 40px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius: 50%;
+
+    background:
+        transparent;
+
+    color:
+        var(--text);
+
+    font-size: 1.3rem;
+
+    cursor: pointer;
+
+    transition:
+        .3s ease;
+}
+
+.detail-close:hover {
+    color: white;
+
+    background:
+        var(--accent);
+
+    border-color:
+        var(--accent);
+
+    transform:
+        rotate(90deg);
+}
+
+.detail-number {
+    color:
+        var(--accent);
+
+    font-size: .6rem;
+
+    font-weight: 900;
+
+    letter-spacing: .15em;
+}
+
+.detail-category {
+    margin-top: 20px;
+
+    color:
+        var(--muted);
+
+    font-size: .5rem;
+
+    font-weight: 900;
+
+    letter-spacing: .14em;
+}
+
+.work-detail-panel h3 {
+    margin:
+        30px
+        0;
+
+    font-size:
+        clamp(
+            3rem,
+            7vw,
+            6rem
+        );
+
+    line-height: .85;
+
+    letter-spacing: -.08em;
+}
+
+.detail-divider {
+    width: 60px;
+
+    height: 2px;
+
+    margin-bottom: 25px;
+
+    background:
+        var(--accent);
+}
+
+.work-detail-panel p {
+    max-width: 600px;
+
+    color:
+        var(--muted);
+
+    font-size: .85rem;
+
+    line-height: 1.9;
+}
+
+.detail-tags {
+    display: flex;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+
+    margin-top: 30px;
+}
+
+.detail-tag {
+    padding:
+        8px
+        12px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius: 100px;
+
+    color:
+        var(--muted);
+
+    font-size: .48rem;
+
+    font-weight: 900;
+
+    letter-spacing: .1em;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .works-section {
+        padding:
+            110px
+            20px
+            100px;
+    }
+
+    .works-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .work-card {
+        min-height: 560px;
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+    .works-header h2 {
+        font-size:
+            4rem;
+    }
+
+    .work-card {
+        min-height: 520px;
+
+        padding: 20px;
+    }
+
+    .work-visual {
+        height: 230px;
+    }
+
+    .work-detail-panel {
+        padding:
+            45px
+            25px;
+    }
+
+}
+</style>
+</head>
+<body>
+<div class="hero-spot" id="heroSpot" aria-hidden="true"></div>
+<!-- =========================================================
+     NAVIGATION — each link points to a separate section below
+========================================================= -->
+<header class="site-header"><nav class="nav-wrap" aria-label="Main navigation">
+  <a class="brand" href="#home" aria-label="Sanim home"><span class="brand-mark">AS</span><span class="brand-name">ABRAR / SANIM</span></a>
+  <div class="nav-links" id="navLinks">
+    <a class="nav-link active" href="#home">Home</a><a class="nav-link" href="#about">About Me</a><a class="nav-link" href="#education">Education</a><a class="nav-link" href="#projects">Works</a><a class="nav-link" href="#writing">Writing</a><a class="nav-link" href="#photography">Photography</a><a class="nav-link" href="#bookshelf">Bookshelf</a><a class="nav-link" href="#skills">Skills</a><a class="nav-link" href="#achievements">Achievements</a><a class="nav-link" href="#vision">Vision</a><a class="nav-link" href="#gallery">Gallery</a><a class="nav-link" href="#connect">Connect</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Toggle theme"><svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"/></svg></button>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</nav></header>
+<main>
+<!-- =========================================================
+     SECTION 01: HOME — portrait card tilts toward the cursor / finger
+     Portrait image path: abrar.png (next to this file)
+========================================================= -->
+<section class="hero site-shell" id="home" aria-labelledby="heroTitle"><div class="hero-grid">
+  <div class="hero-copy"><div class="eyebrow">A personal digital space</div>
+    <h1 class="hero-name" id="heroTitle"><span>Abrar</span><span class="name-accent">Hasan</span><span>Sanim.</span></h1>
+    <div class="hero-role" aria-label="Personal identity"><span>Student</span><span>Learner</span><span>Explorer</span></div>
+    <p class="hero-statement">Hello, I’m <strong>Abrar Hasan Sanim.</strong> A student at Dhaka College, learning to move through life with <strong>prosperity, honesty, and dignity</strong>—while exploring ideas, understanding the world, and building my own path forward.</p>
+    <div class="hero-bottomline"><a class="explore-link" href="#about">Discover my world <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a><span class="hero-index">01 — 13</span></div>
+  </div>
+  <div class="hero-visual" aria-label="Portrait area">
+    <div class="visual-orbit" aria-hidden="true"></div>
+    <div class="portrait-anchor" id="portraitAnchor">
+      <div class="portrait-tilt" id="portraitTilt">
+        <div class="portrait-stage" id="portraitStage">
+          <div class="portrait-placeholder" id="portraitPlaceholder"><svg viewBox="0 0 80 80" fill="none" aria-hidden="true"><circle cx="40" cy="27" r="14" stroke="currentColor" stroke-width="1.5"/><path d="M13 70c2.5-15.5 12-24 27-24s24.5 8.5 27 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M8 8h14M8 8v14M72 8H58M72 8v14M8 72h14M8 72V58M72 72H58M72 72V58" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".5"/></svg><strong>Your portrait goes here</strong><small>Add your own portrait image in the HTML when you are ready.</small></div>
+          <img class="portrait-image" src="abrar.png" alt="Portrait of Abrar Hasan Sanim" draggable="false">
+          <div class="portrait-glare" aria-hidden="true"></div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- =====================================================
+     SECTION 02: ABOUT ME
+     About Me — Who I Am / Academic Roots /
+     College Life / Interests / What I Believe
+====================================================== -->
+<section class="about-section site-shell" id="about">
+
+  <!-- ABOUT INTRO -->
+  <div class="about-intro">
+
+    <div class="about-intro-label">
+      <span>02</span>
+      <span>ABOUT ME</span>
+    </div>
+
+    <div class="about-intro-heading">
+      <p class="about-kicker">The person behind the name</p>
+
+      <h2>
+        More than a name.<br>
+        <span>A story in progress.</span>
+      </h2>
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       01 — WHO I AM
+  ====================================================== -->
+  <div class="about-block about-who">
+
+    <div class="about-image-wrap about-image-left">
+
+      <div class="about-image-frame">
+        <!-- নিজের ছবি এখানে বসাবে -->
+        <img
+          src="aboutabrar.png"
+          alt="Abrar Hasan Sanim"
+        >
+
+        <span class="about-image-number">01</span>
+      </div>
+
+    </div>
+
+    <div class="about-text">
+
+      <span class="about-section-number">01 / WHO I AM</span>
+
+      <h3>
+        I am <span>Abrar Hasan Sanim.</span>
+      </h3>
+
+      <p>
+        I am a student of Dhaka College, currently studying Business Studies.
+        I am interested in understanding people, ideas, institutions and the
+        world around me. Reading, writing, thinking and exploring different
+        perspectives are some of the things that continuously shape the way I see life.
+      </p>
+
+      <p>
+        I am still learning, still experimenting and still creating my path.
+        I do not see myself as someone who has already figured everything out.
+        Rather, I see this stage of life as a time to observe, learn and prepare
+        for what comes next.
+      </p>
+
+      <div class="about-mini-line">
+        <span></span>
+        <small>Student · Learner · Explorer</small>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       02 — ACADEMIC ROOTS
+  ====================================================== -->
+  <div class="about-block about-academic">
+
+    <div class="about-text">
+
+      <span class="about-section-number">02 / ACADEMIC ROOTS</span>
+
+      <h3>
+        Where the journey <span>began.</span>
+      </h3>
+
+      <p>
+        My academic journey started long before Dhaka College. The schools,
+        teachers and experiences of those early years played a quiet but
+        important role in shaping the person I am becoming.
+      </p>
+
+      <p>
+        Those years were not simply about textbooks and examinations.
+        They were the foundation of my curiosity, discipline and desire to
+        understand things beyond what was immediately visible.
+      </p>
+
+    </div>
+
+    <div class="about-image-wrap about-image-right">
+
+      <div class="about-image-frame">
+        <!-- Primary school image -->
+        <img
+          src="images/primary-school.jpg"
+          alt="Primary school"
+        >
+
+        <span class="about-image-number">02</span>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       03 — SCHOOL YEARS
+  ====================================================== -->
+  <div class="about-block about-school">
+
+    <div class="about-image-wrap about-image-left">
+
+      <div class="about-image-frame">
+        <!-- High school image -->
+        <img
+          src="highschool.png"
+          alt="High school"
+        >
+
+        <span class="about-image-number">03</span>
+      </div>
+
+    </div>
+
+    <div class="about-text">
+
+      <span class="about-section-number">03 / SCHOOL YEARS</span>
+
+      <h3>
+        Learning to <span>look beyond.</span>
+      </h3>
+
+      <p>
+        School was a period of gradual change. Alongside academic studies,
+        I began developing a stronger interest in people, society, ideas and
+        the questions that do not always have simple answers.
+      </p>
+
+      <p>
+        It was also during these years that I began to understand that
+        education is not limited to what happens inside a classroom.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       04 — COLLEGE LIFE
+  ====================================================== -->
+  <div class="about-block about-college">
+
+    <div class="about-text">
+
+      <span class="about-section-number">04 / COLLEGE LIFE</span>
+
+      <h3>
+        Dhaka College.<br>
+        <span>A new chapter.</span>
+      </h3>
+
+      <p>
+        I am currently studying at Dhaka College as a Business Studies student.
+        College has opened a different environment for me—one where academic
+        learning, communication, collaboration and independent thinking meet.
+      </p>
+
+      <p>
+        Beyond the classroom, I have become involved in different creative and
+        organisational activities. These experiences continue to teach me how
+        to work with people, take responsibility and turn ideas into something real.
+      </p>
+
+      <div class="college-meta">
+
+        <div>
+          <strong>Dhaka College</strong>
+          <span>Business Studies</span>
+        </div>
+
+        <div>
+          <strong>Current Chapter</strong>
+          <span>Learning · Creating · Exploring</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="about-image-wrap about-image-right">
+
+      <div class="about-image-frame about-college-frame">
+        <!-- Dhaka College image -->
+        <img
+          src="dc.jpeg"
+          alt="Dhaka College"
+        >
+
+        <span class="about-image-number">04</span>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       05 — INTERESTS
+  ====================================================== -->
+  <div class="about-interests">
+
+    <div class="interests-heading">
+
+      <span class="about-section-number">05 / INTERESTS</span>
+
+      <h3>
+        Things that keep<br>
+        <span>my mind moving.</span>
+      </h3>
+
+    </div>
+
+    <div class="interest-grid">
+
+      <article class="interest-card">
+        <span class="interest-index">01</span>
+        <h4>Reading</h4>
+        <p>
+          Exploring books, ideas and perspectives that help me understand
+          the world more deeply.
+        </p>
+      </article>
+
+      <article class="interest-card">
+        <span class="interest-index">02</span>
+        <h4>Writing</h4>
+        <p>
+          Turning observations, questions and thoughts into words.
+        </p>
+      </article>
+
+      <article class="interest-card">
+        <span class="interest-index">03</span>
+        <h4>Geopolitics</h4>
+        <p>
+          Understanding power, geography, conflict, strategy and the forces
+          that shape international affairs.
+        </p>
+      </article>
+
+      <article class="interest-card">
+        <span class="interest-index">04</span>
+        <h4>Photography</h4>
+        <p>
+          Capturing ordinary moments and looking at familiar surroundings
+          from a different perspective.
+        </p>
+      </article>
+
+      <article class="interest-card">
+        <span class="interest-index">05</span>
+        <h4>Design &amp; Technology</h4>
+        <p>
+          Experimenting with visual design, digital experiences, websites
+          and creative technology.
+        </p>
+      </article>
+
+      <article class="interest-card">
+        <span class="interest-index">06</span>
+        <h4>Exploration</h4>
+        <p>
+          I enjoy discovering new ideas, learning how things work and
+          finding different ways to approach a problem.
+        </p>
+      </article>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       06 — WHAT I BELIEVE
+  ====================================================== -->
+  <div class="about-belief">
+
+    <div class="belief-visual">
+
+      <div class="belief-circle">
+        <span>THINK</span>
+        <span>OBSERVE</span>
+        <span>LEARN</span>
+        <span>BUILD</span>
+      </div>
+
+      <div class="belief-center">
+        <span>WHAT</span>
+        <strong>I<br>BELIEVE</strong>
+      </div>
+
+    </div>
+
+    <div class="belief-content">
+
+      <span class="about-section-number">06 / WHAT I BELIEVE</span>
+
+      <h3>
+        Keep learning.<br>
+        <span>Keep moving.</span>
+      </h3>
+
+      <p>
+        I believe a meaningful life is not built overnight. It is built through
+        small decisions, discipline, learning and the courage to keep moving
+        when the direction is not completely clear.
+      </p>
+
+      <p>
+        I believe knowledge should change the way we think, not simply increase
+        what we know. I also believe that prosperity means little without
+        honesty, dignity and responsibility.
+      </p>
+
+      <div class="belief-words">
+        <span>Curiosity</span>
+        <span>Discipline</span>
+        <span>Integrity</span>
+        <span>Purpose</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+<!-- =========================================================
+     EDUCATION — WALL CLOCK
+========================================================= -->
+
+<section class="education-section" id="education">
+
+    <!-- WALL BACKGROUND -->
+
+    <div class="education-wall"></div>
+
+    <!-- SECTION HEADER -->
+
+    <div class="education-header">
+
+        <span class="education-index">
+            03 / EDUCATION
+        </span>
+
+        <h2>
+            The chapters<br>
+            of <span>learning.</span>
+        </h2>
+
+        <p>
+            A visual record of the environments that shaped
+            my academic journey.
+        </p>
+
+    </div>
+
+
+    <!-- =====================================================
+         CLOCK AREA
+    ====================================================== -->
+
+    <div class="education-clock-stage">
+
+
+        <!-- TOP LABEL -->
+
+        <div
+            class="clock-chapter-label label-top"
+            data-chapter="0"
+        >
+            <span>01</span>
+            <strong>BEFORE EDUCATION</strong>
+        </div>
+
+
+        <!-- RIGHT LABEL -->
+
+        <div
+            class="clock-chapter-label label-right"
+            data-chapter="1"
+        >
+            <span>02</span>
+            <strong>PRIMARY</strong>
+        </div>
+
+
+        <!-- BOTTOM LABEL -->
+
+        <div
+            class="clock-chapter-label label-bottom"
+            data-chapter="2"
+        >
+            <span>03</span>
+            <strong>HIGH SCHOOL</strong>
+        </div>
+
+
+        <!-- LEFT LABEL -->
+
+        <div
+            class="clock-chapter-label label-left"
+            data-chapter="3"
+        >
+            <span>04</span>
+            <strong>COLLEGE LIFE</strong>
+        </div>
+
+
+        <!-- =================================================
+             CURVED NAVIGATION ARROWS
+        ================================================== -->
+
+        <svg
+            class="clock-navigation"
+            viewBox="0 0 800 800"
+            aria-hidden="true"
+        >
+
+            <!-- TOP → RIGHT -->
+
+            <path
+                class="nav-curve"
+                d="M 400 55
+                   C 610 55, 755 190, 755 400"
+                data-direction="next"
+            />
+
+            <path
+                class="nav-arrow"
+                d="M 742 380 L 755 400 L 742 420"
+                data-direction="next"
+            />
+
+
+            <!-- RIGHT → BOTTOM -->
+
+            <path
+                class="nav-curve"
+                d="M 745 400
+                   C 745 610, 610 745, 400 745"
+                data-direction="next"
+            />
+
+            <path
+                class="nav-arrow"
+                d="M 420 732 L 400 745 L 380 732"
+                data-direction="next"
+            />
+
+
+            <!-- BOTTOM → LEFT -->
+
+            <path
+                class="nav-curve"
+                d="M 400 745
+                   C 190 745, 55 610, 55 400"
+                data-direction="next"
+            />
+
+            <path
+                class="nav-arrow"
+                d="M 58 420 L 45 400 L 58 380"
+                data-direction="next"
+            />
+
+
+            <!-- LEFT → TOP -->
+
+            <path
+                class="nav-curve"
+                d="M 55 400
+                   C 55 190, 190 55, 400 55"
+                data-direction="next"
+            />
+
+            <path
+                class="nav-arrow"
+                d="M 380 68 L 400 55 L 420 68"
+                data-direction="next"
+            />
+
+        </svg>
+
+
+        <!-- =================================================
+             3D CLOCK
+        ================================================== -->
+
+        <div
+            class="education-clock-3d"
+            id="educationClock"
+        >
+
+            <!-- back shadow -->
+
+            <div class="clock-shadow"></div>
+
+
+            <!-- metal body -->
+
+            <div class="clock-body">
+
+                <!-- outer bevel -->
+
+                <div class="clock-bezel">
+
+                    <!-- glass -->
+
+                    <div class="clock-glass">
+
+                        <!-- dial -->
+
+                        <div class="clock-face">
+
+                            <!-- ticks -->
+
+                            <div
+                                class="clock-ticks"
+                                id="clockTicks"
+                            ></div>
+
+
+                            <!-- chapter markers -->
+
+                            <button
+                                class="clock-marker marker-1 active"
+                                data-index="0"
+                            >
+                                <span>01</span>
+                            </button>
+
+                            <button
+                                class="clock-marker marker-2"
+                                data-index="1"
+                            >
+                                <span>02</span>
+                            </button>
+
+                            <button
+                                class="clock-marker marker-3"
+                                data-index="2"
+                            >
+                                <span>03</span>
+                            </button>
+
+                            <button
+                                class="clock-marker marker-4"
+                                data-index="3"
+                            >
+                                <span>04</span>
+                            </button>
+
+
+                            <!-- HAND -->
+
+                            <div
+                                class="clock-hand"
+                                id="clockHand"
+                            >
+
+                                <span
+                                    class="hour-hand"
+                                ></span>
+
+                                <span
+                                    class="minute-hand"
+                                ></span>
+
+                                <span
+                                    class="center-pin"
+                                ></span>
+
+                            </div>
+
+
+                            <!-- CENTER -->
+
+                            <div class="clock-center">
+
+                                <span>
+                                    EDUCATION
+                                </span>
+
+                                <strong
+                                    id="clockNumber"
+                                >
+                                    01
+                                </strong>
+
+                                <small>
+                                    ABRAR HASAN SANIM
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DRAG HINT -->
+
+        <div class="clock-drag-hint">
+
+            <span class="drag-icon">
+                ↻
+            </span>
+
+            <span>
+                DRAG THE CLOCK TO EXPLORE
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         CONTENT
+    ====================================================== -->
+
+    <div
+        class="education-story"
+        id="educationStory"
+    >
+
+        <!-- portrait -->
+
+        <div class="education-portrait">
+
+            <div class="portrait-frame">
+
+                <img
+                    id="educationPortrait"
+                    src="images/education-before.jpg"
+                    alt="Education"
+                >
+
+            </div>
+
+            <span class="portrait-index">
+                01 / 04
+            </span>
+
+        </div>
+
+
+        <!-- article -->
+
+        <article class="education-article">
+
+            <div class="article-meta">
+
+                <span
+                    id="educationChapter"
+                >
+                    CHAPTER 01
+                </span>
+
+                <span
+                    id="educationPeriod"
+                >
+                    BEFORE EDUCATION
+                </span>
+
+            </div>
+
+
+            <h3
+                id="educationTitle"
+            >
+                Before the classroom.
+            </h3>
+
+
+            <div class="article-line"></div>
+
+
+            <p
+                id="educationText"
+            >
+                Before formal education became a part of my
+                life, there was a world of observation,
+                curiosity and early experiences that slowly
+                prepared the ground for learning.
+            </p>
+
+
+            <div class="article-footer">
+
+                <span
+                    id="educationYear"
+                >
+                    —
+                </span>
+
+                <span>
+                    EDUCATION / 01
+                </span>
+
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <!-- PROGRESS -->
+
+    <div class="education-progress">
+
+        <span id="educationCurrent">
+            01
+        </span>
+
+        <div class="progress-line">
+
+            <span
+                id="educationProgressBar"
+            ></span>
+
+        </div>
+
+        <span>
+            04
+        </span>
+
+    </div>
+
+</section>
+<!-- =========================================================
+     WORKS SECTION
+========================================================= -->
+
+<section class="works-section" id="works">
+
+    <!-- Background -->
+    <div class="works-bg"></div>
+
+    <!-- Header -->
+    <div class="works-header">
+
+        <div class="works-kicker">
+            04 / SELECTED WORKS
+        </div>
+
+        <h2>
+            Things I have<br>
+            <span>worked on.</span>
+        </h2>
+
+        <p>
+            A collection of activities, collaborations and
+            projects that became part of my journey.
+        </p>
+
+    </div>
+
+
+    <!-- =====================================================
+         CATEGORY NAVIGATION
+    ====================================================== -->
+
+    <div class="works-filter">
+
+        <button
+            class="work-filter-btn active"
+            data-filter="all"
+        >
+            ALL
+        </button>
+
+        <button
+            class="work-filter-btn"
+            data-filter="club"
+        >
+            CLUB & ACTIVITIES
+        </button>
+
+        <button
+            class="work-filter-btn"
+            data-filter="project"
+        >
+            DIGITAL PROJECTS
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         WORKS GRID
+    ====================================================== -->
+
+    <div class="works-grid">
+
+
+        <!-- =================================================
+             PHOTOGRAPHY CLUB
+        ================================================== -->
+
+        <article
+            class="work-card featured"
+            data-category="club"
+        >
+
+            <div class="work-number">
+                01
+            </div>
+
+            <div class="work-type">
+                CLUB / PUBLICATION
+            </div>
+
+            <div class="work-visual">
+
+                <div class="work-symbol">
+                    DCPC
+                </div>
+
+                <span class="visual-line"></span>
+
+            </div>
+
+            <div class="work-content">
+
+                <span class="work-meta">
+                    DHAKA COLLEGE PHOTOGRAPHY CLUB
+                </span>
+
+                <h3>
+                    Publication &<br>
+                    Event Work
+                </h3>
+
+                <p>
+                    Former Executive Member of the
+                    Publication section, contributing through
+                    post captions, writing and event-related
+                    activities.
+                </p>
+
+                <button
+                    class="work-open"
+                    data-work="dcpc"
+                >
+                    <span>EXPLORE</span>
+                    <i>↗</i>
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             TALENT HUNT
+        ================================================== -->
+
+        <article
+            class="work-card"
+            data-category="club"
+        >
+
+            <div class="work-number">
+                02
+            </div>
+
+            <div class="work-type">
+                EVENT / ORGANIZATION
+            </div>
+
+            <div class="work-visual talent-visual">
+
+                <div class="talent-word">
+                    TALENT
+                </div>
+
+                <div class="talent-word">
+                    HUNT
+                </div>
+
+            </div>
+
+            <div class="work-content">
+
+                <span class="work-meta">
+                    DHAKA COLLEGE
+                </span>
+
+                <h3>
+                    Talent Hunt
+                </h3>
+
+                <p>
+                    Contributed to the organizing and
+                    coordination side of a creative talent
+                    discovery initiative.
+                </p>
+
+                <button
+                    class="work-open"
+                    data-work="talent"
+                >
+                    <span>EXPLORE</span>
+                    <i>↗</i>
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             BUSINESS CLUB
+        ================================================== -->
+
+        <article
+            class="work-card"
+            data-category="club"
+        >
+
+            <div class="work-number">
+                03
+            </div>
+
+            <div class="work-type">
+                CLUB / ACTIVITIES
+            </div>
+
+            <div class="work-visual business-visual">
+
+                <div class="business-grid"></div>
+
+                <strong>
+                    BUSINESS CLUB
+                </strong>
+
+            </div>
+
+            <div class="work-content">
+
+                <span class="work-meta">
+                    DHAKA COLLEGE BUSINESS CLUB
+                </span>
+
+                <h3>
+                    Activities &<br>
+                    Participation
+                </h3>
+
+                <p>
+                    Participation in club activities,
+                    offline initiatives and selected content
+                    contributions.
+                </p>
+
+                <button
+                    class="work-open"
+                    data-work="business"
+                >
+                    <span>EXPLORE</span>
+                    <i>↗</i>
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             EXTERNAL ACTIVITIES
+        ================================================== -->
+
+        <article
+            class="work-card"
+            data-category="club"
+        >
+
+            <div class="work-number">
+                04
+            </div>
+
+            <div class="work-type">
+                EXTERNAL ACTIVITIES
+            </div>
+
+            <div class="work-visual external-visual">
+
+                <span>
+                    ENGAGE
+                </span>
+
+                <span>
+                    CONNECT
+                </span>
+
+                <span>
+                    EXPERIENCE
+                </span>
+
+            </div>
+
+            <div class="work-content">
+
+                <span class="work-meta">
+                    EXTERNAL ENGAGEMENTS
+                </span>
+
+                <h3>
+                    Beyond the<br>
+                    Club
+                </h3>
+
+                <p>
+                    Participation in external college events,
+                    fests and an industry visit with
+                    coordination support.
+                </p>
+
+                <button
+                    class="work-open"
+                    data-work="external"
+                >
+                    <span>EXPLORE</span>
+                    <i>↗</i>
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             PERSONAL PORTAL
+        ================================================== -->
+
+        <article
+            class="work-card project-card"
+            data-category="project"
+        >
+
+            <div class="work-number">
+                05
+            </div>
+
+            <div class="work-type">
+                DIGITAL PROJECT
+            </div>
+
+            <div class="work-visual portal-visual">
+
+                <div class="browser-frame">
+
+                    <div class="browser-top">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <div class="browser-screen">
+
+                        <strong>
+                            SANIM
+                        </strong>
+
+                        <small>
+                            PERSONAL PORTAL
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="work-content">
+
+                <span class="work-meta">
+                    PERSONAL PROJECT
+                </span>
+
+                <h3>
+                    Personal<br>
+                    Portal
+                </h3>
+
+                <p>
+                    A personal digital space designed to
+                    document identity, education, interests,
+                    projects and ideas.
+                </p>
+
+                <button
+                    class="work-open"
+                    data-work="portal"
+                >
+                    <span>EXPLORE</span>
+                    <i>↗</i>
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             TALENT HUNT DIGITAL
+        ================================================== -->
+
+        <article
+            class="work-card project-card"
+            data-category="project"
+        >
+
+            <div class="work-number">
+                06
+            </div>
+
+            <div class="work-type">
+                DIGITAL PROJECT
+            </div>
+
+            <div class="work-visual talent-page-visual">
+
+                <div class="page-stack">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <strong>
+                    TALENT<br>
+                    HUNT
+                </strong>
+
+            </div>
+
+            <div class="work-content">
+
+                <span class="work-meta">
+                    EVENT / DIGITAL
+                </span>
+
+                <h3>
+                    Talent Hunt<br>
+                    Page
+                </h3>
+
+                <p>
+                    A digital project created around the
+                    Talent Hunt initiative and its creative
+                    presentation.
+                </p>
+
+                <button
+                    class="work-open"
+                    data-work="talent-page"
+                >
+                    <span>EXPLORE</span>
+                    <i>↗</i>
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             BUSINESS SOFTWARE
+        ================================================== -->
+
+        <article
+            class="work-card project-card featured-project"
+            data-category="project"
+        >
+
+            <div class="work-number">
+                07
+            </div>
+
+            <div class="work-type">
+                DIGITAL PROJECT
+            </div>
+
+            <div class="work-visual software-visual">
+
+                <div class="software-panel">
+
+                    <div class="software-bars">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+                    <div class="software-chart">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="work-content">
+
+                <span class="work-meta">
+                    BUSINESS / SOFTWARE
+                </span>
+
+                <h3>
+                    Business<br>
+                    Software
+                </h3>
+
+                <p>
+                    A business-focused software concept
+                    developed around practical management
+                    and operational needs.
+                </p>
+
+                <button
+                    class="work-open"
+                    data-work="software"
+                >
+                    <span>EXPLORE</span>
+                    <i>↗</i>
+                </button>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         WORK DETAIL PANEL
+    ====================================================== -->
+
+    <div
+        class="work-detail-overlay"
+        id="workDetail"
+    >
+
+        <div class="work-detail-panel">
+
+            <button
+                class="detail-close"
+                id="detailClose"
+            >
+                ×
+            </button>
+
+            <div class="detail-number">
+                <span id="detailNumber">
+                    01
+                </span>
+            </div>
+
+            <div class="detail-category">
+                <span id="detailCategory">
+                    CLUB / PUBLICATION
+                </span>
+            </div>
+
+            <h3 id="detailTitle">
+                Publication & Event Work
+            </h3>
+
+            <div class="detail-divider"></div>
+
+            <p id="detailDescription">
+                —
+            </p>
+
+            <div class="detail-tags" id="detailTags"></div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- SECTION 06: WRITING & THOUGHTS -->
+<section class="portal-section site-shell" id="writing"><div class="section-shell"><p class="section-kicker">06 / Notes from the mind</p><h2 class="section-title">Writing &amp; <span>Thoughts.</span></h2><div class="section-empty" aria-label="Empty Writing and Thoughts section"></div></div></section>
+<!-- SECTION 07: PHOTOGRAPHY -->
+<section class="portal-section site-shell" id="photography"><div class="section-shell"><p class="section-kicker">07 / Frames and perspectives</p><h2 class="section-title">Photo<span>graphy.</span></h2><div class="section-empty" aria-label="Empty Photography section"></div></div></section>
+<!-- SECTION 08: BOOKSHELF -->
+<section class="portal-section site-shell" id="bookshelf"><div class="section-shell"><p class="section-kicker">08 / Ideas worth keeping</p><h2 class="section-title">Book<span>shelf.</span></h2><div class="section-empty" aria-label="Empty Bookshelf section"></div></div></section>
+<!-- SECTION 09: SKILLS -->
+<section class="portal-section site-shell" id="skills"><div class="section-shell"><p class="section-kicker">09 / Practice and capability</p><h2 class="section-title">My <span>Skills.</span></h2><div class="section-empty" aria-label="Empty Skills section"></div></div></section>
+<!-- SECTION 10: ACHIEVEMENTS -->
+<section class="portal-section site-shell" id="achievements"><div class="section-shell"><p class="section-kicker">10 / Progress worth recording</p><h2 class="section-title">Achieve<span>ments.</span></h2><div class="section-empty" aria-label="Empty Achievements section"></div></div></section>
+<!-- SECTION 11: VISION -->
+<section class="portal-section site-shell" id="vision"><div class="section-shell"><p class="section-kicker">11 / Direction and purpose</p><h2 class="section-title">Vision &amp; <span>Mission.</span></h2><div class="section-empty" aria-label="Empty Vision section"></div></div></section>
+<!-- SECTION 12: GALLERY -->
+<section class="portal-section site-shell" id="gallery"><div class="section-shell"><p class="section-kicker">12 / Moments in view</p><h2 class="section-title">The <span>Gallery.</span></h2><div class="section-empty" aria-label="Empty Gallery section"></div></div></section>
+<!-- SECTION 13: CONNECT -->
+<section class="portal-section site-shell" id="connect"><div class="section-shell"><p class="section-kicker">13 / Start a conversation</p><h2 class="section-title">Let's <span>Connect.</span></h2><div class="section-empty" aria-label="Empty Connect section"></div></div></section>
+</main>
+<footer class="site-footer"><div class="site-shell footer-inner"><span class="footer-mark">ABRAR HASAN SANIM</span><span>Personal portal · Built to evolve</span></div></footer>
+<script>
+/* 01. THEME TOGGLE — selected theme is saved locally */
+const body=document.body,themeToggle=document.getElementById('themeToggle'),themeIcon=document.getElementById('themeIcon');
+const moonIcon='<path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"></path>';
+const sunIcon='<circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>';
+function applyTheme(theme){const dark=theme==='dark';body.classList.toggle('dark',dark);themeIcon.innerHTML=dark?sunIcon:moonIcon;themeToggle.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');document.querySelector('meta[name="theme-color"]').setAttribute('content',dark?'#0c1018':'#f4f5f7')}
+let savedTheme=null;try{savedTheme=localStorage.getItem('sanim-theme')}catch(error){}applyTheme(savedTheme||'light');
+themeToggle.addEventListener('click',()=>{const next=body.classList.contains('dark')?'light':'dark';applyTheme(next);try{localStorage.setItem('sanim-theme',next)}catch(error){}});
+/* 02. MOBILE NAVIGATION */
+const menuToggle=document.getElementById('menuToggle'),navLinks=document.getElementById('navLinks'),navItems=[...document.querySelectorAll('.nav-link')];
+function closeMenu(){navLinks.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');menuToggle.setAttribute('aria-label','Open navigation menu')}
+menuToggle.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');menuToggle.setAttribute('aria-expanded',String(open));menuToggle.setAttribute('aria-label',open?'Close navigation menu':'Open navigation menu')});
+navItems.forEach(link=>link.addEventListener('click',()=>{closeMenu();navItems.forEach(item=>item.classList.remove('active'));link.classList.add('active')}));
+document.addEventListener('click',event=>{if(!event.target.closest('.nav-wrap'))closeMenu()});
+/* 03. ACTIVE NAV LINK ON SCROLL — STABLE VERSION */
+
+const trackedSections = [
+  ...document.querySelectorAll(
+    '#home, #about, #education, #projects, #writing, #photography, #bookshelf, #skills, #achievements, #vision, #gallery, #connect'
+  )
+];
+
+function updateActiveNav() {
+
+  const scrollPosition = window.scrollY + 180;
+
+  let currentSection = trackedSections[0];
+
+  trackedSections.forEach(section => {
+
+    const sectionTop = section.offsetTop;
+
+    if (scrollPosition >= sectionTop) {
+      currentSection = section;
+    }
+
+  });
+
+  const currentId = currentSection ? currentSection.id : 'home';
+
+  navItems.forEach(link => {
+
+    const isActive = link.getAttribute('href') === `#${currentId}`;
+
+    link.classList.toggle('active', isActive);
+
+  });
+
+}
+
+window.addEventListener('scroll', updateActiveNav, { passive: true });
+
+window.addEventListener('resize', updateActiveNav);
+
+updateActiveNav();
+/* 04. SECTION REVEAL */
+const revealTargets=document.querySelectorAll('.section-kicker,.section-title,.section-empty');revealTargets.forEach(el=>el.classList.add('reveal'));
+if('IntersectionObserver'in window){const revealObserver=new IntersectionObserver((entries,observer)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}})},{threshold:.12});revealTargets.forEach(el=>revealObserver.observe(el))}else revealTargets.forEach(el=>el.classList.add('visible'));
+/* 05. OPTIONAL PORTRAIT IMAGE SUPPORT */
+const portraitImage=document.querySelector('.portrait-image'),portraitStage=document.getElementById('portraitStage');if(portraitImage){portraitImage.addEventListener('load',()=>{portraitImage.classList.add('loaded');portraitStage.classList.add('has-image')});portraitImage.addEventListener('error',()=>{portraitImage.classList.remove('loaded');portraitStage.classList.remove('has-image')});if(portraitImage.complete&&portraitImage.naturalWidth>0){portraitImage.classList.add('loaded');portraitStage.classList.add('has-image')}}
+
+/* 06. 3D HERO — tilt card, glare, depth name, spotlight, magnetic button
+   Tweak the feel here: */
+const TILT_MAX_X=11;      // degrees the card can lean up/down
+const TILT_MAX_Y=15;      // degrees the card can lean left/right
+const LETTER_RADIUS=150;  // px — how far the cursor "reaches" the name letters
+(()=>{
+  const hero=document.getElementById('home'),nameEl=document.getElementById('heroTitle');
+  if(!hero||!nameEl)return;
+  /* split the name into letters (the plain text stays in the HTML for SEO / no-JS) */
+  nameEl.setAttribute('aria-label',[...nameEl.children].map(w=>w.textContent.trim()).join(' '));
+  let idx=0;
+  [...nameEl.children].forEach(word=>{const text=word.textContent.trim();word.textContent='';[...text].forEach(ch=>{const l=document.createElement('span');l.className='letter';l.textContent=ch;l.setAttribute('aria-hidden','true');l.style.setProperty('--i',idx++);word.appendChild(l)})});
+
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const visual=hero.querySelector('.hero-visual'),anchor=document.getElementById('portraitAnchor'),tilt=document.getElementById('portraitTilt'),spot=document.getElementById('heroSpot'),cta=hero.querySelector('.explore-link');
+  if(!visual||!anchor||!tilt)return;
+  const letters=[...nameEl.querySelectorAll('.letter')],lastLetter=letters.map(()=>'');
+  const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
+  const st={active:false,onCard:false,cx:.5,cy:.5,hx:0,hy:0,px:0,py:0};
+  const cur={nx:0,ny:0,lift:0,gx:50,gy:30,lx:0,ly:0,sx:0,sy:0};
+  let last=performance.now(),raf=0,running=false,lettersDirty=false;
+
+  function frame(now){
+    raf=requestAnimationFrame(frame);
+    const dt=Math.min(.05,(now-last)/1000);last=now;
+    const k=1-Math.exp(-dt*9),kl=1-Math.exp(-dt*7);
+    /* card targets: precise lean when on the card, gentle lean toward the cursor elsewhere, slow float when idle */
+    let tn,tm,tl=0,tx,ty;
+    if(st.active&&st.onCard){tn=(st.cx-.5)*2;tm=(st.cy-.5)*2;tl=1;tx=st.cx*100;ty=st.cy*100}
+    else if(st.active){tn=st.hx*.35;tm=st.hy*.35;tx=50+st.hx*28;ty=30+st.hy*28}
+    else{const s=now/1000;tn=Math.sin(s*.7)*.3;tm=Math.cos(s*.55)*.24;tx=50+Math.sin(s*.7)*18;ty=30+Math.cos(s*.55)*12}
+    cur.nx+=(tn-cur.nx)*k;cur.ny+=(tm-cur.ny)*k;cur.lift+=(tl-cur.lift)*kl;cur.gx+=(tx-cur.gx)*k;cur.gy+=(ty-cur.gy)*k;
+    const sc=(1+cur.lift*.035).toFixed(4);
+    tilt.style.transform=`rotateX(${(-cur.ny*TILT_MAX_X).toFixed(2)}deg) rotateY(${(cur.nx*TILT_MAX_Y).toFixed(2)}deg) scale3d(${sc},${sc},${sc})`;
+    const vs=visual.style;
+    vs.setProperty('--nx',cur.nx.toFixed(3));vs.setProperty('--ny',cur.ny.toFixed(3));
+    vs.setProperty('--gx',cur.gx.toFixed(1)+'%');vs.setProperty('--gy',cur.gy.toFixed(1)+'%');
+    vs.setProperty('--glare',(.3+.7*cur.lift).toFixed(3));
+    /* name: shadow direction + slight tilt follow the pointer, then settle back */
+    const tlx=st.active?st.hx:0,tly=st.active?st.hy:0,dlx=tlx-cur.lx,dly=tly-cur.ly;
+    if(Math.abs(dlx)>.002||Math.abs(dly)>.002){
+      cur.lx+=dlx*kl;cur.ly+=dly*kl;
+      nameEl.style.setProperty('--lx',cur.lx.toFixed(3));nameEl.style.setProperty('--ly',cur.ly.toFixed(3));
+      nameEl.style.transform=`perspective(1100px) rotateX(${(-cur.ly*3).toFixed(2)}deg) rotateY(${(cur.lx*4).toFixed(2)}deg)`;
+    }
+    /* spotlight */
+    if(st.active){cur.sx+=(st.px-cur.sx)*k;cur.sy+=(st.py-cur.sy)*k;spot.style.setProperty('--spx',cur.sx.toFixed(1)+'px');spot.style.setProperty('--spy',cur.sy.toFixed(1)+'px')}
+    /* letters near the cursor lift toward the viewer */
+    if(lettersDirty){lettersDirty=false;
+      const rects=letters.map(l=>l.getBoundingClientRect());
+      rects.forEach((r,i)=>{
+        let f=0;if(st.active)f=Math.max(0,1-Math.hypot(st.px-(r.left+r.width/2),st.py-(r.top+r.height/2))/LETTER_RADIUS);
+        const v=f<.01?'':`translate3d(0,${(-f*12).toFixed(1)}px,${(f*48).toFixed(1)}px)`;
+        if(v!==lastLetter[i]){lastLetter[i]=v;letters[i].style.transform=v}
+      });
+    }
+  }
+
+  function magnet(e){
+    const r=cta.getBoundingClientRect(),dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2);
+    if(Math.hypot(dx,dy)<130){cta.style.setProperty('--bx',(dx*.22).toFixed(1)+'px');cta.style.setProperty('--by',(dy*.3).toFixed(1)+'px')}
+    else{cta.style.removeProperty('--bx');cta.style.removeProperty('--by')}
+  }
+  function onMove(e){
+    const hr=hero.getBoundingClientRect(),cr=anchor.getBoundingClientRect();
+    st.hx=clamp((e.clientX-hr.left)/hr.width*2-1,-1,1);st.hy=clamp((e.clientY-hr.top)/hr.height*2-1,-1,1);
+    st.cx=(e.clientX-cr.left)/cr.width;st.cy=(e.clientY-cr.top)/cr.height;
+    st.onCard=st.cx>=0&&st.cx<=1&&st.cy>=0&&st.cy<=1;
+    st.px=e.clientX;st.py=e.clientY;
+    if(!st.active){st.active=true;cur.sx=st.px;cur.sy=st.py;spot.classList.add('on')}
+    lettersDirty=true;
+    if(cta&&e.pointerType==='mouse')magnet(e);
+  }
+  function onLeave(){
+    st.active=false;st.onCard=false;lettersDirty=true;spot.classList.remove('on');
+    if(cta){cta.style.removeProperty('--bx');cta.style.removeProperty('--by')}
+  }
+  hero.addEventListener('pointermove',onMove,{passive:true});
+  hero.addEventListener('pointerdown',onMove,{passive:true});
+  hero.addEventListener('pointerleave',onLeave);
+  hero.addEventListener('pointercancel',onLeave);
+  hero.addEventListener('pointerup',e=>{if(e.pointerType!=='mouse')onLeave()});
+
+  /* only animate while the hero is on screen */
+  const start=()=>{if(!running){running=true;last=performance.now();raf=requestAnimationFrame(frame)}};
+  const stop=()=>{running=false;cancelAnimationFrame(raf)};
+  if('IntersectionObserver'in window)new IntersectionObserver(([en])=>en.isIntersecting?start():stop()).observe(hero);else start();
+})();
+
+
+/* =========================================================
+   EDUCATION 3D CLOCK
+========================================================= */
+
+const educationClock =
+    document.getElementById('educationClock');
+
+const clockHand =
+    document.getElementById('clockHand');
+
+const clockNumber =
+    document.getElementById('clockNumber');
+
+const clockTicks =
+    document.getElementById('clockTicks');
+
+const educationStory =
+    document.getElementById('educationStory');
+
+const educationPortrait =
+    document.getElementById('educationPortrait');
+
+const educationChapter =
+    document.getElementById('educationChapter');
+
+const educationPeriod =
+    document.getElementById('educationPeriod');
+
+const educationTitle =
+    document.getElementById('educationTitle');
+
+const educationText =
+    document.getElementById('educationText');
+
+const educationYear =
+    document.getElementById('educationYear');
+
+const educationCurrent =
+    document.getElementById('educationCurrent');
+
+const educationProgressBar =
+    document.getElementById('educationProgressBar');
+
+const clockMarkers =
+    document.querySelectorAll('.clock-marker');
+
+const chapterLabels =
+    document.querySelectorAll(
+        '.clock-chapter-label'
+    );
+
+
+/* =========================================================
+   DATA
+========================================================= */
+
+const educationChapters = [
+
+    {
+        number: '01',
+
+        chapter: 'CHAPTER 01',
+
+        period: 'BEFORE EDUCATION',
+
+        year: 'EARLY YEARS',
+
+        title: 'Before the classroom.',
+
+        text:
+            'Before formal education became part of my life, there was a world of observation, curiosity and early experiences that slowly prepared the ground for learning.',
+
+        image:
+            'images/education-before.jpg'
+    },
+
+
+    {
+        number: '02',
+
+        chapter: 'CHAPTER 02',
+
+        period: 'PRIMARY EDUCATION',
+
+        year: 'PRIMARY YEARS',
+
+        title: 'The first world of learning.',
+
+        text:
+            'Primary school was the first structured environment where learning became part of everyday life — through teachers, classmates, books, routines and the simple curiosity of growing up.',
+
+        image:
+            'images/education-primary.jpg'
+    },
+
+
+    {
+        number: '03',
+
+        chapter: 'CHAPTER 03',
+
+        period: 'HIGH SCHOOL',
+
+        year: 'CLASS 6 — SSC 2025',
+
+        title: 'Growing through change.',
+
+        text:
+            'My high-school chapter unfolded across two different schools — one from Class 6, and another from Class 7 through SSC 2025. Different environments became part of the same chapter.',
+
+        image:
+            'images/education-highschool.jpg'
+    },
+
+
+    {
+        number: '04',
+
+        chapter: 'CHAPTER 04',
+
+        period: 'COLLEGE LIFE',
+
+        year: '2025 — PRESENT',
+
+        title: 'A new chapter begins.',
+
+        text:
+            'I am currently studying Business Studies at Dhaka College. This is the chapter I am living now — continuing to learn while gradually building the direction of my future.',
+
+        image:
+            'dc.png'
+    }
+
+];
+
+
+/* =========================================================
+   CLOCK TICKS
+========================================================= */
+
+for (
+    let i = 0;
+    i < 60;
+    i++
+) {
+
+    const tick =
+        document.createElement('span');
+
+    tick.classList.add(
+        'clock-tick'
+    );
+
+    if (i % 5 === 0) {
+
+        tick.classList.add(
+            'major'
+        );
+
+    }
+
+    tick.style.transform =
+        `rotate(${i * 6}deg)`;
+
+    clockTicks.appendChild(
+        tick
+    );
+
+}
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let currentChapter = 0;
+
+let clockRotation = -90;
+
+let isDragging = false;
+
+let previousAngle = 0;
+
+
+/* =========================================================
+   POINTER ANGLE
+========================================================= */
+
+function getClockAngle(event) {
+
+    const rect =
+        educationClock
+            .getBoundingClientRect();
+
+    const centerX =
+        rect.left +
+        rect.width / 2;
+
+    const centerY =
+        rect.top +
+        rect.height / 2;
+
+    const x =
+        event.clientX -
+        centerX;
+
+    const y =
+        event.clientY -
+        centerY;
+
+    return (
+        Math.atan2(y, x)
+        * 180 /
+        Math.PI
+    );
+
+}
+
+
+/* =========================================================
+   ANGLE DIFFERENCE
+========================================================= */
+
+function angleDifference(
+    current,
+    previous
+) {
+
+    let difference =
+        current - previous;
+
+    if (difference > 180) {
+        difference -= 360;
+    }
+
+    if (difference < -180) {
+        difference += 360;
+    }
+
+    return difference;
+
+}
+
+
+/* =========================================================
+   START DRAG
+========================================================= */
+
+educationClock.addEventListener(
+    'pointerdown',
+    event => {
+
+        isDragging = true;
+
+        educationClock.setPointerCapture(
+            event.pointerId
+        );
+
+        previousAngle =
+            getClockAngle(event);
+
+    }
+);
+
+
+/* =========================================================
+   DRAG CLOCK
+========================================================= */
+
+educationClock.addEventListener(
+    'pointermove',
+    event => {
+
+        if (!isDragging) return;
+
+
+        const currentAngle =
+            getClockAngle(event);
+
+
+        const difference =
+            angleDifference(
+                currentAngle,
+                previousAngle
+            );
+
+
+        clockRotation +=
+            difference;
+
+
+        previousAngle =
+            currentAngle;
+
+
+        clockHand.style.transform =
+            `rotate(${clockRotation}deg)`;
+
+
+        /* determine chapter */
+
+        const normalized =
+            (
+                (
+                    clockRotation + 90
+                ) % 360 + 360
+            ) % 360;
+
+
+        const chapter =
+            Math.round(
+                normalized / 90
+            ) % 4;
+
+
+        if (
+            chapter !==
+            currentChapter
+        ) {
+
+            currentChapter =
+                chapter;
+
+            updateEducationChapter(
+                currentChapter
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   END DRAG
+========================================================= */
+
+educationClock.addEventListener(
+    'pointerup',
+    finishClock
+);
+
+educationClock.addEventListener(
+    'pointercancel',
+    finishClock
+);
+
+
+function finishClock() {
+
+    isDragging = false;
+
+    snapClock();
+
+}
+
+
+/* =========================================================
+   SNAP CLOCK
+========================================================= */
+
+function snapClock() {
+
+    const target =
+        -90 +
+        (
+            currentChapter * 90
+        );
+
+
+    clockRotation =
+        target;
+
+
+    clockHand.style.transform =
+        `rotate(${target}deg)`;
+
+}
+
+
+/* =========================================================
+   UPDATE CONTENT
+========================================================= */
+
+function updateEducationChapter(
+    index
+) {
+
+    const data =
+        educationChapters[index];
+
+    if (!data) return;
+
+
+    /* content leaving */
+
+    educationStory.classList.remove(
+        'entering'
+    );
+
+    educationStory.classList.add(
+        'changing'
+    );
+
+
+    /* marker */
+
+    clockMarkers.forEach(
+        marker => {
+
+            marker.classList.remove(
+                'active'
+            );
+
+        }
+    );
+
+
+    clockMarkers[index]
+        ?.classList.add(
+            'active'
+        );
+
+
+    /* labels */
+
+    chapterLabels.forEach(
+        label => {
+
+            label.classList.remove(
+                'active'
+            );
+
+        }
+    );
+
+
+    chapterLabels[index]
+        ?.classList.add(
+            'active'
+        );
+
+
+    setTimeout(() => {
+
+
+        /* image */
+
+        educationPortrait.src =
+            data.image;
+
+        educationPortrait.alt =
+            data.title;
+
+
+        /* content */
+
+        educationChapter.textContent =
+            data.chapter;
+
+        educationPeriod.textContent =
+            data.period;
+
+        educationTitle.textContent =
+            data.title;
+
+        educationText.textContent =
+            data.text;
+
+        educationYear.textContent =
+            data.year;
+
+
+        /* clock */
+
+        clockNumber.textContent =
+            data.number;
+
+
+        /* progress */
+
+        educationCurrent.textContent =
+            data.number;
+
+        educationProgressBar.style.width =
+            `${
+                ((index + 1) / 4) * 100
+            }%`;
+
+
+        /* enter */
+
+        educationStory.classList.remove(
+            'changing'
+        );
+
+        void educationStory.offsetWidth;
+
+        educationStory.classList.add(
+            'entering'
+        );
+
+
+        setTimeout(() => {
+
+            educationStory.classList.remove(
+                'entering'
+            );
+
+        }, 700);
+
+
+    }, 350);
+
+}
+
+
+/* =========================================================
+   CLICK MARKERS
+========================================================= */
+
+clockMarkers.forEach(
+    marker => {
+
+        marker.addEventListener(
+            'click',
+            event => {
+
+                event.stopPropagation();
+
+
+                const index =
+                    Number(
+                        marker.dataset.index
+                    );
+
+
+                currentChapter =
+                    index;
+
+
+                updateEducationChapter(
+                    index
+                );
+
+
+                snapClock();
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   CLICK CHAPTER LABELS
+========================================================= */
+
+chapterLabels.forEach(
+    label => {
+
+        label.addEventListener(
+            'click',
+            () => {
+
+                const index =
+                    Number(
+                        label.dataset.chapter
+                    );
+
+
+                currentChapter =
+                    index;
+
+
+                updateEducationChapter(
+                    index
+                );
+
+
+                snapClock();
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   INITIAL
+========================================================= */
+
+updateEducationChapter(0);
+
+snapClock();
+
+
+
+/* =========================================================
+   WORKS SECTION
+========================================================= */
+
+const workFilterButtons =
+    document.querySelectorAll(
+        '.work-filter-btn'
+    );
+
+const workCards =
+    document.querySelectorAll(
+        '.work-card'
+    );
+
+const workOpenButtons =
+    document.querySelectorAll(
+        '.work-open'
+    );
+
+const workDetail =
+    document.getElementById(
+        'workDetail'
+    );
+
+const detailClose =
+    document.getElementById(
+        'detailClose'
+    );
+
+const detailNumber =
+    document.getElementById(
+        'detailNumber'
+    );
+
+const detailCategory =
+    document.getElementById(
+        'detailCategory'
+    );
+
+const detailTitle =
+    document.getElementById(
+        'detailTitle'
+    );
+
+const detailDescription =
+    document.getElementById(
+        'detailDescription'
+    );
+
+const detailTags =
+    document.getElementById(
+        'detailTags'
+    );
+
+
+/* =========================================================
+   WORK DATA
+========================================================= */
+
+const workData = {
+
+    dcpc: {
+
+        number: '01',
+
+        category:
+            'CLUB / PUBLICATION',
+
+        title:
+            'Publication & Event Work',
+
+        description:
+            'Worked as a former Executive Member in the Publication section of Dhaka College Photography Club, contributing to post captions, writing-related work and selected event organization. Also contributed to the organizing side of Talent Hunt.',
+
+        tags: [
+            'DCPC',
+            'PUBLICATION',
+            'WRITING',
+            'EVENT ORGANIZATION'
+        ]
+
+    },
+
+
+    talent: {
+
+        number: '02',
+
+        category:
+            'EVENT / ORGANIZATION',
+
+        title:
+            'Talent Hunt',
+
+        description:
+            'Contributed to the organizing and coordination side of the Talent Hunt initiative, helping with the execution of a creative platform designed to discover and showcase student talent.',
+
+        tags: [
+            'TALENT HUNT',
+            'ORGANIZATION',
+            'COORDINATION'
+        ]
+
+    },
+
+
+    business: {
+
+        number: '03',
+
+        category:
+            'CLUB / ACTIVITIES',
+
+        title:
+            'Business Club Activities',
+
+        description:
+            'Participated in Dhaka College Business Club activities, including offline initiatives, club programs and selected content contributions.',
+
+        tags: [
+            'BUSINESS CLUB',
+            'ACTIVITIES',
+            'PARTICIPATION'
+        ]
+
+    },
+
+
+    external: {
+
+        number: '04',
+
+        category:
+            'EXTERNAL ACTIVITIES',
+
+        title:
+            'Beyond the Club',
+
+        description:
+            'Participated in external college events including fests at Mortuza Ideal School & College and Holy Cross College. Also participated in a BCSIR industry visit and supported coordination-related work.',
+
+        tags: [
+            'COLLEGE FEST',
+            'BCSIR',
+            'INDUSTRY VISIT',
+            'COORDINATION'
+        ]
+
+    },
+
+
+    portal: {
+
+        number: '05',
+
+        category:
+            'DIGITAL PROJECT',
+
+        title:
+            'Personal Portal',
+
+        description:
+            'A personal digital portal designed to bring together identity, education, interests, projects, writing and future direction into one interactive space.',
+
+        tags: [
+            'PERSONAL PROJECT',
+            'WEB',
+            'DIGITAL IDENTITY'
+        ]
+
+    },
+
+
+    'talent-page': {
+
+        number: '06',
+
+        category:
+            'DIGITAL PROJECT',
+
+        title:
+            'Talent Hunt Page',
+
+        description:
+            'A digital project created around the Talent Hunt initiative, focused on presenting the event and its creative identity through an interactive web experience.',
+
+        tags: [
+            'TALENT HUNT',
+            'WEB',
+            'EVENT'
+        ]
+
+    },
+
+
+    software: {
+
+        number: '07',
+
+        category:
+            'BUSINESS / SOFTWARE',
+
+        title:
+            'Business Software',
+
+        description:
+            'A business-oriented software project developed around practical business management and operational needs.',
+
+        tags: [
+            'BUSINESS',
+            'SOFTWARE',
+            'PROJECT'
+        ]
+
+    }
+
+};
+
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+workFilterButtons.forEach(
+    button => {
+
+        button.addEventListener(
+            'click',
+            () => {
+
+                const filter =
+                    button.dataset.filter;
+
+
+                workFilterButtons.forEach(
+                    item => {
+
+                        item.classList.remove(
+                            'active'
+                        );
+
+                    }
+                );
+
+
+                button.classList.add(
+                    'active'
+                );
+
+
+                workCards.forEach(
+                    card => {
+
+                        const category =
+                            card.dataset.category;
+
+
+                        if (
+                            filter === 'all' ||
+                            category === filter
+                        ) {
+
+                            card.classList.remove(
+                                'filtered-out'
+                            );
+
+                        } else {
+
+                            card.classList.add(
+                                'filtered-out'
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   OPEN DETAIL
+========================================================= */
+
+workOpenButtons.forEach(
+    button => {
+
+        button.addEventListener(
+            'click',
+            () => {
+
+                const work =
+                    button.dataset.work;
+
+
+                openWorkDetail(work);
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   OPEN FUNCTION
+========================================================= */
+
+function openWorkDetail(
+    work
+) {
+
+    const data =
+        workData[work];
+
+
+    if (!data) return;
+
+
+    detailNumber.textContent =
+        data.number;
+
+    detailCategory.textContent =
+        data.category;
+
+    detailTitle.textContent =
+        data.title;
+
+    detailDescription.textContent =
+        data.description;
+
+
+    detailTags.innerHTML = '';
+
+
+    data.tags.forEach(
+        tag => {
+
+            const span =
+                document.createElement(
+                    'span'
+                );
+
+            span.className =
+                'detail-tag';
+
+            span.textContent =
+                tag;
+
+            detailTags.appendChild(
+                span
+            );
+
+        }
+    );
+
+
+    workDetail.classList.add(
+        'active'
+    );
+
+
+    document.body.style.overflow =
+        'hidden';
+
+}
+
+
+/* =========================================================
+   CLOSE
+========================================================= */
+
+function closeWorkDetail() {
+
+    workDetail.classList.remove(
+        'active'
+    );
+
+    document.body.style.overflow =
+        '';
+
+}
+
+
+detailClose.addEventListener(
+    'click',
+    closeWorkDetail
+);
+
+
+/* =========================================================
+   CLICK OUTSIDE
+========================================================= */
+
+workDetail.addEventListener(
+    'click',
+    event => {
+
+        if (
+            event.target ===
+            workDetail
+        ) {
+
+            closeWorkDetail();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   ESCAPE
+========================================================= */
+
+document.addEventListener(
+    'keydown',
+    event => {
+
+        if (
+            event.key === 'Escape' &&
+            workDetail.classList.contains(
+                'active'
+            )
+        ) {
+
+            closeWorkDetail();
+
+        }
+
+    }
+);
+</script>
+</body></html>
