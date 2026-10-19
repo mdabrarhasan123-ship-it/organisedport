@@ -9,7 +9,7 @@
 /* =========================================================
    01. DESIGN TOKENS — edit these to change the whole theme
 ========================================================= */
-:root{--bg:#f4f5f7;--surface:rgba(255,255,255,.66);--surface-solid:#fff;--text:#151923;--muted:#687080;--line:rgba(24,31,45,.12);--accent:#2855d9;--accent-2:#e34d4d;--nav-bg:rgba(255,255,255,.68);--shadow:0 22px 70px rgba(28,37,57,.10);--shadow-c:rgba(28,37,57,.17);--spot:rgba(40,85,217,.10);--radius:24px;--ease:cubic-bezier(.22,1,.36,1)}
+:root{--bg:#f4f5f7;--surface:rgba(255, 255, 255, 0.66);--surface-solid:#fff;--text:#151923;--muted:#687080;--line:rgba(24,31,45,.12);--accent:#0e40d8;--accent-2:#e34d4d;--nav-bg:rgba(255,255,255,.68);--shadow:0 22px 70px rgba(28,37,57,.10);--shadow-c:rgba(28,37,57,.17);--spot:rgba(40,85,217,.10);--radius:24px;--ease:cubic-bezier(.22,1,.36,1)}
 body.dark{--bg:#0c1018;--surface:rgba(22,28,40,.72);--surface-solid:#151b27;--text:#f1f3f8;--muted:#a2aaba;--line:rgba(226,233,246,.13);--accent:#8da8ff;--accent-2:#ff7979;--nav-bg:rgba(17,22,32,.72);--shadow:0 22px 70px rgba(0,0,0,.28);--shadow-c:rgba(0,0,0,.5);--spot:rgba(141,168,255,.13)}
 /* 02. RESET + GLOBAL */
 *,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:110px}body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font-family:Inter,"Segoe UI",Helvetica,Arial,sans-serif;transition:background .45s ease,color .45s ease;overflow-x:hidden}body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 8% 12%,rgba(40,85,217,.09),transparent 34%),radial-gradient(ellipse at 92% 34%,rgba(227,77,77,.07),transparent 32%),radial-gradient(ellipse at 55% 100%,rgba(40,85,217,.06),transparent 38%)}a{color:inherit;text-decoration:none}button{font:inherit}img{max-width:100%;display:block}::selection{background:var(--accent);color:#fff}.site-shell{width:min(1440px,100%);margin:0 auto;padding:0 clamp(18px,4.2vw,68px)}
@@ -4619,6 +4619,1563 @@ html {
     }
 
 }
+
+
+/* =========================================================
+   PHOTOGRAPHY
+========================================================= */
+
+.photography-section {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    padding: 140px 7vw 80px;
+
+    overflow: hidden;
+
+}
+
+
+.photography-container {
+
+    width: 100%;
+
+    max-width: 1500px;
+
+    margin: auto;
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.photography-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    margin-bottom: 70px;
+
+}
+
+
+.photography-label {
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    opacity: .55;
+
+}
+
+
+.photography-heading-wrap {
+
+    width: min(600px, 60%);
+
+}
+
+
+.photography-heading-wrap h2 {
+
+    margin: 0;
+
+    font-size: clamp(45px, 6vw, 90px);
+
+    line-height: .95;
+
+    letter-spacing: -4px;
+
+    font-weight: 700;
+
+}
+
+
+.photography-heading-wrap h2 span {
+
+    display: block;
+
+    font-style: italic;
+
+    font-weight: 400;
+
+    opacity: .55;
+
+}
+
+
+.photography-heading-wrap p {
+
+    max-width: 420px;
+
+    margin-top: 25px;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    opacity: .6;
+
+}
+
+
+/* =========================================================
+   EXPERIENCE
+========================================================= */
+
+.photo-experience {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        minmax(400px, 1.35fr)
+        120px;
+
+    gap: 60px;
+
+    align-items: center;
+
+}
+
+
+/* =========================================================
+   INFO
+========================================================= */
+
+.photo-info {
+
+    position: relative;
+
+    z-index: 5;
+
+}
+
+
+.photo-index {
+
+    display: flex;
+
+    gap: 8px;
+
+    align-items: center;
+
+    margin-bottom: 55px;
+
+    font-family: monospace;
+
+    font-size: 13px;
+
+    opacity: .5;
+
+}
+
+
+.photo-location {
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    opacity: .5;
+
+    margin-bottom: 18px;
+
+}
+
+
+.photo-info h3 {
+
+    font-size: clamp(35px, 4vw, 65px);
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+
+    margin: 0;
+
+    max-width: 550px;
+
+}
+
+
+.photo-description {
+
+    max-width: 450px;
+
+}
+
+
+.photo-info p {
+
+    margin-top: 30px;
+
+    line-height: 1.8;
+
+    font-size: 15px;
+
+    opacity: .65;
+
+}
+
+
+.photo-meta {
+
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 30px;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    opacity: .45;
+
+}
+
+
+/* =========================================================
+   CONTROLS
+========================================================= */
+
+.photo-controls {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-top: 55px;
+
+}
+
+
+.photo-controls button {
+
+    width: 44px;
+
+    height: 44px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(127,127,127,.35);
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    transition:
+        transform .3s ease,
+        background .3s ease;
+
+}
+
+
+.photo-controls button:hover {
+
+    transform: scale(1.1);
+
+    background: rgba(127,127,127,.08);
+
+}
+
+
+.photo-progress {
+
+    width: 100px;
+
+    height: 2px;
+
+    background: rgba(127,127,127,.2);
+
+    overflow: hidden;
+
+}
+
+
+.photo-progress-fill {
+
+    height: 100%;
+
+    width: 16.66%;
+
+    background: currentColor;
+
+    transition: width .5s ease;
+
+}
+
+
+/* =========================================================
+   IMAGE STAGE
+========================================================= */
+
+.photo-stage {
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    min-height: 650px;
+
+}
+
+
+.photo-frame {
+
+    position: relative;
+
+    width: min(100%, 580px);
+
+    aspect-ratio: 4 / 5;
+
+    overflow: hidden;
+
+    transform:
+        rotate(-2deg);
+
+    box-shadow:
+        0 35px 90px rgba(0,0,0,.25);
+
+    transition:
+        transform .5s ease;
+
+}
+
+
+.photo-frame:hover {
+
+    transform:
+        rotate(0deg)
+        scale(1.015);
+
+}
+
+
+.photo-image {
+
+    width: 100%;
+
+    height: 100%;
+
+    background-size: cover;
+
+    background-position: center;
+
+    transition:
+        opacity .35s ease,
+        transform .6s ease;
+
+}
+
+
+.photo-frame-number {
+
+    position: absolute;
+
+    right: 20px;
+
+    bottom: 18px;
+
+    font-family: monospace;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: white;
+
+    opacity: .7;
+
+}
+
+
+.photo-shadow {
+
+    position: absolute;
+
+    width: 70%;
+
+    height: 50px;
+
+    bottom: 40px;
+
+    background: rgba(0,0,0,.25);
+
+    filter: blur(35px);
+
+    z-index: -1;
+
+}
+
+
+/* =========================================================
+   FILM STRIP
+========================================================= */
+
+.photo-filmstrip {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+
+}
+
+
+.photo-thumb {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    width: 100px;
+
+    height: 75px;
+
+    padding: 5px;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    opacity: .4;
+
+    transition:
+        opacity .35s ease,
+        transform .35s ease;
+
+}
+
+
+.photo-thumb:hover {
+
+    opacity: .8;
+
+    transform:
+        translateX(-8px);
+
+}
+
+
+.photo-thumb.active {
+
+    opacity: 1;
+
+    transform:
+        translateX(-15px);
+
+}
+
+
+.photo-thumb > span {
+
+    position: absolute;
+
+    left: -25px;
+
+    font-size: 9px;
+
+    opacity: .6;
+
+}
+
+
+.thumb-image {
+
+    width: 100%;
+
+    height: 100%;
+
+    background-size: cover;
+
+    background-position: center;
+
+}
+
+
+/* =========================================================
+   PLACEHOLDER IMAGES
+   Replace these with your own images
+========================================================= */
+
+.thumb-one {
+
+    background:
+        linear-gradient(
+            135deg,
+            #222,
+            #777
+        );
+
+}
+
+
+.thumb-two {
+
+    background:
+        linear-gradient(
+            135deg,
+            #39444f,
+            #aaa
+        );
+
+}
+
+
+.thumb-three {
+
+    background:
+        linear-gradient(
+            135deg,
+            #51463b,
+            #c2a989
+        );
+
+}
+
+
+.thumb-four {
+
+    background:
+        linear-gradient(
+            135deg,
+            #202020,
+            #9a9a9a
+        );
+
+}
+
+
+.thumb-five {
+
+    background:
+        linear-gradient(
+            135deg,
+            #3d443c,
+            #b0b5a9
+        );
+
+}
+
+
+.thumb-six {
+
+    background:
+        linear-gradient(
+            135deg,
+            #34313a,
+            #aaa0b5
+        );
+
+}
+
+
+/* =========================================================
+   BOTTOM
+========================================================= */
+
+.photography-bottom {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 80px;
+
+    padding-top: 25px;
+
+    border-top:
+        1px solid rgba(127,127,127,.18);
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    opacity: .4;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .photo-experience {
+
+        grid-template-columns:
+            1fr
+            1fr;
+
+    }
+
+
+    .photo-stage {
+
+        order: -1;
+
+        min-height: 500px;
+
+    }
+
+
+    .photo-filmstrip {
+
+        grid-column: 1 / -1;
+
+        flex-direction: row;
+
+        overflow-x: auto;
+
+        padding: 10px 0 20px;
+
+    }
+
+
+    .photo-thumb {
+
+        min-width: 100px;
+
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .photography-section {
+
+        padding:
+            100px 20px 60px;
+
+    }
+
+
+    .photography-header {
+
+        display: block;
+
+    }
+
+
+    .photography-heading-wrap {
+
+        width: 100%;
+
+        margin-top: 30px;
+
+    }
+
+
+    .photo-experience {
+
+        display: block;
+
+    }
+
+
+    .photo-stage {
+
+        min-height: auto;
+
+        margin: 50px 0;
+
+    }
+
+
+    .photo-frame {
+
+        width: 90%;
+
+    }
+
+
+    .photo-info h3 {
+
+        font-size: 42px;
+
+    }
+
+
+    .photo-filmstrip {
+
+        margin-top: 40px;
+
+    }
+
+}
+
+
+
+
+
+/* =========================================================
+   BOOKSHELF — SECTION 08
+   (সব class-এর শুরুতে bs- আছে, তাই অন্য section-এর সাথে মিলবে না)
+========================================================= */
+
+.bs-section,
+.bs-modal {
+  --bn-stack: "Bricolage Grotesque", "Hind Siliguri", "Noto Sans Bengali", "Nirmala UI", "Kalpurush", Inter, sans-serif;
+  --wood-a: #d8ccb8;
+  --wood-b: #bfb199;
+  --wood-edge: rgba(255,255,255,.55);
+}
+
+body.dark .bs-section,
+body.dark .bs-modal {
+  --wood-a: #3b342d;
+  --wood-b: #2a251f;
+  --wood-edge: rgba(255,255,255,.08);
+}
+
+.bs-section {
+  position: relative;
+  isolation: isolate;
+  padding-top: clamp(100px, 12vw, 160px);
+  padding-bottom: clamp(90px, 11vw, 150px);
+  border-top: 1px solid var(--line);
+  font-family: Inter, "Hind Siliguri", "Noto Sans Bengali", "Nirmala UI", "Kalpurush", sans-serif;
+}
+
+.bs-section::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 6%;
+  right: -8%;
+  width: 42vw;
+  height: 42vw;
+  max-width: 560px;
+  max-height: 560px;
+  border-radius: 50%;
+  background: var(--spot);
+  filter: blur(100px);
+  opacity: .6;
+  pointer-events: none;
+}
+
+/* ---------- HEADER ---------- */
+
+.bs-head {
+  display: grid;
+  grid-template-columns: minmax(120px, .34fr) 1fr;
+  gap: clamp(24px, 5vw, 75px);
+  padding-bottom: clamp(50px, 7vw, 90px);
+}
+
+.bs-label {
+  display: flex;
+  gap: 12px;
+  padding-top: 10px;
+  color: var(--muted);
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+.bs-label span:first-child { color: var(--accent-2); }
+
+.bs-kicker {
+  margin: 0 0 22px;
+  color: var(--accent-2);
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+}
+
+.bs-heading h2 {
+  margin: 0;
+  font-family: var(--bn-stack);
+  font-size: clamp(3rem, 7.4vw, 7rem);
+  line-height: .92;
+  letter-spacing: -.075em;
+  font-weight: 800;
+  text-wrap: balance;
+}
+
+.bs-heading h2 span { color: var(--accent); }
+
+.bs-lead {
+  max-width: 470px;
+  margin: 30px 0 0;
+  padding-left: 20px;
+  border-left: 2px solid var(--accent-2);
+  color: var(--muted);
+  font-size: .95rem;
+  line-height: 1.85;
+}
+
+/* ---------- TABS ---------- */
+
+.bs-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--surface);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+.bs-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  padding: 22px clamp(16px, 2.2vw, 30px) 20px;
+  border: 0;
+  border-right: 1px solid var(--line);
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background .35s ease, color .35s ease;
+}
+
+.bs-tab:last-child { border-right: 0; }
+
+.bs-tab b {
+  font-family: var(--bn-stack);
+  font-size: clamp(2.3rem, 4.4vw, 3.8rem);
+  line-height: 1;
+  letter-spacing: -.06em;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.bs-tab span {
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.bs-tab small {
+  color: var(--muted);
+  font-family: var(--bn-stack);
+  font-size: .76rem;
+  transition: color .35s ease, opacity .35s ease;
+}
+
+.bs-tab:hover { background: var(--surface-solid); }
+
+.bs-tab.is-active { background: var(--text); color: var(--bg); }
+
+.bs-tab.is-active small { color: inherit; opacity: .7; }
+
+.bs-tab:focus-visible,
+.bs-shuffle:focus-visible,
+.bs-topic:focus-visible,
+.bs-pager button:focus-visible,
+.bs-close:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ---------- TOOLS ---------- */
+
+.bs-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.bs-search {
+  position: relative;
+  flex: 1 1 280px;
+  max-width: 430px;
+}
+
+.bs-search svg {
+  position: absolute;
+  left: 17px;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  transform: translateY(-50%);
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.bs-search input {
+  width: 100%;
+  height: 46px;
+  padding: 0 18px 0 44px;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  outline: 0;
+  background: var(--surface);
+  color: var(--text);
+  font: 600 .82rem Inter, "Hind Siliguri", "Nirmala UI", sans-serif;
+  transition: border-color .3s ease, box-shadow .3s ease;
+}
+
+.bs-search input::placeholder { color: var(--muted); font-weight: 500; }
+
+.bs-search input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 16%, transparent);
+}
+
+.bs-shuffle,
+.bs-pager button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 46px;
+  padding: 0 20px;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  background: var(--surface);
+  color: var(--text);
+  font: 800 .7rem Inter, "Hind Siliguri", sans-serif;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .3s ease, color .3s ease, transform .3s var(--ease), border-color .3s ease;
+}
+
+.bs-shuffle svg { width: 15px; height: 15px; transition: transform .6s var(--ease); }
+
+.bs-shuffle:hover,
+.bs-pager button:hover {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
+  transform: translateY(-2px);
+}
+
+.bs-shuffle:hover svg { transform: rotate(180deg); }
+
+.bs-topics { display: flex; flex-wrap: wrap; gap: 8px; width: 100%; }
+.bs-topics[hidden] { display: none; }
+
+.bs-topic {
+  padding: 9px 15px;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  background: transparent;
+  color: var(--muted);
+  font: 750 .68rem Inter, "Hind Siliguri", sans-serif;
+  cursor: pointer;
+  transition: background .3s ease, color .3s ease, border-color .3s ease, transform .3s var(--ease);
+}
+
+.bs-topic:hover { color: var(--text); border-color: var(--text); transform: translateY(-2px); }
+
+.bs-topic.is-active { background: var(--accent); border-color: var(--accent); color: #fff; }
+body.dark .bs-topic.is-active { color: #0c1018; }
+
+/* ---------- SHELVES ---------- */
+
+.bs-stage {
+  --k: 1;
+  --pad: clamp(8px, 2vw, 28px);
+  min-height: 360px;
+  margin-top: 46px;
+  padding: 0 var(--pad);
+}
+
+.bs-group + .bs-group { margin-top: clamp(50px, 6vw, 84px); }
+
+.bs-group-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 4px;
+}
+
+.bs-group-head h4 {
+  margin: 0;
+  color: var(--accent-2);
+  font-size: .68rem;
+  font-weight: 850;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.bs-group-head .bs-bn {
+  color: var(--muted);
+  font-family: var(--bn-stack);
+  font-size: .8rem;
+}
+
+.bs-group-head i {
+  flex: 1;
+  align-self: center;
+  height: 1px;
+  background: var(--line);
+}
+
+.bs-group-head em {
+  color: var(--muted);
+  font-size: .68rem;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.bs-row { position: relative; }
+
+.bs-books {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  min-height: calc(344px * var(--k));
+  padding-top: 34px;
+}
+
+.bs-plank {
+  position: relative;
+  height: 22px;
+  margin: 0 calc(var(--pad) * -.45);
+  border-radius: 3px 3px 8px 8px;
+  background:
+    repeating-linear-gradient(92deg, transparent 0 46px, rgba(0,0,0,.035) 46px 47px),
+    linear-gradient(var(--wood-a), var(--wood-b));
+  box-shadow:
+    inset 0 1px 0 var(--wood-edge),
+    0 2px 0 rgba(0,0,0,.06),
+    0 18px 26px -12px var(--shadow-c);
+}
+
+/* ---------- BOOK ---------- */
+
+.bs-book {
+  position: relative;
+  flex: 0 0 auto;
+  width: calc(var(--w) * var(--k));
+  height: calc(var(--h) * var(--k));
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+  transform-origin: 50% 100%;
+  transition: transform .55s var(--ease);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* entrance: শুধু "backwards" — তাই hover transform ঠিকমতো কাজ করে */
+.bs-row:not(.in) .bs-book { opacity: 0; }
+.bs-row.in .bs-book { animation: bs-rise .85s var(--ease) backwards; animation-delay: calc(var(--i) * 40ms); }
+.bs-stage.is-static .bs-book { animation: none !important; opacity: 1 !important; }
+
+@keyframes bs-rise {
+  from { opacity: 0; transform: translateY(46px) rotate(2deg); }
+}
+
+.bs-book:hover,
+.bs-book:focus-visible {
+  z-index: 3;
+  transform: translateY(-20px) rotate(-1.4deg);
+}
+
+.bs-book:hover + .bs-book { transform: translateX(7px); }
+.bs-book:has(+ .bs-book:hover) { transform: translateX(-7px); }
+
+.bs-book:focus-visible { outline: none; }
+.bs-book:focus-visible .bs-spine { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.bs-spine {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 28px 3px 24px;
+  overflow: hidden;
+  border-radius: 3px 5px 2px 2px;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,.2), rgba(255,255,255,0) 20%, rgba(0,0,0,0) 62%, rgba(0,0,0,.28)),
+    var(--c);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.07), 7px 9px 16px rgba(0,0,0,.22);
+  transition: box-shadow .5s ease, background .5s ease, color .5s ease;
+}
+
+.bs-book:hover .bs-spine {
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.1), 12px 22px 28px rgba(0,0,0,.3);
+}
+
+.bs-spine::before,
+.bs-spine::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 5px;
+  border-block: 1px solid currentColor;
+  opacity: .4;
+}
+
+.bs-spine::before { top: 9px; }
+.bs-spine::after  { bottom: 9px; }
+
+.bs-mark {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  opacity: .7;
+}
+
+.bs-book[data-type="digital"] .bs-mark { width: 8px; height: 11px; border-radius: 2px; }
+
+.bs-t {
+  flex: 1;
+  min-height: 0;
+  max-width: 100%;
+  overflow: hidden;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  text-align: center;
+  font-size: calc(var(--fs, 12px) * var(--k));
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: .02em;
+}
+
+.bs-book.bn .bs-t { letter-spacing: 0; font-weight: 600; }
+
+.bs-book.long .bs-a { display: none; }
+
+.bs-a {
+  flex: none;
+  max-height: calc(56px * var(--k));
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  writing-mode: vertical-rl;
+  font-size: calc(8px * var(--k));
+  letter-spacing: .06em;
+  opacity: .7;
+}
+
+/* Future shelf — ছায়া-বই (এখনো শেলফে নেই): hover করলে রং পূর্ণ হয় */
+.bs-book[data-type="future"] { color: var(--text); }
+
+.bs-book[data-type="future"] .bs-spine {
+  background: color-mix(in srgb, var(--c) 14%, transparent);
+  border: 1.5px dashed color-mix(in srgb, var(--text) 32%, transparent);
+  box-shadow: none;
+}
+
+.bs-book[data-type="future"]:hover,
+.bs-book[data-type="future"]:focus-visible { color: var(--ink); }
+
+.bs-book[data-type="future"]:hover .bs-spine,
+.bs-book[data-type="future"]:focus-visible .bs-spine {
+  background: var(--c);
+  border-color: transparent;
+  box-shadow: 12px 22px 28px rgba(0,0,0,.25);
+}
+
+/* "আরও আসছে" ফাঁকা জায়গা */
+.bs-ghost {
+  cursor: default;
+  margin-left: 8px;
+  color: var(--muted);
+  transform-origin: 0 100%;
+  transform: rotate(7deg);
+}
+
+.bs-ghost:hover { transform: rotate(7deg); }
+.bs-ghost .bs-spine { background: none; border: 1.5px dashed var(--line); box-shadow: none; justify-content: center; gap: 16px; }
+.bs-ghost .bs-spine::before,
+.bs-ghost .bs-spine::after { display: none; }
+.bs-ghost .bs-plus { font-size: 1.7rem; font-weight: 300; line-height: 1; }
+.bs-ghost .bs-t { flex: none; font-weight: 600; }
+
+.bs-empty {
+  padding: 80px 20px;
+  border: 1px dashed var(--line);
+  border-radius: 24px;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.7;
+}
+
+.bs-empty strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text);
+  font-family: var(--bn-stack);
+  font-size: 1.6rem;
+  letter-spacing: -.03em;
+}
+
+.bs-foot {
+  display: flex;
+  justify-content: space-between;
+  margin-top: clamp(60px, 8vw, 100px);
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: .6rem;
+  font-weight: 800;
+  letter-spacing: .3em;
+  opacity: .7;
+}
+
+/* ---------- DETAIL MODAL ---------- */
+
+html.bs-lock { overflow: hidden; }
+
+.bs-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .32s ease, visibility 0s linear .32s;
+  font-family: Inter, "Hind Siliguri", "Noto Sans Bengali", "Nirmala UI", "Kalpurush", sans-serif;
+  color: var(--text);
+}
+
+.bs-modal[hidden] { display: none; }
+.bs-modal.is-open { opacity: 1; visibility: visible; transition-delay: 0s; }
+
+.bs-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10,14,24,.52);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.bs-panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(260px, .82fr) 1fr;
+  gap: clamp(20px, 4vw, 56px);
+  width: min(1040px, 100%);
+  max-height: min(88vh, 780px);
+  padding: clamp(24px, 4vw, 50px);
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  background: var(--surface-solid);
+  box-shadow: 0 50px 120px rgba(0,0,0,.35);
+  transform: translateY(26px) scale(.97);
+  transition: transform .5s var(--ease);
+}
+
+.bs-modal.is-open .bs-panel { transform: none; }
+
+.bs-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 5;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface-solid);
+  color: var(--text);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform .4s var(--ease), background .3s ease;
+}
+
+.bs-close:hover { transform: rotate(90deg); background: var(--surface); }
+
+/* 3D book */
+.bs-book-wrap {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 380px;
+  overflow: hidden;
+  border-radius: 22px;
+  background: radial-gradient(circle at 50% 36%, var(--spot), transparent 66%), var(--surface);
+  perspective: 1300px;
+  touch-action: pan-y;
+}
+
+.bs-3d {
+  --d: 38px;
+  position: relative;
+  width: min(200px, 52vw);
+  aspect-ratio: 2 / 3;
+  transform-style: preserve-3d;
+  animation: bs-float 6s ease-in-out infinite;
+}
+
+.bs-modal.is-open .bs-3d { animation: bs-open .9s var(--ease) both, bs-float 6s ease-in-out .9s infinite; }
+.bs-panel.is-swap .bs-3d { animation: bs-open .7s var(--ease) both, bs-float 6s ease-in-out .7s infinite; }
+
+@keyframes bs-float { 50% { transform: translateY(-9px); } }
+@keyframes bs-open  { from { opacity: 0; transform: rotateY(70deg) translateY(20px); } }
+
+.bs-3d-inner {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: rotateX(-5deg) rotateY(28deg);
+  transition: transform .4s var(--ease);
+}
+
+.bs-face { position: absolute; background-color: var(--c); color: var(--ink); }
+
+.bs-front {
+  inset: 0;
+  overflow: hidden;
+  border-radius: 2px 6px 6px 2px;
+  background-position: center;
+  background-size: cover;
+  transform: translateZ(calc(var(--d) / 2));
+  box-shadow: inset 5px 0 8px rgba(0,0,0,.2);
+}
+
+.bs-front::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 7%;
+  z-index: 2;
+  width: 2px;
+  background: rgba(0,0,0,.18);
+  box-shadow: 1px 0 0 rgba(255,255,255,.14);
+}
+
+.bs-front::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: linear-gradient(115deg, rgba(255,255,255,.3), transparent 40%);
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+.bs-front-art {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 13% 11% 11% 16%;
+}
+
+.bs-front.has-img .bs-front-art { opacity: 0; }
+
+.bs-front-art i { width: 28px; height: 2px; background: currentColor; opacity: .6; }
+
+.bs-front-art strong {
+  font-family: var(--bn-stack);
+  font-size: clamp(1.1rem, 2.3vw, 1.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -.03em;
+  overflow-wrap: anywhere;
+}
+
+.bs-front-art em {
+  font-size: .6rem;
+  font-style: normal;
+  letter-spacing: .14em;
+  opacity: .75;
+  text-transform: uppercase;
+}
+
+.bs-back {
+  inset: 0;
+  border-radius: 6px 2px 2px 6px;
+  transform: rotateY(180deg) translateZ(calc(var(--d) / 2));
+  filter: brightness(.78);
+}
+
+.bs-left {
+  top: 0;
+  bottom: 0;
+  left: calc(var(--d) / -2);
+  width: var(--d);
+  transform: rotateY(-90deg);
+  background-image: linear-gradient(90deg, rgba(0,0,0,.28), rgba(255,255,255,.14), rgba(0,0,0,.22));
+}
+
+.bs-right,
+.bs-top {
+  background-color: #efe9da;
+  background-image: repeating-linear-gradient(90deg, #f3eee2 0 2px, #d6cfbd 2px 3px);
+}
+
+.bs-right {
+  top: 1.5%;
+  bottom: 1.5%;
+  right: calc(var(--d) / -2);
+  width: var(--d);
+  transform: rotateY(90deg);
+}
+
+.bs-top {
+  top: calc(var(--d) / -2);
+  left: 1.5%;
+  right: 1.5%;
+  height: var(--d);
+  transform: rotateX(90deg);
+  background-image: repeating-linear-gradient(0deg, #f3eee2 0 2px, #d6cfbd 2px 3px);
+}
+
+.bs-floor {
+  position: absolute;
+  bottom: 38px;
+  left: 50%;
+  width: 190px;
+  height: 22px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(0,0,0,.38), transparent 70%);
+  filter: blur(6px);
+}
+
+/* info */
+.bs-info { align-self: center; min-width: 0; }
+.bs-panel.is-swap .bs-info { animation: bs-swap .55s var(--ease) both; }
+
+@keyframes bs-swap { from { opacity: 0; transform: translateY(14px); } }
+
+.bs-pills { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; padding-right: 44px; }
+
+.bs-pill {
+  padding: 7px 13px;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  border-radius: 100px;
+  background: color-mix(in srgb, var(--accent) 9%, transparent);
+  color: var(--accent);
+  font-size: .6rem;
+  font-weight: 850;
+  letter-spacing: .14em;
+}
+
+.bs-count { color: var(--muted); font-size: .68rem; font-weight: 800; letter-spacing: .12em; }
+
+.bs-info h3 {
+  margin: 0;
+  font-family: var(--bn-stack);
+  font-size: clamp(2.1rem, 4.4vw, 3.7rem);
+  font-weight: 800;
+  line-height: .98;
+  letter-spacing: -.06em;
+  text-wrap: balance;
+}
+
+.bs-info h3.bn { line-height: 1.25; letter-spacing: -.01em; }
+
+.bs-by { margin: 16px 0 0; font-size: 1rem; font-weight: 500; opacity: .8; }
+.bs-by:empty { display: none; }
+
+.bs-cat {
+  margin: 8px 0 0;
+  color: var(--accent-2);
+  font-size: .66rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.bs-cat.bn { font-size: .82rem; letter-spacing: 0; text-transform: none; }
+
+.bs-desc { max-width: 560px; margin: 24px 0 0; color: var(--muted); font-size: .95rem; line-height: 1.95; }
+
+.bs-note {
+  margin: 22px 0 0;
+  padding-left: 18px;
+  border-left: 2px solid var(--accent);
+  font-size: .9rem;
+  line-height: 1.8;
+}
+
+.bs-note[hidden] { display: none; }
+
+.bs-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 34px;
+  margin: 28px 0 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.bs-meta dt { color: var(--muted); font-size: .58rem; font-weight: 850; letter-spacing: .16em; text-transform: uppercase; }
+.bs-meta dd { margin: 6px 0 0; font-size: .82rem; font-weight: 700; }
+
+.bs-pager { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 900px) {
+  .bs-head { grid-template-columns: 1fr; gap: 22px; }
+}
+
+@media (max-width: 820px) {
+  .bs-stage { --k: .9; }
+  .bs-panel { grid-template-columns: 1fr; }
+  .bs-book-wrap { min-height: 320px; }
+}
+
+@media (max-width: 700px) {
+  .bs-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bs-tab:nth-child(2) { border-right: 0; }
+  .bs-tab:nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
+  .bs-search { max-width: none; }
+}
+
+@media (max-width: 560px) {
+  .bs-stage { --k: .8; }
+  .bs-modal { padding: 0; place-items: end center; }
+  .bs-panel { max-height: 92vh; border-radius: 26px 26px 0 0; }
+  .bs-foot { letter-spacing: .18em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bs-section *, .bs-modal * { animation: none !important; transition-duration: .01ms !important; }
+  .bs-row:not(.in) .bs-book { opacity: 1; }
+}
 </style>
 </head>
 <body>
@@ -6318,11 +7875,377 @@ html {
     </div>
 
 </section>
-<!-- SECTION 07: PHOTOGRAPHY -->
-<section class="portal-section site-shell" id="photography"><div class="section-shell"><p class="section-kicker">07 / Frames and perspectives</p><h2 class="section-title">Photo<span>graphy.</span></h2><div class="section-empty" aria-label="Empty Photography section"></div></div></section>
-<!-- SECTION 08: BOOKSHELF -->
-<section class="portal-section site-shell" id="bookshelf"><div class="section-shell"><p class="section-kicker">08 / Ideas worth keeping</p><h2 class="section-title">Book<span>shelf.</span></h2><div class="section-empty" aria-label="Empty Bookshelf section"></div></div></section>
-<!-- SECTION 09: SKILLS -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =========================================================
+     PHOTOGRAPHY
+========================================================= -->
+
+<section class="photography-section" id="photography">
+
+    <div class="photography-container">
+
+        <!-- HEADER -->
+        <div class="photography-header">
+
+            <div class="photography-label">
+                06 / PHOTOGRAPHY
+            </div>
+
+            <div class="photography-heading-wrap">
+
+                <h2>
+                    I don't just
+                    <span>take pictures.</span>
+                </h2>
+
+                <p>
+                    I collect moments, places and
+                    fragments of everyday life.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- MAIN INTERACTIVE AREA -->
+        <div class="photo-experience">
+
+
+            <!-- LEFT SIDE -->
+            <div class="photo-info">
+
+                <div class="photo-index">
+
+                    <span id="photoCurrent">
+                        01
+                    </span>
+
+                    <span>
+                        /
+                    </span>
+
+                    <span id="photoTotal">
+                        06
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="photo-location"
+                    id="photoLocation"
+                >
+                    OLD DHAKA
+                </div>
+
+
+                <h3
+                    id="photoTitle"
+                >
+                    A City That Refuses To Forget
+                </h3>
+
+
+                <p
+                    id="photoDescription"
+                >
+                    Some places don't simply exist.
+                    They carry layers of memory,
+                    people and time.
+                </p>
+
+
+                <div class="photo-meta">
+
+                    <span id="photoYear">
+                        2026
+                    </span>
+
+                    <span>
+                        /
+                    </span>
+
+                    <span id="photoType">
+                        STREET
+                    </span>
+
+                </div>
+
+
+                <div class="photo-controls">
+
+                    <button
+                        id="photoPrev"
+                        aria-label="Previous photograph"
+                    >
+                        ←
+                    </button>
+
+
+                    <div class="photo-progress">
+
+                        <div
+                            id="photoProgress"
+                            class="photo-progress-fill"
+                        ></div>
+
+                    </div>
+
+
+                    <button
+                        id="photoNext"
+                        aria-label="Next photograph"
+                    >
+                        →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CENTER IMAGE -->
+            <div class="photo-stage">
+
+                <div class="photo-frame">
+
+                    <div
+                        class="photo-image"
+                        id="photoImage"
+                    ></div>
+
+                    <div class="photo-frame-number">
+                        01
+                    </div>
+
+                </div>
+
+
+                <div class="photo-shadow"></div>
+
+            </div>
+
+
+
+            <!-- RIGHT FILM STRIP -->
+            <div class="photo-filmstrip">
+
+                <button
+                    class="photo-thumb active"
+                    data-photo="0"
+                >
+
+                    <span>
+                        01
+                    </span>
+
+                    <div class="thumb-image thumb-one"></div>
+
+                </button>
+
+
+                <button
+                    class="photo-thumb"
+                    data-photo="1"
+                >
+
+                    <span>
+                        02
+                    </span>
+
+                    <div class="thumb-image thumb-two"></div>
+
+                </button>
+
+
+                <button
+                    class="photo-thumb"
+                    data-photo="2"
+                >
+
+                    <span>
+                        03
+                    </span>
+
+                    <div class="thumb-image thumb-three"></div>
+
+                </button>
+
+
+                <button
+                    class="photo-thumb"
+                    data-photo="3"
+                >
+
+                    <span>
+                        04
+                    </span>
+
+                    <div class="thumb-image thumb-four"></div>
+
+                </button>
+
+
+                <button
+                    class="photo-thumb"
+                    data-photo="4"
+                >
+
+                    <span>
+                        05
+                    </span>
+
+                    <div class="thumb-image thumb-five"></div>
+
+                </button>
+
+
+                <button
+                    class="photo-thumb"
+                    data-photo="5"
+                >
+
+                    <span>
+                        06
+                    </span>
+
+                    <div class="thumb-image thumb-six"></div>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- BOTTOM STATEMENT -->
+
+        <div class="photography-bottom">
+
+            <span>
+                OBSERVE
+            </span>
+
+            <span>
+                FRAME
+            </span>
+
+            <span>
+                PRESERVE
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =========================================================
+     SECTION 08: BOOKSHELF
+     বইগুলো JavaScript দিয়ে তৈরি হয় (নিচের script-এর BOOKS list থেকে)
+========================================================= -->
+<section class="bs-section site-shell" id="bookshelf" aria-labelledby="bsTitle">
+
+  <!-- HEADER -->
+  <div class="bs-head">
+    <div class="bs-label"><span>08</span><span>BOOKSHELF</span></div>
+    <div class="bs-heading">
+      <p class="bs-kicker">Ideas worth keeping</p>
+      <h2 id="bsTitle">Books that<br><span>shaped my thinking.</span></h2>
+      <p class="bs-lead">Books I own, books I have read on a screen, and the ones still waiting for their turn.</p>
+    </div>
+  </div>
+
+  <!-- COLLECTION TABS (number + filter) -->
+  <div class="bs-tabs" role="group" aria-label="Library collections">
+    <button type="button" class="bs-tab is-active" data-filter="all" aria-pressed="true">
+      <b data-count="all">0</b><span>Whole library</span><small>সব বই একসাথে</small>
+    </button>
+    <button type="button" class="bs-tab" data-filter="owned" aria-pressed="false">
+      <b data-count="owned">0</b><span>My shelf</span><small>আমার কাছে থাকা বই</small>
+    </button>
+    <button type="button" class="bs-tab" data-filter="digital" aria-pressed="false">
+      <b data-count="digital">0</b><span>Read digitally</span><small>ই-বুকে পড়া</small>
+    </button>
+    <button type="button" class="bs-tab" data-filter="future" aria-pressed="false">
+      <b data-count="future">0</b><span>Next to read</span><small>যেগুলো পড়তে চাই</small>
+    </button>
+  </div>
+
+  <!-- SEARCH / SHUFFLE / TOPICS -->
+  <div class="bs-tools">
+    <label class="bs-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="bsSearch" type="search" placeholder="Search title, author or topic…" autocomplete="off" aria-label="Search books">
+    </label>
+    <button type="button" class="bs-shuffle" id="bsShuffle">
+      Surprise me
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15.5-6.2L21 8M21 3v5h-5M21 12a9 9 0 0 1-15.5 6.2L3 16M3 21v-5h5"/></svg>
+    </button>
+    <div class="bs-topics" id="bsTopics" hidden></div>
+  </div>
+
+  <!-- SHELVES (JavaScript এখানে বই বসায়) -->
+  <div class="bs-stage" id="bsStage" aria-live="polite"></div>
+
+  <div class="bs-foot" aria-hidden="true"><span>READ</span><span>THINK</span><span>QUESTION</span><span>EXPLORE</span></div>
+
+  <!-- BOOK DETAIL (JavaScript একে <body>-তে সরিয়ে নেয়) -->
+  <div class="bs-modal" id="bsModal" role="dialog" aria-modal="true" aria-labelledby="bsmTitle" hidden>
+    <div class="bs-backdrop" data-close></div>
+    <div class="bs-panel">
+      <button type="button" class="bs-close" data-close aria-label="Close book details">×</button>
+
+      <div class="bs-book-wrap" id="bsBookWrap">
+        <div class="bs-3d">
+          <div class="bs-3d-inner" id="bs3dInner">
+            <div class="bs-face bs-back"></div>
+            <div class="bs-face bs-left"></div>
+            <div class="bs-face bs-right"></div>
+            <div class="bs-face bs-top"></div>
+            <div class="bs-face bs-front" id="bsFront"><div class="bs-front-art" id="bsArt"></div></div>
+          </div>
+        </div>
+        <div class="bs-floor"></div>
+      </div>
+
+      <div class="bs-info" id="bsInfo">
+        <div class="bs-pills"><span class="bs-pill" id="bsmStatus"></span><span class="bs-count" id="bsmIndex"></span></div>
+        <h3 id="bsmTitle"></h3>
+        <p class="bs-by" id="bsmAuthor"></p>
+        <p class="bs-cat" id="bsmCat"></p>
+        <p class="bs-desc" id="bsmDesc"></p>
+        <blockquote class="bs-note" id="bsmNote" hidden></blockquote>
+        <dl class="bs-meta">
+          <div><dt>Collection</dt><dd id="bsmColl"></dd></div>
+          <div><dt>Format</dt><dd id="bsmFormat"></dd></div>
+        </dl>
+        <div class="bs-pager">
+          <button type="button" id="bsPrev">← Previous</button>
+          <button type="button" id="bsNext">Next →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
 <section class="portal-section site-shell" id="skills"><div class="section-shell"><p class="section-kicker">09 / Practice and capability</p><h2 class="section-title">My <span>Skills.</span></h2><div class="section-empty" aria-label="Empty Skills section"></div></div></section>
 <!-- SECTION 10: ACHIEVEMENTS -->
 <section class="portal-section site-shell" id="achievements"><div class="section-shell"><p class="section-kicker">10 / Progress worth recording</p><h2 class="section-title">Achieve<span>ments.</span></h2><div class="section-empty" aria-label="Empty Achievements section"></div></div></section>
@@ -9172,5 +11095,969 @@ if (writingSection) {
     );
 
 }
+
+
+
+
+/* =========================================================
+   PHOTOGRAPHY INTERACTION
+========================================================= */
+
+
+/* =========================================================
+   PHOTO DATA
+========================================================= */
+
+const photographyData = [
+
+    {
+
+        location:
+            "OLD DHAKA",
+
+        title:
+            "A City That Refuses To Forget",
+
+        description:
+            "Some places don't simply exist. They carry layers of memory, people and time.",
+
+        year:
+            "2026",
+
+        type:
+            "STREET",
+
+        image:
+            "images/photo-01.jpg"
+
+    },
+
+
+    {
+
+        location:
+            "DHAKA",
+
+        title:
+            "Between Concrete & Sky",
+
+        description:
+            "A city constantly growing upward while carrying the weight of everything beneath it.",
+
+        year:
+            "2026",
+
+        type:
+            "CITY",
+
+        image:
+            "images/photo-02.jpg"
+
+    },
+
+
+    {
+
+        location:
+            "LALBAGH",
+
+        title:
+            "What Time Leaves Behind",
+
+        description:
+            "Architecture becomes a different kind of photograph when time becomes part of the subject.",
+
+        year:
+            "2026",
+
+        type:
+            "ARCHITECTURE",
+
+        image:
+            "images/photo-03.jpg"
+
+    },
+
+
+    {
+
+        location:
+            "AHsan MANZIL",
+
+        title:
+            "A Moment Between Moments",
+
+        description:
+            "Sometimes photography is simply about noticing what everyone else walks past.",
+
+        year:
+            "2026",
+
+        type:
+            "DOCUMENTARY",
+
+        image:
+            "images/photo-04.jpg"
+
+    },
+
+
+    {
+
+        location:
+            "GAZIPUR",
+
+        title:
+            "Away From The Noise",
+
+        description:
+            "A different rhythm begins when the city becomes distant.",
+
+        year:
+            "2026",
+
+        type:
+            "TRAVEL",
+
+        image:
+            "images/photo-05.jpg"
+
+    },
+
+
+    {
+
+        location:
+            "EVERYDAY",
+
+        title:
+            "Things Worth Remembering",
+
+        description:
+            "Not every photograph needs a dramatic subject. Sometimes the ordinary is enough.",
+
+        year:
+            "2026",
+
+        type:
+            "MOMENTS",
+
+        image:
+            "images/photo-06.jpg"
+
+    }
+
+];
+
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const photoImage =
+    document.getElementById(
+        "photoImage"
+    );
+
+
+const photoLocation =
+    document.getElementById(
+        "photoLocation"
+    );
+
+
+const photoTitle =
+    document.getElementById(
+        "photoTitle"
+    );
+
+
+const photoDescription =
+    document.getElementById(
+        "photoDescription"
+    );
+
+
+const photoYear =
+    document.getElementById(
+        "photoYear"
+    );
+
+
+const photoType =
+    document.getElementById(
+        "photoType"
+    );
+
+
+const photoCurrent =
+    document.getElementById(
+        "photoCurrent"
+    );
+
+
+const photoTotal =
+    document.getElementById(
+        "photoTotal"
+    );
+
+
+const photoProgress =
+    document.getElementById(
+        "photoProgress"
+    );
+
+
+const photoPrev =
+    document.getElementById(
+        "photoPrev"
+    );
+
+
+const photoNext =
+    document.getElementById(
+        "photoNext"
+    );
+
+
+const photoFrameNumber =
+    document.querySelector(
+        ".photo-frame-number"
+    );
+
+
+const photoThumbs =
+    document.querySelectorAll(
+        ".photo-thumb"
+    );
+
+
+
+let currentPhoto = 0;
+
+
+
+/* =========================================================
+   LOAD PHOTO
+========================================================= */
+
+function loadPhoto(index) {
+
+    if (
+        index < 0 ||
+        index >= photographyData.length
+    ) {
+
+        return;
+
+    }
+
+
+    const data =
+        photographyData[index];
+
+
+    currentPhoto = index;
+
+
+
+    /* EXIT ANIMATION */
+
+    photoImage.style.opacity =
+        "0";
+
+
+    photoImage.style.transform =
+        "scale(1.05)";
+
+
+    photoTitle.style.opacity =
+        "0";
+
+
+    photoDescription.style.opacity =
+        "0";
+
+
+
+    setTimeout(() => {
+
+
+        /* IMAGE */
+
+        photoImage.style.backgroundImage =
+            `url("${data.image}")`;
+
+
+        /* TEXT */
+
+        photoLocation.textContent =
+            data.location;
+
+
+        photoTitle.textContent =
+            data.title;
+
+
+        photoDescription.textContent =
+            data.description;
+
+
+        photoYear.textContent =
+            data.year;
+
+
+        photoType.textContent =
+            data.type;
+
+
+        photoCurrent.textContent =
+            String(index + 1)
+            .padStart(2, "0");
+
+
+        photoFrameNumber.textContent =
+            String(index + 1)
+            .padStart(2, "0");
+
+
+
+        /* PROGRESS */
+
+        const progress =
+            ((index + 1) /
+                photographyData.length) *
+            100;
+
+
+        photoProgress.style.width =
+            `${progress}%`;
+
+
+
+        /* THUMBS */
+
+        photoThumbs.forEach(
+            thumb => {
+
+                thumb.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+        if (photoThumbs[index]) {
+
+            photoThumbs[index]
+                .classList.add(
+                    "active"
+                );
+
+        }
+
+
+
+        /* ENTER */
+
+        requestAnimationFrame(() => {
+
+            photoImage.style.opacity =
+                "1";
+
+
+            photoImage.style.transform =
+                "scale(1)";
+
+
+            photoTitle.style.opacity =
+                "1";
+
+
+            photoDescription.style.opacity =
+                "1";
+
+        });
+
+
+    }, 220);
+
+}
+
+
+
+/* =========================================================
+   THUMBNAILS
+========================================================= */
+
+photoThumbs.forEach(
+    thumb => {
+
+        thumb.addEventListener(
+            "click",
+            () => {
+
+                const index =
+                    Number(
+                        thumb.dataset.photo
+                    );
+
+
+                loadPhoto(index);
+
+            }
+        );
+
+    }
+);
+
+
+
+/* =========================================================
+   NEXT
+========================================================= */
+
+if (photoNext) {
+
+    photoNext.addEventListener(
+        "click",
+        () => {
+
+            let next =
+                currentPhoto + 1;
+
+
+            if (
+                next >=
+                photographyData.length
+            ) {
+
+                next = 0;
+
+            }
+
+
+            loadPhoto(next);
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   PREVIOUS
+========================================================= */
+
+if (photoPrev) {
+
+    photoPrev.addEventListener(
+        "click",
+        () => {
+
+            let previous =
+                currentPhoto - 1;
+
+
+            if (previous < 0) {
+
+                previous =
+                    photographyData.length - 1;
+
+            }
+
+
+            loadPhoto(previous);
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   KEYBOARD
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (event.key === "ArrowRight") {
+
+            photoNext.click();
+
+        }
+
+
+        if (event.key === "ArrowLeft") {
+
+            photoPrev.click();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   MOUSE MOVE PARALLAX
+========================================================= */
+
+const photoStage =
+    document.querySelector(
+        ".photo-stage"
+    );
+
+
+if (photoStage) {
+
+    photoStage.addEventListener(
+        "mousemove",
+        event => {
+
+            const rect =
+                photoStage.getBoundingClientRect();
+
+
+            const x =
+                event.clientX -
+                rect.left;
+
+
+            const y =
+                event.clientY -
+                rect.top;
+
+
+            const rotateY =
+                ((x / rect.width) - .5) * 5;
+
+
+            const rotateX =
+                ((y / rect.height) - .5) * -5;
+
+
+            photoStage.style.transform =
+                `perspective(1000px)
+                 rotateX(${rotateX}deg)
+                 rotateY(${rotateY}deg)`;
+
+        }
+    );
+
+
+    photoStage.addEventListener(
+        "mouseleave",
+        () => {
+
+            photoStage.style.transform =
+                "perspective(1000px) rotateX(0deg) rotateY(0deg)";
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   INITIAL
+========================================================= */
+
+photoTotal.textContent =
+    String(
+        photographyData.length
+    ).padStart(2, "0");
+
+
+loadPhoto(0);
+
+
+
+
+
+
+
+/* =========================================================
+   BOOKSHELF — DATA + LOGIC
+   নতুন বই যোগ করতে: যে group-এ চাও (owned / digital / future)
+   তার শেষ লাইনের নিচে একটা লাইন copy করে বসাও, তারপর text বদলাও।
+   Field: type, title, author, category, description (জরুরি)
+          cover, topic (future-এর জন্য), color, note (ঐচ্ছিক)
+========================================================= */
+(() => {
+  "use strict";
+
+  const root = document.getElementById("bookshelf");
+  if (!root) return;
+
+  /* ---------- SETTINGS ---------- */
+  const COVER_DIR = "images/books/";   // কভার ছবির ফোল্ডার
+  const COVER_EXT = ".jpg";            // cover:"atomic-habits" → images/books/atomic-habits.jpg
+
+  const GROUPS = {
+    owned:   { label: "My Shelf",       bn: "আমার কাছে থাকা বই", status: "ON MY SHELF",    format: "Physical book" },
+    digital: { label: "Read Digitally", bn: "ই-বুকে পড়া",        status: "READ DIGITALLY", format: "E-book" },
+    future:  { label: "Next to Read",   bn: "যেগুলো পড়তে চাই",    status: "NEXT TO READ",   format: "Not read yet" }
+  };
+
+  /* ---------- BOOK DATA ---------- */
+  const BOOKS = [
+
+    /* ===== MY SHELF ===== */
+    { type: "owned", title: "চর্যাপদ", author: "বিভিন্ন সিদ্ধাচার্য", category: "বাংলা সাহিত্য", cover: "charyapada",
+      description: "বাংলা ভাষা ও সাহিত্যের প্রাচীনতম নিদর্শনগুলোর একটি।" },
+    { type: "owned", title: "না বলা কিছু কথা", author: "জাকারিয়া মাসুদ", category: "বাংলা সাহিত্য", cover: "na-bola-kichu-kotha",
+      description: "ব্যক্তিগত অনুভূতি, চিন্তা ও জীবনের না বলা কথাগুলোর একটি সাহিত্যিক পাঠ।" },
+    { type: "owned", title: "The Diary of a Young Girl", author: "Anne Frank", category: "Memoir / History", cover: "diary-young-girl",
+      description: "Anne Frank-এর ডায়েরির মাধ্যমে যুদ্ধ, কৈশোর, মানুষের আশা ও বাস্তবতার একটি ব্যক্তিগত দলিল।" },
+    { type: "owned", title: "The Psychology of Money", author: "Morgan Housel", category: "Psychology / Finance", cover: "psychology-money",
+      description: "অর্থ-ব্যবস্থাপনার পেছনে মানুষের আচরণ, সিদ্ধান্ত ও psychology কীভাবে কাজ করে তা নিয়ে আলোচনা।" },
+    { type: "owned", title: "Atomic Habits", author: "James Clear", category: "Habits / Self Development", cover: "atomic-habits",
+      description: "ছোট ছোট behavioral change কীভাবে দীর্ঘমেয়াদে বড় পরিবর্তন তৈরি করতে পারে তার framework।" },
+    { type: "owned", title: "পদ্মা নদীর মাঝি", author: "মানিক বন্দ্যোপাধ্যায়", category: "বাংলা সাহিত্য", cover: "padma-nodir-majhi",
+      description: "পদ্মার তীরবর্তী মানুষের জীবন, দারিদ্র্য, আকাঙ্ক্ষা ও সামাজিক বাস্তবতার এক শক্তিশালী উপন্যাস।" },
+    { type: "owned", title: "Animal Farm", author: "George Orwell", category: "Political Fiction", cover: "animal-farm",
+      description: "ক্ষমতা, বিপ্লব, propaganda এবং ক্ষমতার বিকৃতি নিয়ে একটি রাজনৈতিক allegory।" },
+    { type: "owned", title: "1984", author: "George Orwell", category: "Dystopian / Political Fiction", cover: "1984",
+      description: "রাষ্ট্রীয় ক্ষমতা, surveillance, propaganda এবং ব্যক্তিস্বাধীনতার সংঘাত নিয়ে dystopian উপন্যাস।" },
+    { type: "owned", title: "অপেক্ষা", author: "হুমায়ূন আহমেদ", category: "বাংলা সাহিত্য", cover: "opekkha",
+      description: "মানুষের অপেক্ষা, সম্পর্ক এবং জীবনের অনিশ্চয়তাকে ঘিরে নির্মিত একটি উপন্যাস।" },
+    { type: "owned", title: "ইশকে গালিব", author: "", category: "Poetry / Literature", cover: "ishqe-ghalib",
+      description: "মির্জা গালিবের সাহিত্য ও প্রেমভাবনার সঙ্গে পরিচিত হওয়ার একটি পাঠ।" },
+    { type: "owned", title: "The Power of Geography", author: "Tim Marshall", category: "Geopolitics", cover: "power-of-geography",
+      description: "ভূগোল কীভাবে রাষ্ট্রের strategy, politics এবং global power structure-কে প্রভাবিত করে।" },
+    { type: "owned", title: "The Prisoners of Geography", author: "Tim Marshall", category: "Geopolitics", cover: "prisoners-of-geography",
+      description: "বিশ্ব রাজনীতি বোঝার ক্ষেত্রে geography-এর দীর্ঘমেয়াদি প্রভাব নিয়ে একটি গুরুত্বপূর্ণ পাঠ।" },
+    { type: "owned", title: "ছোটদের আরব্যরজনীর গল্প", author: "", category: "Literature", cover: "arabian-nights",
+      description: "আরব্যরজনীর নির্বাচিত গল্পের একটি শিশুতোষ পাঠ।" },
+    { type: "owned", title: "Leadership", author: "", category: "Leadership", cover: "leadership",
+      description: "Leadership, decision-making এবং মানুষ পরিচালনার ধারণাগুলো নিয়ে একটি পাঠ।" },
+    { type: "owned", title: "আর-রাহীকুল মাখতূম", author: "সফিউর রহমান মুবারকপুরী", category: "Seerah", cover: "ar-raheeq-al-makhtum",
+      description: "রাসূলুল্লাহ ﷺ-এর জীবন ও সীরাতের একটি বিস্তৃত পাঠ।" },
+    { type: "owned", title: "চাঁদের পাহাড়", author: "বিভূতিভূষণ বন্দ্যোপাধ্যায়", category: "Adventure / Bengali Literature", cover: "chander-pahar",
+      description: "অজানা পৃথিবীর প্রতি আকর্ষণ, adventure এবং exploration-এর এক ক্লাসিক বাংলা উপন্যাস।" },
+    { type: "owned", title: "The Old Man and the Sea", author: "Ernest Hemingway", category: "Literature", cover: "old-man-sea",
+      description: "সংগ্রাম, একাকীত্ব, resilience এবং মানুষের অন্তর্নিহিত শক্তি নিয়ে Hemingway-এর বিখ্যাত উপন্যাস।" },
+    // "এবং ভবিষ্যতে নতুন বই" — শেষের ফাঁকা (dashed) বইটা। দরকার না হলে এই লাইন মুছে দাও।
+    { type: "owned", ghost: true, title: "আরও আসছে" },
+
+    /* ===== READ DIGITALLY ===== */
+    { type: "digital", title: "হেল কমান্ডো", author: "মেজর এম. আনোয়ার হোসেন", category: "Military", cover: "hell-commando",
+      description: "সামরিক জীবন ও কমান্ডো অভিজ্ঞতার সঙ্গে সম্পর্কিত একটি পাঠ।" },
+    { type: "digital", title: "অপারেশন মরুপ্রান্তর", author: "", category: "Military History", cover: "operation-morupraantor",
+      description: "সামরিক অভিযান ও যুদ্ধের প্রেক্ষাপট নিয়ে পড়া একটি ই-বুক।" },
+    { type: "digital", title: "এক জেনারেলের নীরব সাক্ষ্য", author: "", category: "Military / Memoir", cover: "ek-generaler-nirob-sakkho",
+      description: "সামরিক জীবনের অভিজ্ঞতা ও ইতিহাসের বিভিন্ন অধ্যায় নিয়ে একটি স্মৃতিকথাধর্মী পাঠ।" },
+    { type: "digital", title: "দ্বিতীয় বিশ্বযুদ্ধ ও আমার সৈনিক জীবন", author: "মেজর আব্দুর রউফ", category: "Military History", cover: "ditiyo-bisshojuddho",
+      description: "দ্বিতীয় বিশ্বযুদ্ধ এবং একজন সৈনিকের ব্যক্তিগত অভিজ্ঞতার সঙ্গে যুক্ত পাঠ।" },
+    { type: "digital", title: "একাত্তরের মুক্তিযুদ্ধ", author: "", category: "Bangladesh History", cover: "ekattorer-muktijuddho",
+      description: "বাংলাদেশের মুক্তিযুদ্ধের ইতিহাস নিয়ে একটি পাঠ।" },
+    { type: "digital", title: "রক্তাক্ত মধ্য আগস্ট", author: "", category: "Bangladesh History", cover: "raktakto-moddho-agost",
+      description: "বাংলাদেশের রাজনৈতিক ইতিহাসের একটি গুরুত্বপূর্ণ ও সংকটপূর্ণ অধ্যায় নিয়ে পাঠ।" },
+    { type: "digital", title: "বেঙ্গল রেজিমেন্টের যুদ্ধযাত্রা", author: "", category: "Military History", cover: "bengal-regiment",
+      description: "Bengal Regiment-এর সামরিক ইতিহাস ও যুদ্ধযাত্রা নিয়ে পাঠ।" },
+    { type: "digital", title: "আমার সৈনিক জীবন: পাকিস্তান থেকে বাংলাদেশ", author: "মেজর জেনারেল মঞ্জুর রশিদ খান", category: "Military Memoir", cover: "amar-soinik-jibon",
+      description: "সামরিক জীবন এবং পাকিস্তান থেকে বাংলাদেশের ইতিহাসের পরিবর্তনকালীন অভিজ্ঞতা নিয়ে স্মৃতিকথা।" },
+    { type: "digital", title: "মিশ্রকথন", author: "মেজর জেনারেল (অব.) সৈয়দ মোহাম্মদ ইব্রাহিম", category: "Military / Memoir", cover: "mishro-kothon",
+      description: "সামরিক জীবন, ইতিহাস ও ব্যক্তিগত অভিজ্ঞতার বিভিন্ন প্রসঙ্গ নিয়ে লেখা।" },
+
+    /* ===== NEXT TO READ (৬–১০টা বই রাখাই ভালো) =====
+       topic হলো filter-এর category। প্রথম দুটো তোমার আগের list থেকে নেওয়া;
+       বাকি চারটা PLACEHOLDER — নিজের তালিকা দিয়ে বদলে নাও। */
+    { type: "future", title: "The Art of War", author: "Sun Tzu", category: "Military Strategy", topic: "Military History & Strategy", cover: "art-of-war",
+      description: "Strategy, deception, planning এবং conflict-এর classical ধারণাগুলো নিয়ে একটি foundational text।" },
+    { type: "future", title: "The 48 Laws of Power", author: "Robert Greene", category: "Power / Psychology", topic: "Psychology & Human Behaviour", cover: "48-laws",
+      description: "ক্ষমতা, influence এবং মানুষের আচরণ বোঝার একটি controversial কিন্তু আলোচিত বই।" },
+    { type: "future", title: "On War", author: "Carl von Clausewitz", category: "Military Theory", topic: "Military History & Strategy", cover: "on-war",
+      description: "যুদ্ধ ও রাজনীতির সম্পর্ক নিয়ে লেখা সামরিক তত্ত্বের এক ক্লাসিক।" },
+    { type: "future", title: "Thinking, Fast and Slow", author: "Daniel Kahneman", category: "Psychology", topic: "Psychology & Human Behaviour", cover: "thinking-fast-slow",
+      description: "মানুষ কীভাবে সিদ্ধান্ত নেয় এবং কোথায় ভুল করে, তা নিয়ে behavioral psychology-র বই।" },
+    { type: "future", title: "Meditations", author: "Marcus Aurelius", category: "Philosophy", topic: "Philosophy & Society", cover: "meditations",
+      description: "একজন রোমান সম্রাটের ব্যক্তিগত লেখা, যেখানে আছে Stoic চিন্তা ও আত্মসংযমের কথা।" },
+    { type: "future", title: "The Lessons of History", author: "Will & Ariel Durant", category: "History / Philosophy", topic: "Philosophy & Society", cover: "lessons-of-history",
+      description: "ইতিহাসের দীর্ঘ ধারা থেকে মানুষ, সমাজ ও ক্ষমতা নিয়ে কিছু সংক্ষিপ্ত উপলব্ধি।" }
+
+  ];
+
+  /* =========================================================
+     এখান থেকে নিচে সাধারণত হাত দিতে হবে না
+  ========================================================= */
+
+  const PALETTE = [
+    ["#1f3a5f", "#f3ead7"], ["#7a1f2b", "#f5e6cf"], ["#24503f", "#efe6cc"], ["#c9a24a", "#1c1a14"],
+    ["#2b2b33", "#e8e3d6"], ["#e9dfc8", "#2a2a2a"], ["#0f6a6e", "#f2efe3"], ["#a5472b", "#f6e9d8"],
+    ["#3e2a5a", "#efe3f3"], ["#516b8f", "#f6f3ea"], ["#d9d4c7", "#1d2a44"], ["#162a2f", "#d7c28a"]
+  ];
+  const BN = /[\u0980-\u09FF]/;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const norm = s => String(s ?? "").normalize("NFC").toLowerCase();
+  const hash = s => { let h = 5381; for (const c of s) h = ((h << 5) + h + c.codePointAt(0)) >>> 0; return h; };
+  const inkFor = hex => { const n = parseInt(hex.slice(1), 16); return .299 * (n >> 16) + .587 * ((n >> 8) & 255) + .114 * (n & 255) > 150 ? "#1b1b1b" : "#f6f1e4"; };
+
+  /* প্রতিটি বইয়ের রং, উচ্চতা ও চওড়া নাম থেকেই ঠিক হয় — তাই সবসময় একই থাকে */
+  const books = BOOKS.map((b, i) => {
+    const len = [...b.title].length, h = hash(b.title), p = PALETTE[h % PALETTE.length];
+    return {
+      ...b,
+      id: i,
+      author: b.author || "",
+      color: b.color || p[0],
+      ink: b.color ? inkFor(b.color) : p[1],
+      cover: !b.cover ? "" : /[./]/.test(b.cover) ? b.cover : COVER_DIR + b.cover + COVER_EXT,
+      bn: BN.test(b.title),
+      long: len > 24,
+      w: b.ghost ? 56 : Math.round(Math.min(74, Math.max(46, 40 + len * 1.1)) + ((h >> 3) % 7) - 3),
+      h: b.ghost ? 250 : 262 + ((h >> 5) % 46),
+      fs: len > 26 ? 10 : len > 16 ? 11.5 : 13
+    };
+  });
+
+  const counts = { all: 0, owned: 0, digital: 0, future: 0 };
+  books.forEach(b => { if (!b.ghost) { counts.all++; counts[b.type]++; } });
+
+  const stage = root.querySelector("#bsStage");
+  const tabs = [...root.querySelectorAll(".bs-tab")];
+  const search = root.querySelector("#bsSearch");
+  const topicsEl = root.querySelector("#bsTopics");
+  const shuffleBtn = root.querySelector("#bsShuffle");
+
+  const modal = root.querySelector("#bsModal");
+  document.body.appendChild(modal);            // fixed modal যেন কোনো transform-এর ভেতরে না আটকায়
+  const $m = s => modal.querySelector(s);
+  const panel = $m(".bs-panel"), front = $m("#bsFront"), art = $m("#bsArt"), inner = $m("#bs3dInner"), wrap = $m("#bsBookWrap");
+
+  const state = { filter: "all", topic: "all", q: "", list: [] };
+
+  /* ---------- FILTER ---------- */
+  function matches(b) {
+    if (state.filter !== "all" && b.type !== state.filter) return false;
+    if (state.filter === "future" && state.topic !== "all" && b.topic !== state.topic) return false;
+    if (state.q) return !b.ghost && norm([b.title, b.author, b.category, b.topic].join(" ")).includes(state.q);
+    return true;
+  }
+
+  /* ---------- RENDER ---------- */
+  function bookHTML(b, i) {
+    if (b.ghost) {
+      return `<span class="bs-book bs-ghost" style="--w:${b.w}px;--h:${b.h}px;--i:${i}" title="${esc(b.title)}"><span class="bs-spine"><span class="bs-plus">+</span><span class="bs-t">${esc(b.title)}</span></span></span>`;
+    }
+    const label = esc(b.title) + (b.author ? ", " + esc(b.author) : "");
+    return `<button type="button" class="bs-book${b.bn ? " bn" : ""}${b.long ? " long" : ""}" data-id="${b.id}" data-type="${b.type}" aria-label="${label}" style="--w:${b.w}px;--h:${b.h}px;--c:${b.color};--ink:${b.ink};--fs:${b.fs}px;--i:${i}"><span class="bs-spine"><span class="bs-mark"></span><span class="bs-t">${esc(b.title)}</span><span class="bs-a">${esc(b.author)}</span></span></button>`;
+  }
+
+  let rowIO = null;
+  function observeRows(instant) {
+    const rows = stage.querySelectorAll(".bs-row");
+    if (rowIO) rowIO.disconnect();
+    if (instant || reduce || !("IntersectionObserver" in window)) { rows.forEach(r => r.classList.add("in")); return; }
+    rowIO = new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); o.unobserve(e.target); } }), { threshold: .12 });
+    rows.forEach(r => rowIO.observe(r));
+  }
+
+  function render(instant) {
+    const list = books.filter(matches);
+    state.list = list.filter(b => !b.ghost);
+    stage.classList.toggle("is-static", !!instant);
+
+    if (!state.list.length) {
+      stage.innerHTML = `<div class="bs-empty"><strong>কোনো বই পাওয়া যায়নি</strong>অন্য কোনো শব্দ দিয়ে খুঁজে দেখো।</div>`;
+      return;
+    }
+
+    const cs = getComputedStyle(stage);
+    const k = parseFloat(cs.getPropertyValue("--k")) || 1;
+    const avail = stage.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    const gap = 5;
+    let html = "";
+
+    Object.keys(GROUPS).forEach(type => {
+      const items = list.filter(b => b.type === type);
+      const n = items.filter(b => !b.ghost).length;
+      if (!n) return;
+
+      /* বইগুলো ধাপে ধাপে সাজানো: জায়গা শেষ হলে নতুন তাক */
+      const rows = []; let cur = [], sum = 0;
+      items.forEach(b => {
+        const w = b.w * k + gap;
+        if (cur.length && sum + w > avail + gap) { rows.push(cur); cur = []; sum = 0; }
+        cur.push(b); sum += w;
+      });
+      if (cur.length) rows.push(cur);
+
+      const g = GROUPS[type];
+      html += `<section class="bs-group"><header class="bs-group-head"><h4>${g.label}</h4><span class="bs-bn">${g.bn}</span><i></i><em>${n} ${n === 1 ? "book" : "books"}</em></header>`
+        + rows.map(r => `<div class="bs-row"><div class="bs-books">${r.map(bookHTML).join("")}</div><div class="bs-plank"></div></div>`).join("")
+        + `</section>`;
+    });
+
+    stage.innerHTML = html;
+    observeRows(instant);
+  }
+
+  /* ---------- TOPICS (শুধু Next to read-এ) ---------- */
+  function buildTopics() {
+    const on = state.filter === "future";
+    topicsEl.hidden = !on;
+    if (!on) return;
+    const ts = [...new Set(books.filter(b => b.type === "future" && b.topic).map(b => b.topic))];
+    topicsEl.innerHTML = ["all", ...ts].map(t =>
+      `<button type="button" class="bs-topic${state.topic === t ? " is-active" : ""}" data-topic="${esc(t)}">${t === "all" ? "All topics" : esc(t)}</button>`).join("");
+  }
+
+  topicsEl.addEventListener("click", e => {
+    const b = e.target.closest("[data-topic]");
+    if (!b) return;
+    state.topic = b.dataset.topic; buildTopics(); render();
+  });
+
+  tabs.forEach(t => t.addEventListener("click", () => {
+    state.filter = t.dataset.filter; state.topic = "all";
+    tabs.forEach(x => { const on = x === t; x.classList.toggle("is-active", on); x.setAttribute("aria-pressed", on); });
+    buildTopics(); render();
+  }));
+
+  let searchTimer;
+  search.addEventListener("input", () => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => { state.q = norm(search.value.trim()); render(); }, 120);
+  });
+
+  shuffleBtn.addEventListener("click", () => {
+    const pool = state.list.length ? state.list : books.filter(b => !b.ghost);
+    open(pool[Math.floor(Math.random() * pool.length)].id);
+  });
+
+  /* ---------- DETAIL MODAL ---------- */
+  let current = -1, navList = [], lastFocus = null, hideTimer;
+
+  function fill(b, swap) {
+    const g = GROUPS[b.type], pos = navList.findIndex(x => x.id === b.id);
+    current = b.id;
+
+    modal.style.setProperty("--c", b.color);
+    modal.style.setProperty("--ink", b.ink);
+    art.innerHTML = `<i></i><strong>${esc(b.title)}</strong><em>${esc(b.author)}</em>`;
+    front.classList.remove("has-img"); front.style.backgroundImage = "";
+    if (b.cover) {
+      const im = new Image();
+      im.onload = () => { if (current === b.id) { front.style.backgroundImage = `url("${b.cover}")`; front.classList.add("has-img"); } };
+      im.src = b.cover;
+    }
+
+    $m("#bsmStatus").textContent = g.status;
+    $m("#bsmIndex").textContent = pos > -1 ? `${pos + 1} / ${navList.length}` : "";
+    const h3 = $m("#bsmTitle"); h3.textContent = b.title; h3.classList.toggle("bn", b.bn);
+    $m("#bsmAuthor").textContent = b.author;
+    const cat = $m("#bsmCat"); cat.textContent = b.topic ? `${b.category} · ${b.topic}` : b.category; cat.classList.toggle("bn", BN.test(b.category));
+    $m("#bsmDesc").textContent = b.description || "";
+    const note = $m("#bsmNote"); note.textContent = b.note || ""; note.hidden = !b.note;
+    $m("#bsmColl").textContent = g.label;
+    $m("#bsmFormat").textContent = g.format;
+
+    inner.style.transform = "";
+    if (swap) { panel.classList.remove("is-swap"); void panel.offsetWidth; panel.classList.add("is-swap"); }
+  }
+
+  function open(id, trigger) {
+    const b = books[id];
+    if (!b || b.ghost) return;
+    clearTimeout(hideTimer);
+    navList = state.list.some(x => x.id === id) ? state.list : books.filter(x => !x.ghost);
+    lastFocus = trigger || document.activeElement;
+    fill(b, false);
+    modal.hidden = false;
+    document.documentElement.classList.add("bs-lock");
+    requestAnimationFrame(() => requestAnimationFrame(() => modal.classList.add("is-open")));
+    $m(".bs-close").focus({ preventScroll: true });
+  }
+
+  function close() {
+    modal.classList.remove("is-open");
+    document.documentElement.classList.remove("bs-lock");
+    panel.classList.remove("is-swap");
+    hideTimer = setTimeout(() => { modal.hidden = true; }, 340);
+    if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+  }
+
+  function step(d) {
+    const i = navList.findIndex(x => x.id === current);
+    if (i < 0) return;
+    fill(navList[(i + d + navList.length) % navList.length], true);
+  }
+
+  stage.addEventListener("click", e => {
+    const el = e.target.closest(".bs-book[data-id]");
+    if (el) open(+el.dataset.id, el);
+  });
+  modal.addEventListener("click", e => { if (e.target.closest("[data-close]")) close(); });
+  $m("#bsPrev").addEventListener("click", () => step(-1));
+  $m("#bsNext").addEventListener("click", () => step(1));
+
+  /* বইয়ের 3D tilt — mouse বা আঙুল যেদিকে যায় বইও সেদিকে ঘোরে */
+  wrap.addEventListener("pointermove", e => {
+    const r = wrap.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+    inner.style.transform = `rotateX(${(-5 - y * 20).toFixed(1)}deg) rotateY(${(28 + x * 46).toFixed(1)}deg)`;
+  });
+  wrap.addEventListener("pointerleave", () => { inner.style.transform = ""; });
+
+  document.addEventListener("keydown", e => {
+    if (modal.hidden || !modal.classList.contains("is-open")) return;
+    if (e.key === "Escape") close();
+    else if (e.key === "ArrowRight") step(1);
+    else if (e.key === "ArrowLeft") step(-1);
+    else if (e.key === "Tab") {                       // focus modal-এর ভেতরেই ঘুরবে
+      const f = [...modal.querySelectorAll("button")];
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+
+  /* ---------- COUNT-UP ---------- */
+  const countEls = [...root.querySelectorAll("[data-count]")];
+  function countUp(el, to) {
+    if (reduce) { el.textContent = to; return; }
+    const t0 = performance.now(), dur = 900;
+    const tick = t => {
+      const p = Math.min(1, (t - t0) / dur);
+      el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(es => {
+      if (!es[0].isIntersecting) return;
+      countEls.forEach(el => countUp(el, counts[el.dataset.count]));
+      io.disconnect();
+    }, { threshold: .4 });
+    io.observe(root.querySelector(".bs-tabs"));
+  } else countEls.forEach(el => { el.textContent = counts[el.dataset.count]; });
+
+  /* ---------- RESIZE (তাকের সংখ্যা নতুন করে হিসাব) ---------- */
+  let lastW = stage.clientWidth, resizeTimer;
+  if ("ResizeObserver" in window) {
+    new ResizeObserver(() => {
+      const w = stage.clientWidth;
+      if (Math.abs(w - lastW) < 6) return;
+      lastW = w;
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => render(true), 160);
+    }).observe(stage);
+  }
+
+  buildTopics();
+  render();
+})();
 </script>
 </body></html>
