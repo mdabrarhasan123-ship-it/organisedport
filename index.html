@@ -6752,6 +6752,621 @@ html.bs-lock { overflow: hidden; }
   .vision--js [data-split] .vision__w > span { transform: none !important; }
   .vision--js .vision__chapter:not(.is-active) { opacity: 1; }
 }
+
+
+/* =========================================================
+   CONNECT SECTION — all selectors scoped under .connect
+   ========================================================= */
+
+.connect,
+.connect *,
+.connect *::before,
+.connect *::after {
+  box-sizing: border-box;
+}
+
+.connect {
+  /* If your portal's tones differ slightly, change these variables only */
+  --cn-paper: #f4f5f7;
+  --cn-paper-2: #eceef2;
+  --cn-ink: #15171c;
+  --cn-ink-2: #4a4f5a;
+  --cn-mute: #868b97;
+  --cn-line: rgba(21, 23, 28, 0.14);
+  --cn-red: #d8323b;
+  --cn-green: #0a5a43;
+
+  --cn-serif: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --cn-bn: "Noto Serif Bengali", "Kalpurush", "SolaimanLipi", serif;
+  --cn-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --cn-gutter: clamp(20px, 5vw, 72px);
+  --cn-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+  padding-block: clamp(72px, 12vw, 150px);
+  color: var(--cn-ink);
+  font-family: var(--cn-serif);
+  font-size: 1rem;
+  line-height: 1.6;
+  background: var(--cn-paper);
+}
+
+.connect p,
+.connect h2,
+.connect h3,
+.connect ul,
+.connect li {
+  margin: 0;
+  padding: 0;
+}
+.connect ul { list-style: none; }
+
+.connect svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.connect__wrap {
+  width: 100%;
+  max-width: 1320px;
+  margin-inline: auto;
+  padding-inline: var(--cn-gutter);
+}
+
+.connect__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* soft pointer-following light */
+.connect__spot {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(520px circle at var(--mx, 70%) var(--my, 20%), rgba(216, 50, 59, 0.07), transparent 62%);
+  transition: opacity 0.6s ease;
+}
+.connect.is-lit .connect__spot { opacity: 1; }
+
+/* ---------- Opening ---------- */
+
+.connect__kicker {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--cn-line);
+  font-family: var(--cn-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cn-ink-2);
+}
+.connect__kicker-l { display: inline-flex; align-items: center; gap: 0.9rem; }
+.connect__num { color: var(--cn-red); }
+.connect__rule { width: 3rem; height: 1px; background: var(--cn-ink); }
+.connect__time { color: var(--cn-ink); }
+
+.connect__title {
+  margin-top: clamp(2rem, 5vw, 4rem);
+  font-family: var(--cn-serif);
+  font-weight: 350;
+  font-size: clamp(3.4rem, 12.5vw, 11rem);
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  font-variation-settings: "opsz" 144;
+}
+.connect__stop { color: var(--cn-red); }
+
+.connect__lede {
+  display: grid;
+  gap: 1.2rem;
+  max-width: 38rem;
+  margin: clamp(2rem, 4vw, 3.5rem) 0 0 auto;
+  color: var(--cn-ink-2);
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+}
+
+.connect__bn {
+  font-family: var(--cn-bn);
+  font-size: 1.3rem;
+  line-height: 1.4;
+  color: var(--cn-red);
+}
+.connect__bn--lg { font-size: clamp(1.05rem, 1.7vw, 1.35rem); }
+
+/* ---------- Grid ---------- */
+
+.connect__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  column-gap: clamp(32px, 6vw, 96px);
+  align-items: start;
+  margin-top: clamp(3.5rem, 9vw, 7rem);
+}
+
+.connect__colhead {
+  display: flex;
+  gap: 0.8rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--cn-ink);
+  font-family: var(--cn-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cn-ink);
+}
+.connect__colhead span { color: var(--cn-red); }
+
+/* ---------- Direct line ---------- */
+
+.connect__line {
+  padding-block: clamp(1.6rem, 3vw, 2.4rem);
+  border-bottom: 1px solid var(--cn-line);
+}
+
+.connect__label {
+  margin-bottom: 0.7rem;
+  font-family: var(--cn-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cn-mute);
+}
+
+.connect__big {
+  display: inline;
+  color: var(--cn-ink);
+  font-weight: 350;
+  font-size: clamp(1.3rem, 2.6vw, 2.15rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  transition: background-size 0.55s var(--cn-ease), color 0.3s ease;
+  padding-bottom: 2px;
+}
+.connect__big:focus-visible { background-size: 100% 1px; }
+@media (hover: hover) {
+  .connect__big:hover { background-size: 100% 1px; color: var(--cn-red); }
+}
+
+.connect__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.3rem;
+}
+
+.connect__btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 48px;
+  padding: 0 1.1rem;
+  border: 1px solid var(--cn-ink);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--cn-ink);
+  font-family: var(--cn-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease, transform 0.35s var(--cn-ease);
+}
+.connect__btn svg { width: 16px; height: 16px; flex: none; }
+.connect__btn--solid { background: var(--cn-ink); color: var(--cn-paper); }
+
+@media (hover: hover) {
+  .connect__btn:hover { background: var(--cn-ink); color: var(--cn-paper); }
+  .connect__btn--solid:hover { background: var(--cn-red); border-color: var(--cn-red); }
+  .connect__btn:active { transform: translateY(1px); }
+}
+
+.connect a:focus-visible,
+.connect button:focus-visible {
+  outline: 2px solid var(--cn-red);
+  outline-offset: 4px;
+}
+
+/* copy feedback states */
+.connect__ico-check { display: none; }
+.connect__btn.is-done {
+  border-color: var(--cn-green);
+  background: var(--cn-green);
+  color: #fff;
+}
+.connect__btn.is-done .connect__ico-copy { display: none; }
+.connect__btn.is-done .connect__ico-check { display: block; }
+.connect__btn.is-error { border-color: var(--cn-red); color: var(--cn-red); }
+
+.connect__status {
+  min-height: 1.5em;
+  margin-top: 0.8rem;
+  font-family: var(--cn-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--cn-green);
+}
+.connect__status.is-error { color: var(--cn-red); }
+
+/* ---------- Elsewhere ledger ---------- */
+
+.connect__ledger { border-bottom: 1px solid var(--cn-line); }
+
+.connect__row {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: 2rem 1.6rem minmax(0, 1fr) 1.6rem;
+  align-items: center;
+  gap: 1rem;
+  padding: clamp(1.5rem, 3.4vw, 2.4rem) 0.8rem;
+  border-top: 1px solid var(--cn-line);
+  color: var(--cn-ink);
+  text-decoration: none;
+  overflow: hidden;
+  transition: color 0.45s ease;
+}
+.connect__row::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--cn-ink);
+  transform: scaleY(0);
+  transform-origin: 50% 100%;
+  transition: transform 0.55s var(--cn-ease);
+}
+.connect__row-n {
+  font-family: var(--cn-mono);
+  font-size: 0.7rem;
+  color: var(--cn-mute);
+  transition: color 0.45s ease;
+}
+.connect__row-ico { width: 1.5rem; height: 1.5rem; }
+.connect__row-body { display: grid; gap: 0.15rem; min-width: 0; }
+.connect__row-label {
+  font-weight: 350;
+  font-size: clamp(1.7rem, 3.6vw, 2.8rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  transition: transform 0.5s var(--cn-ease);
+}
+.connect__row-handle {
+  font-family: var(--cn-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--cn-ink-2);
+  overflow-wrap: anywhere;
+  transition: color 0.45s ease;
+}
+.connect__row-arrow {
+  width: 1.4rem;
+  height: 1.4rem;
+  justify-self: end;
+  transition: transform 0.5s var(--cn-ease);
+}
+
+.connect__row:focus-visible { outline-offset: -3px; }
+.connect__row:focus-visible,
+.connect__row.is-hot { color: var(--cn-paper); }
+.connect__row:focus-visible::before,
+.connect__row.is-hot::before { transform: scaleY(1); }
+.connect__row:focus-visible .connect__row-handle,
+.connect__row.is-hot .connect__row-handle { color: rgba(244, 245, 247, 0.72); }
+.connect__row:focus-visible .connect__row-n,
+.connect__row.is-hot .connect__row-n { color: var(--cn-red); }
+.connect__row:focus-visible .connect__row-label,
+.connect__row.is-hot .connect__row-label { transform: translateX(8px); }
+.connect__row:focus-visible .connect__row-arrow,
+.connect__row.is-hot .connect__row-arrow { transform: translate(4px, -4px); }
+
+@media (hover: hover) {
+  .connect__row:hover { color: var(--cn-paper); }
+  .connect__row:hover::before { transform: scaleY(1); }
+  .connect__row:hover .connect__row-handle { color: rgba(244, 245, 247, 0.72); }
+  .connect__row:hover .connect__row-n { color: var(--cn-red); }
+  .connect__row:hover .connect__row-label { transform: translateX(8px); }
+  .connect__row:hover .connect__row-arrow { transform: translate(4px, -4px); }
+}
+
+.connect__note {
+  max-width: 26rem;
+  margin-top: 1.4rem;
+  color: var(--cn-ink-2);
+  font-size: 0.98rem;
+  font-style: italic;
+}
+
+/* ---------- GitHub workshop panel ---------- */
+
+.connect__repo {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin-top: clamp(3.5rem, 8vw, 6rem);
+  padding: clamp(1.8rem, 5.5vw, 4.5rem);
+  background: var(--cn-ink);
+  color: var(--cn-paper);
+}
+.connect__repo-grid {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    linear-gradient(rgba(244, 245, 247, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 245, 247, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(100deg, transparent 10%, #000 90%);
+  -webkit-mask-image: linear-gradient(100deg, transparent 10%, #000 90%);
+}
+.connect__repo-mark {
+  position: absolute;
+  z-index: -1;
+  right: -3%;
+  bottom: -14%;
+  width: min(48%, 420px);
+  height: auto;
+  color: rgba(244, 245, 247, 0.07);
+  transform: translate(calc(var(--rx, 0) * -26px), calc(var(--ry, 0) * -26px));
+  transition: transform 0.4s var(--cn-ease);
+}
+
+.connect__repo-body { max-width: 40rem; }
+.connect__repo-label {
+  font-family: var(--cn-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(244, 245, 247, 0.7);
+}
+.connect__repo-label span { color: var(--cn-red); margin-right: 0.6rem; }
+
+.connect__repo-title {
+  margin-top: 1.2rem;
+  font-weight: 350;
+  font-size: clamp(2.1rem, 5.4vw, 4.4rem);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  font-variation-settings: "opsz" 120;
+}
+.connect__repo-text {
+  margin-top: 1.4rem;
+  color: rgba(244, 245, 247, 0.78);
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+}
+
+.connect__term {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+  min-height: 3rem;
+  margin-top: 1.8rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(244, 245, 247, 0.18);
+  font-family: var(--cn-mono);
+  font-size: clamp(0.72rem, 1.6vw, 0.86rem);
+  letter-spacing: 0.03em;
+  color: var(--cn-paper);
+  overflow-wrap: anywhere;
+}
+.connect__term-prompt { color: var(--cn-red); margin-right: 0.7rem; }
+.connect__caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.05em;
+  margin-left: 2px;
+  background: var(--cn-paper);
+  animation: connect-blink 1.1s steps(1) infinite;
+}
+@keyframes connect-blink { 50% { opacity: 0; } }
+
+.connect__repo-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-height: 52px;
+  margin-top: 1.8rem;
+  padding: 0 1.4rem;
+  background: var(--cn-paper);
+  color: var(--cn-ink);
+  font-family: var(--cn-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.35s ease, color 0.35s ease;
+}
+.connect__repo-cta svg { width: 18px; height: 18px; flex: none; }
+.connect__cta-arrow { transition: transform 0.45s var(--cn-ease); }
+.connect__repo-cta:focus-visible { outline-color: #fff; }
+.connect__repo-cta:focus-visible .connect__cta-arrow { transform: translate(3px, -3px); }
+@media (hover: hover) {
+  .connect__repo-cta:hover { background: var(--cn-red); color: #fff; }
+  .connect__repo-cta:hover .connect__cta-arrow { transform: translate(3px, -3px); }
+}
+
+/* ---------- Closing ---------- */
+
+.connect__close {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1.6rem, 5vw, 4rem);
+  margin-top: clamp(4rem, 10vw, 8rem);
+  padding-top: clamp(2.5rem, 6vw, 4.5rem);
+  border-top: 1px solid var(--cn-line);
+}
+
+.connect__rings {
+  width: clamp(88px, 14vw, 150px);
+  height: auto;
+  color: var(--cn-ink-2);
+  stroke-width: 0.8;
+}
+.connect__rings circle {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: connect-ring 5.4s ease-in-out infinite;
+}
+.connect__rings circle:nth-child(2) { animation-delay: 0.45s; }
+.connect__rings circle:nth-child(3) { animation-delay: 0.9s; }
+.connect__rings .connect__rings-core {
+  fill: var(--cn-red);
+  stroke: none;
+  animation: none;
+}
+@keyframes connect-ring {
+  0%, 100% { transform: scale(0.94); opacity: 0.5; }
+  50%      { transform: scale(1);    opacity: 1; }
+}
+
+.connect__sig {
+  position: relative;
+  display: inline-block;
+  margin-top: 1rem;
+  padding-bottom: 0.5em;
+  font-style: italic;
+  font-weight: 350;
+  font-size: clamp(2rem, 5.2vw, 3.8rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 144;
+}
+.connect__sig svg {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 0.32em;
+  color: var(--cn-red);
+  stroke-width: 1.5;
+  overflow: visible;
+}
+.connect__sig path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.6s var(--cn-ease) 0.5s;
+}
+.connect__sig.is-in path { stroke-dashoffset: 0; }
+
+.connect__meta {
+  margin-top: 1.2rem;
+  font-family: var(--cn-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cn-mute);
+}
+
+/* ---------- Cursor chip ---------- */
+
+.connect__chip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  padding: 0.45rem 0.7rem;
+  background: var(--cn-red);
+  color: #fff;
+  font-family: var(--cn-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  scale: 0.85;
+  transition: opacity 0.25s ease, scale 0.3s var(--cn-ease);
+}
+.connect__chip.is-on { opacity: 1; scale: 1; }
+
+/* ---------- Reveal motion (only when JS is running) ---------- */
+
+.connect--js [data-reveal]:not([data-split]) {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.9s var(--cn-ease), transform 0.9s var(--cn-ease);
+}
+.connect--js [data-reveal]:not([data-split]).is-in {
+  opacity: 1;
+  transform: none;
+}
+/* .connect__repo uses a gentler reveal so its children never flash */
+.connect--js .connect__repo[data-reveal] { transform: translateY(28px); }
+
+.connect__w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+.connect__w > span {
+  display: inline-block;
+  transition: transform 1s var(--cn-ease);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+.connect--js [data-split]:not(.is-in) .connect__w > span { transform: translateY(110%); }
+
+/* ---------- Tablet / mobile ---------- */
+
+@media (max-width: 899px) {
+  .connect__grid { grid-template-columns: minmax(0, 1fr); row-gap: 3.5rem; }
+  .connect__lede { margin-left: 0; }
+}
+
+@media (max-width: 560px) {
+  .connect__row {
+    grid-template-columns: 1.4rem 1.4rem minmax(0, 1fr) 1.2rem;
+    gap: 0.7rem;
+    padding-inline: 0.3rem;
+  }
+  .connect__actions .connect__btn { flex: 1 1 100%; justify-content: center; }
+  .connect__close { grid-template-columns: minmax(0, 1fr); }
+  .connect__repo-cta { width: 100%; justify-content: center; }
+  .connect__repo-mark { width: 62%; right: -10%; }
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .connect *,
+  .connect *::before,
+  .connect *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+  .connect--js [data-reveal]:not([data-split]) { opacity: 1; transform: none; }
+  .connect--js [data-split] .connect__w > span { transform: none !important; }
+  .connect__sig path { stroke-dashoffset: 0; }
+  .connect__repo-mark { transform: none; }
+  .connect__caret { opacity: 1; }
+  .connect__chip { display: none; }
+}
 </style>
 </head>
 <body>
@@ -9090,7 +9705,166 @@ html.bs-lock { overflow: hidden; }
 
 </section>
 
-<section class="portal-section site-shell" id="connect"><div class="section-shell"><p class="section-kicker">13 / Start a conversation</p><h2 class="section-title">Let's <span>Connect.</span></h2><div class="section-empty" aria-label="Empty Connect section"></div></div></section>
+<!-- ============ CONNECT SECTION (copy this <section> into your page) ============ -->
+<section class="connect" id="connect" data-connect aria-labelledby="connect-title">
+  <div class="connect__spot" aria-hidden="true"></div>
+
+  <div class="connect__wrap">
+
+    <!-- ===== Opening ===== -->
+    <header class="connect__head">
+      <p class="connect__kicker" data-reveal>
+        <span class="connect__kicker-l">
+          <span class="connect__num">13</span>
+          <span class="connect__rule" aria-hidden="true"></span>
+          <span>Start a conversation</span>
+        </span>
+        <span class="connect__kicker-r">
+          Dhaka, Bangladesh<span class="connect__time-wrap" hidden> · <time class="connect__time" data-time></time></span>
+        </span>
+      </p>
+
+      <h2 id="connect-title" class="connect__title" data-split data-stop data-reveal>Let's Connect.</h2>
+
+      <div class="connect__lede">
+        <p class="connect__bn" lang="bn" data-reveal>কথা হোক।</p>
+        <p data-reveal>
+          I enjoy conversations that leave me thinking: about ideas, about building things, about where
+          Bangladesh could go next. If you'd like to exchange thoughts, collaborate, or simply say hello,
+          here are the ways to reach me.
+        </p>
+      </div>
+    </header>
+
+    <!-- ===== Direct line + Elsewhere ===== -->
+    <div class="connect__grid">
+
+      <!-- Direct line -->
+      <div class="connect__direct">
+        <p class="connect__colhead" data-reveal><span>A</span> Direct line</p>
+
+        <div class="connect__line" data-reveal>
+          <p class="connect__label">Email</p>
+          <a class="connect__big" id="connect-email" href="mailto:mdabrarhasan123@gmail.com">mdabrarhasan123@gmail.com</a>
+          <div class="connect__actions">
+            <a class="connect__btn connect__btn--solid" href="mailto:mdabrarhasan123@gmail.com">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="1.5"/><polyline points="3,7 12,13 21,7"/></svg>
+              <span class="connect__btn-label">Write an email</span>
+            </a>
+            <button class="connect__btn" type="button" data-copy="mdabrarhasan123@gmail.com" data-select="#connect-email" data-what="Email address">
+              <svg class="connect__ico-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="1"/><path d="M5 15V5a1 1 0 0 1 1-1h10"/></svg>
+              <svg class="connect__ico-check" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="5,12.5 10,17.5 19,7"/></svg>
+              <span class="connect__btn-label" data-label>Copy email</span>
+            </button>
+          </div>
+          <p class="connect__status" role="status" aria-live="polite" data-status></p>
+        </div>
+
+        <div class="connect__line" data-reveal>
+          <p class="connect__label">Phone</p>
+          <a class="connect__big" id="connect-phone" href="tel:+8801996566979">+8801996566979</a>
+          <div class="connect__actions">
+            <a class="connect__btn connect__btn--solid" href="tel:+8801996566979">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+              <span class="connect__btn-label">Call</span>
+            </a>
+            <button class="connect__btn" type="button" data-copy="+8801996566979" data-select="#connect-phone" data-what="Phone number">
+              <svg class="connect__ico-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="1"/><path d="M5 15V5a1 1 0 0 1 1-1h10"/></svg>
+              <svg class="connect__ico-check" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="5,12.5 10,17.5 19,7"/></svg>
+              <span class="connect__btn-label" data-label>Copy number</span>
+            </button>
+          </div>
+          <p class="connect__status" role="status" aria-live="polite" data-status></p>
+        </div>
+      </div>
+
+      <!-- Elsewhere -->
+      <div class="connect__elsewhere">
+        <p class="connect__colhead" data-reveal><span>B</span> Elsewhere</p>
+
+        <ul class="connect__ledger" data-reveal>
+          <li>
+            <a class="connect__row" href="https://www.facebook.com/ab.r.ar.842031" target="_blank" rel="noopener noreferrer" data-chip="Open Facebook">
+              <span class="connect__row-n">01</span>
+              <svg class="connect__row-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" stroke="none" d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.9c0-.9.3-1.5 1.6-1.5h1.6V3.5c-.3 0-1.2-.1-2.4-.1-2.4 0-4 1.4-4 4.1v2.3H7.6V13h2.7v8h3.2z"/></svg>
+              <span class="connect__row-body">
+                <span class="connect__row-label">Facebook</span>
+                <span class="connect__row-handle">ab.r.ar.842031</span>
+              </span>
+              <svg class="connect__row-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              <span class="connect__sr">(opens in a new tab)</span>
+            </a>
+          </li>
+          <li>
+            <a class="connect__row" href="https://www.instagram.com/a.h.sanim_0" target="_blank" rel="noopener noreferrer" data-chip="Open Instagram">
+              <span class="connect__row-n">02</span>
+              <svg class="connect__row-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+              <span class="connect__row-body">
+                <span class="connect__row-label">Instagram</span>
+                <span class="connect__row-handle">@a.h.sanim_0</span>
+              </span>
+              <svg class="connect__row-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              <span class="connect__sr">(opens in a new tab)</span>
+            </a>
+          </li>
+        </ul>
+
+        <p class="connect__note" data-reveal>People and everyday life. Messages are welcome, though email is the surest way to reach me.</p>
+      </div>
+    </div>
+
+    <!-- ===== GitHub: the workshop ===== -->
+    <article class="connect__repo" data-repo data-reveal aria-labelledby="connect-repo-h">
+      <div class="connect__repo-grid" aria-hidden="true"></div>
+      <svg class="connect__repo-mark" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" stroke="none" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+
+      <div class="connect__repo-body">
+        <p class="connect__repo-label"><span>03</span> GitHub · The workshop</p>
+        <h3 id="connect-repo-h" class="connect__repo-title">Where the work is kept.</h3>
+        <p class="connect__repo-text">
+          Source code, experiments and the web projects I build. This is less a social profile and more
+          an open bench: browse the repositories, read how I structure things, and open whatever catches your eye.
+        </p>
+
+        <p class="connect__term">
+          <span class="connect__term-prompt" aria-hidden="true">$</span>
+          <span class="connect__sr">open github.com/mdabrarhasan123-ship-it</span>
+          <span class="connect__term-text" aria-hidden="true" data-type="open github.com/mdabrarhasan123-ship-it">open github.com/mdabrarhasan123-ship-it</span><span class="connect__caret" aria-hidden="true"></span>
+        </p>
+
+        <a class="connect__repo-cta" href="https://github.com/mdabrarhasan123-ship-it" target="_blank" rel="noopener noreferrer" data-chip="Open GitHub">
+          <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" stroke="none" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          <span>Explore my repositories</span>
+          <svg class="connect__cta-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          <span class="connect__sr">(opens in a new tab)</span>
+        </a>
+      </div>
+    </article>
+
+    <!-- ===== Closing ===== -->
+    <div class="connect__close">
+      <svg class="connect__rings" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+        <circle cx="60" cy="60" r="56"/>
+        <circle cx="60" cy="60" r="38"/>
+        <circle cx="60" cy="60" r="20"/>
+        <circle class="connect__rings-core" cx="60" cy="60" r="4.5"/>
+      </svg>
+
+      <div class="connect__close-body">
+        <p class="connect__bn connect__bn--lg" lang="bn" data-reveal>কথা হোক, ভাবনার আদান-প্রদান হোক।</p>
+        <p class="connect__sig" data-reveal>
+          Abrar Hasan Sanim
+          <svg viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M2 9 C 40 2, 90 13, 150 6 S 230 10, 298 4"/></svg>
+        </p>
+        <p class="connect__meta" data-reveal>Personal portal · Built to evolve</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- cursor-following label (desktop pointers only) -->
+  <div class="connect__chip" aria-hidden="true" data-chip-el><span data-chip-text>Open</span> ↗</div>
+</section>
 </main>
 <footer class="site-footer"><div class="site-shell footer-inner"><span class="footer-mark">ABRAR HASAN SANIM</span><span>Personal portal · Built to evolve</span></div></footer>
 <script>
@@ -13168,6 +13942,251 @@ loadPhoto(0);
   };
   if (reduceMotion.addEventListener) reduceMotion.addEventListener('change', onMotionChange);
   else if (reduceMotion.addListener) reduceMotion.addListener(onMotionChange);
+})();
+
+
+
+/* =========================================================
+   CONNECT SECTION — vanilla JS, no dependencies
+   ========================================================= */
+(() => {
+  'use strict';
+
+  const root = document.querySelector('[data-connect]');
+  if (!root) return;
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+
+  root.classList.add('connect--js');
+
+  const $ = (sel, ctx = root) => ctx.querySelector(sel);
+  const $$ = (sel, ctx = root) => Array.from(ctx.querySelectorAll(sel));
+
+  /* ---------- 1. Split headline into words ---------- */
+  $$('[data-split]').forEach((el) => {
+    const text = el.textContent.trim().replace(/\s+/g, ' ');
+    const keepStop = el.hasAttribute('data-stop');
+    el.setAttribute('aria-label', text);
+    el.textContent = '';
+
+    text.split(' ').forEach((word, i, arr) => {
+      const outer = document.createElement('span');
+      outer.className = 'connect__w';
+      outer.setAttribute('aria-hidden', 'true');
+
+      const inner = document.createElement('span');
+      inner.style.setProperty('--i', i);
+
+      if (keepStop && word.endsWith('.')) {
+        inner.appendChild(document.createTextNode(word.slice(0, -1)));
+        const stop = document.createElement('span');
+        stop.className = 'connect__stop';
+        stop.textContent = '.';
+        inner.appendChild(stop);
+      } else {
+        inner.textContent = word;
+      }
+
+      outer.appendChild(inner);
+      el.appendChild(outer);
+      if (i < arr.length - 1) el.appendChild(document.createTextNode(' '));
+    });
+  });
+
+  /* ---------- 2. Reveal on scroll ---------- */
+  const revealEls = $$('[data-reveal]');
+  if ('IntersectionObserver' in window && !reduceMotion.matches) {
+    const revealObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-in');
+        obs.unobserve(entry.target);
+      });
+    }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
+    revealEls.forEach((el) => revealObserver.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('is-in'));
+  }
+
+  /* ---------- 3. Local time in Dhaka ---------- */
+  const timeEl = $('[data-time]');
+  const timeWrap = $('.connect__time-wrap');
+  if (timeEl && timeWrap) {
+    try {
+      const fmt = new Intl.DateTimeFormat('en-GB', {
+        hour: '2-digit', minute: '2-digit', hour12: true, timeZone: 'Asia/Dhaka'
+      });
+      const tick = () => {
+        const now = new Date();
+        timeEl.textContent = fmt.format(now).toUpperCase();
+        timeEl.setAttribute('datetime', now.toISOString());
+      };
+      tick();
+      timeWrap.hidden = false;
+      setInterval(tick, 20000);
+    } catch (err) {
+      /* timezone unsupported: the "Dhaka, Bangladesh" label still shows */
+    }
+  }
+
+  /* ---------- 4. Copy to clipboard with clear feedback ---------- */
+  const copyText = async (text) => {
+    if (navigator.clipboard && window.isSecureContext) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch (err) { /* fall through to legacy path */ }
+    }
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;pointer-events:none;';
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, text.length);
+      const ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      return ok;
+    } catch (err) {
+      return false;
+    }
+  };
+
+  const selectNode = (node) => {
+    if (!node || !window.getSelection) return;
+    const range = document.createRange();
+    range.selectNodeContents(node);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  };
+
+  $$('[data-copy]').forEach((btn) => {
+    const line = btn.closest('.connect__line');
+    const status = line ? $('[data-status]', line) : null;
+    const label = $('[data-label]', btn);
+    const idleText = label ? label.textContent : '';
+    const what = btn.dataset.what || 'Text';
+    let timer = null;
+
+    const reset = () => {
+      btn.classList.remove('is-done', 'is-error');
+      if (label) label.textContent = idleText;
+      if (status) { status.textContent = ''; status.classList.remove('is-error'); }
+    };
+
+    btn.addEventListener('click', async () => {
+      clearTimeout(timer);
+      const ok = await copyText(btn.dataset.copy);
+      btn.focus({ preventScroll: true });
+
+      if (ok) {
+        btn.classList.remove('is-error');
+        btn.classList.add('is-done');
+        if (label) label.textContent = 'Copied';
+        if (status) { status.classList.remove('is-error'); status.textContent = what + ' copied to your clipboard.'; }
+      } else {
+        btn.classList.remove('is-done');
+        btn.classList.add('is-error');
+        if (label) label.textContent = 'Copy failed';
+        if (status) {
+          status.classList.add('is-error');
+          status.textContent = 'Couldn\u2019t copy automatically. It is selected, so press Ctrl/Cmd + C.';
+        }
+        selectNode(document.querySelector(btn.dataset.select));
+      }
+      timer = setTimeout(reset, ok ? 2400 : 5000);
+    });
+  });
+
+  /* ---------- 5. Pointer-driven details (desktop pointers only) ---------- */
+  if (finePointer.matches && !reduceMotion.matches) {
+
+    /* 5a. soft light that follows the pointer */
+    let spotRaf = null;
+    let sx = 0, sy = 0;
+    root.addEventListener('pointermove', (e) => {
+      const rect = root.getBoundingClientRect();
+      sx = e.clientX - rect.left;
+      sy = e.clientY - rect.top;
+      if (spotRaf) return;
+      spotRaf = requestAnimationFrame(() => {
+        spotRaf = null;
+        root.style.setProperty('--mx', sx + 'px');
+        root.style.setProperty('--my', sy + 'px');
+      });
+      root.classList.add('is-lit');
+    }, { passive: true });
+    root.addEventListener('pointerleave', () => root.classList.remove('is-lit'));
+
+    /* 5b. cursor chip over links */
+    const chip = $('[data-chip-el]');
+    const chipText = $('[data-chip-text]');
+    if (chip && chipText) {
+      let tx = 0, ty = 0, cx = 0, cy = 0, raf = null, visible = false;
+
+      const frame = () => {
+        cx += (tx - cx) * 0.2;
+        cy += (ty - cy) * 0.2;
+        chip.style.transform = 'translate3d(' + (cx + 18).toFixed(1) + 'px,' + (cy + 18).toFixed(1) + 'px,0)';
+        if (visible || Math.abs(tx - cx) > 0.1 || Math.abs(ty - cy) > 0.1) {
+          raf = requestAnimationFrame(frame);
+        } else {
+          raf = null;
+        }
+      };
+      const start = () => { if (!raf) raf = requestAnimationFrame(frame); };
+
+      $$('[data-chip]').forEach((el) => {
+        el.addEventListener('pointerenter', (e) => {
+          chipText.textContent = el.dataset.chip;
+          tx = cx = e.clientX;
+          ty = cy = e.clientY;
+          visible = true;
+          chip.classList.add('is-on');
+          start();
+        });
+        el.addEventListener('pointermove', (e) => { tx = e.clientX; ty = e.clientY; start(); }, { passive: true });
+        el.addEventListener('pointerleave', () => { visible = false; chip.classList.remove('is-on'); });
+      });
+    }
+
+    /* 5c. GitHub mark drifts against the pointer */
+    const repo = $('[data-repo]');
+    if (repo) {
+      repo.addEventListener('pointermove', (e) => {
+        const r = repo.getBoundingClientRect();
+        repo.style.setProperty('--rx', ((e.clientX - r.left) / r.width - 0.5).toFixed(3));
+        repo.style.setProperty('--ry', ((e.clientY - r.top) / r.height - 0.5).toFixed(3));
+      }, { passive: true });
+      repo.addEventListener('pointerleave', () => {
+        repo.style.setProperty('--rx', '0');
+        repo.style.setProperty('--ry', '0');
+      });
+    }
+  }
+
+  /* ---------- 6. Typed terminal line ---------- */
+  const typed = $('[data-type]');
+  const repoPanel = $('[data-repo]');
+  if (typed && repoPanel && 'IntersectionObserver' in window && !reduceMotion.matches) {
+    const full = typed.dataset.type;
+    typed.textContent = '';
+
+    const typeObserver = new IntersectionObserver((entries, obs) => {
+      if (!entries.some((e) => e.isIntersecting)) return;
+      obs.disconnect();
+      let i = 0;
+      const step = () => {
+        typed.textContent = full.slice(0, ++i);
+        if (i < full.length) setTimeout(step, 28 + Math.random() * 36);
+      };
+      setTimeout(step, 500);
+    }, { threshold: 0.45 });
+    typeObserver.observe(repoPanel);
+  }
 })();
 </script>
 </body></html>
