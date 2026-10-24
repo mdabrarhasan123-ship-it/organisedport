@@ -4622,717 +4622,660 @@ html {
 
 
 /* =========================================================
-   PHOTOGRAPHY
-========================================================= */
+   PHOTOGRAPHY SECTION — all selectors scoped under .pg
+   Theme-proof: no hard-coded light/dark colours. Text colour is
+   inherited from the page, and lines/surfaces are derived from it
+   with color-mix(), so any theme toggle just works.
+   ========================================================= */
 
-.photography-section {
-
-    position: relative;
-
-    min-height: 100vh;
-
-    padding: 140px 7vw 80px;
-
-    overflow: hidden;
-
+.pg,
+.pg *,
+.pg *::before,
+.pg *::after {
+  box-sizing: border-box;
 }
 
+.pg {
+  --pg-accent: #d8323b;
 
-.photography-container {
+  --pg-serif: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --pg-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
-    width: 100%;
+  /* derived from the current text colour, so they follow light/dark automatically */
+  --pg-line: color-mix(in srgb, currentColor 16%, transparent);
+  --pg-soft: color-mix(in srgb, currentColor 7%, transparent);
+  --pg-mute: color-mix(in srgb, currentColor 66%, transparent);
+  --pg-body: color-mix(in srgb, currentColor 82%, transparent);
 
-    max-width: 1500px;
+  --pg-gutter: clamp(20px, 5vw, 72px);
+  --pg-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 
-    margin: auto;
-
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+  padding-block: clamp(72px, 12vw, 150px);
+  /* If your section wrappers force a colour, set --pg-ink on .pg to match */
+  color: var(--pg-ink, inherit);
+  font-family: var(--pg-serif);
+  font-size: 1rem;
+  line-height: 1.6;
+  background: transparent;
 }
 
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-.photography-header {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: flex-end;
-
-    margin-bottom: 70px;
-
+@supports not (color: color-mix(in srgb, red 50%, blue)) {
+  .pg {
+    --pg-line: rgba(128, 128, 128, 0.3);
+    --pg-soft: rgba(128, 128, 128, 0.12);
+    --pg-mute: rgba(128, 128, 128, 0.95);
+    --pg-body: inherit;
+  }
 }
 
+.pg p,
+.pg h2,
+.pg h3,
+.pg ol,
+.pg ul,
+.pg li,
+.pg figure {
+  margin: 0;
+  padding: 0;
+}
+.pg ol,
+.pg ul { list-style: none; }
 
-.photography-label {
-
-    font-size: 11px;
-
-    letter-spacing: 3px;
-
-    opacity: .55;
-
+.pg svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-
-.photography-heading-wrap {
-
-    width: min(600px, 60%);
-
+.pg__wrap {
+  width: 100%;
+  max-width: 1320px;
+  margin-inline: auto;
+  padding-inline: var(--pg-gutter);
 }
 
-
-.photography-heading-wrap h2 {
-
-    margin: 0;
-
-    font-size: clamp(45px, 6vw, 90px);
-
-    line-height: .95;
-
-    letter-spacing: -4px;
-
-    font-weight: 700;
-
+.pg__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
-
-.photography-heading-wrap h2 span {
-
-    display: block;
-
-    font-style: italic;
-
-    font-weight: 400;
-
-    opacity: .55;
-
+.pg button { font: inherit; color: inherit; }
+.pg button:focus-visible {
+  outline: 2px solid var(--pg-accent);
+  outline-offset: 4px;
 }
 
+/* ---------- Heading ---------- */
 
-.photography-heading-wrap p {
+.pg__kicker {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--pg-line);
+  font-family: var(--pg-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pg-mute);
+}
+.pg__kicker-l { display: inline-flex; align-items: center; gap: 0.9rem; }
+.pg__num { color: var(--pg-accent); }
+.pg__rule { width: 3rem; height: 1px; background: currentColor; }
 
-    max-width: 420px;
-
-    margin-top: 25px;
-
-    font-size: 15px;
-
-    line-height: 1.8;
-
-    opacity: .6;
-
+.pg__title {
+  max-width: 13ch;
+  margin-top: clamp(2rem, 5vw, 4rem);
+  font-family: var(--pg-serif);
+  font-weight: 350;
+  font-size: clamp(2.8rem, 8.6vw, 7.8rem);
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+  font-variation-settings: "opsz" 144;
 }
 
-
-/* =========================================================
-   EXPERIENCE
-========================================================= */
-
-.photo-experience {
-
-    display: grid;
-
-    grid-template-columns:
-        1fr
-        minmax(400px, 1.35fr)
-        120px;
-
-    gap: 60px;
-
-    align-items: center;
-
+.pg__sub {
+  max-width: 30rem;
+  margin: clamp(1.6rem, 3vw, 2.6rem) 0 clamp(2.5rem, 6vw, 4.5rem) auto;
+  color: var(--pg-body);
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
 }
 
+/* ---------- Stage ---------- */
 
-/* =========================================================
-   INFO
-========================================================= */
-
-.photo-info {
-
-    position: relative;
-
-    z-index: 5;
-
+.pg__stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  column-gap: clamp(28px, 5vw, 80px);
+  align-items: stretch;
 }
 
+/* ---------- Viewfinder frame ---------- */
 
-.photo-index {
+.pg__frame {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  aspect-ratio: 5 / 4;
+  background: var(--pg-soft);
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.pg--ring .pg__frame { cursor: none; }
 
-    display: flex;
+.pg__slides { position: absolute; inset: 0; }
 
-    gap: 8px;
+.pg__slide {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  background: var(--pg-soft);
+}
+.pg__slide.is-active { opacity: 1; visibility: visible; z-index: 2; }
+.pg__slide.is-leaving { opacity: 1; visibility: visible; z-index: 1; }
 
-    align-items: center;
-
-    margin-bottom: 55px;
-
-    font-family: monospace;
-
-    font-size: 13px;
-
-    opacity: .5;
-
+.pg__slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate3d(var(--tx, 0px), var(--ty, 0px), 0) scale(1.06);
+  -webkit-user-drag: none;
 }
 
+/* slide-change animations */
+.pg__frame[data-dir="1"] .pg__slide.is-enter { animation: pg-in-fwd 0.95s var(--pg-ease) both; }
+.pg__frame[data-dir="-1"] .pg__slide.is-enter { animation: pg-in-back 0.95s var(--pg-ease) both; }
+.pg__slide.is-enter img { animation: pg-zoom 1.4s var(--pg-ease) both; }
+.pg__frame[data-dir="1"] .pg__slide.is-leaving img { animation: pg-out-fwd 0.95s var(--pg-ease) both; }
+.pg__frame[data-dir="-1"] .pg__slide.is-leaving img { animation: pg-out-back 0.95s var(--pg-ease) both; }
 
-.photo-location {
+@keyframes pg-in-fwd  { from { clip-path: inset(0 0 0 100%); } to { clip-path: inset(0 0 0 0); } }
+@keyframes pg-in-back { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes pg-zoom    { from { scale: 1.18; } to { scale: 1; } }
+@keyframes pg-out-fwd  { to { translate: -9% 0; } }
+@keyframes pg-out-back { to { translate: 9% 0; } }
 
-    font-size: 11px;
-
-    letter-spacing: 3px;
-
-    text-transform: uppercase;
-
-    opacity: .5;
-
-    margin-bottom: 18px;
-
+/* image missing: tidy placeholder instead of a broken icon */
+.pg__slide.is-missing img { display: none; }
+.pg__slide.is-missing::after {
+  content: "Photograph " attr(data-n) " — add your image";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  text-align: center;
+  font-family: var(--pg-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pg-mute);
+  background:
+    repeating-linear-gradient(135deg, transparent 0 14px, var(--pg-line) 14px 15px);
 }
 
+/* viewfinder corner brackets (always white: they sit on the photo) */
+.pg__corner {
+  position: absolute;
+  z-index: 3;
+  width: 24px;
+  height: 24px;
+  border: 0 solid #fff;
+  pointer-events: none;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.35));
+  transition: inset 0.6s var(--pg-ease), width 0.6s var(--pg-ease), height 0.6s var(--pg-ease);
+}
+.pg__corner--tl { top: 14px; left: 14px;  border-top-width: 1.5px; border-left-width: 1.5px; }
+.pg__corner--tr { top: 14px; right: 14px; border-top-width: 1.5px; border-right-width: 1.5px; }
+.pg__corner--bl { bottom: 14px; left: 14px;  border-bottom-width: 1.5px; border-left-width: 1.5px; }
+.pg__corner--br { bottom: 14px; right: 14px; border-bottom-width: 1.5px; border-right-width: 1.5px; }
 
-.photo-info h3 {
+.pg__frame.is-hover .pg__corner { width: 34px; height: 34px; }
+.pg__frame.is-hover .pg__corner--tl { top: 22px; left: 22px; }
+.pg__frame.is-hover .pg__corner--tr { top: 22px; right: 22px; }
+.pg__frame.is-hover .pg__corner--bl { bottom: 22px; left: 22px; }
+.pg__frame.is-hover .pg__corner--br { bottom: 22px; right: 22px; }
 
-    font-size: clamp(35px, 4vw, 65px);
+/* focus ring that follows the cursor */
+.pg__cross {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  width: 78px;
+  height: 78px;
+  border: 1px solid rgba(255, 255, 255, 0.92);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.16);
+  color: #fff;
+  font-family: var(--pg-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  opacity: 0;
+  scale: 0.5;
+  transition: opacity 0.3s ease, scale 0.45s var(--pg-ease);
+}
+.pg__frame.is-hover .pg__cross { opacity: 1; scale: 1; }
 
-    line-height: 1;
+/* transparent button covering the photo (opens the viewer) */
+.pg__open {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+.pg--ring .pg__open { cursor: none; }
+.pg__open:focus-visible { outline-offset: -6px; }
 
-    letter-spacing: -2px;
+/* ---------- Side column ---------- */
 
-    margin: 0;
-
-    max-width: 550px;
-
+.pg__side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  min-width: 0;
 }
 
-
-.photo-description {
-
-    max-width: 450px;
-
+.pg__count {
+  display: flex;
+  align-items: baseline;
+  font-family: var(--pg-serif);
+  font-weight: 300;
+  font-size: clamp(3.2rem, 7vw, 6rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  font-variation-settings: "opsz" 144;
+}
+.pg__count-cur { display: inline-block; }
+.pg__count-cur.is-tick { animation: pg-tick 0.7s var(--pg-ease); }
+.pg__count-tot { margin-left: 0.15em; color: var(--pg-mute); font-size: 0.4em; letter-spacing: 0; }
+@keyframes pg-tick {
+  from { transform: translateY(45%); opacity: 0; }
+  to   { transform: none; opacity: 1; }
 }
 
+.pg__infos { display: grid; }
+.pg__info { grid-area: 1 / 1; min-width: 0; }
 
-.photo-info p {
+.pg__cat {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.1rem;
+  font-family: var(--pg-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pg-accent);
+}
+.pg__cat::before { content: ""; width: 2.2rem; height: 1px; background: currentColor; }
 
-    margin-top: 30px;
-
-    line-height: 1.8;
-
-    font-size: 15px;
-
-    opacity: .65;
-
+.pg__name {
+  font-weight: 350;
+  font-size: clamp(1.8rem, 3.2vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 120;
 }
 
-
-.photo-meta {
-
-    display: flex;
-
-    gap: 12px;
-
-    margin-top: 30px;
-
-    font-size: 11px;
-
-    letter-spacing: 2px;
-
-    opacity: .45;
-
+.pg__desc {
+  max-width: 28rem;
+  margin-top: 1.2rem;
+  color: var(--pg-body);
+  font-size: clamp(1rem, 1.25vw, 1.12rem);
 }
 
-
-/* =========================================================
-   CONTROLS
-========================================================= */
-
-.photo-controls {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 18px;
-
-    margin-top: 55px;
-
+.pg__meta {
+  margin-top: 1.4rem;
+  font-family: var(--pg-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pg-mute);
 }
 
-
-.photo-controls button {
-
-    width: 44px;
-
-    height: 44px;
-
-    border-radius: 50%;
-
-    border: 1px solid rgba(127,127,127,.35);
-
-    background: transparent;
-
-    cursor: pointer;
-
-    font-size: 18px;
-
-    transition:
-        transform .3s ease,
-        background .3s ease;
-
+/* without JS only the first caption shows; with JS they stack and cross-fade */
+.pg:not(.pg--js) .pg__info:not(:first-child) { display: none; }
+.pg--js .pg__info {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(14px);
+  transition: opacity 0.45s ease, transform 0.6s var(--pg-ease), visibility 0s linear 0.45s;
+}
+.pg--js .pg__info.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0.2s, 0.2s, 0s;
 }
 
+/* ---------- Controls ---------- */
 
-.photo-controls button:hover {
+.pg__ctrl { display: flex; align-items: center; gap: 1rem; }
 
-    transform: scale(1.1);
+.pg__arrow {
+  appearance: none;
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 56px;
+  height: 56px;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.35s ease, border-color 0.35s ease, color 0.35s ease, transform 0.35s var(--pg-ease);
+}
+.pg__arrow svg { width: 22px; height: 22px; transition: transform 0.4s var(--pg-ease); }
+@media (hover: hover) {
+  .pg__arrow:hover { background: var(--pg-accent); border-color: var(--pg-accent); color: #fff; }
+  .pg__arrow[data-next]:hover svg { transform: translateX(3px); }
+  .pg__arrow[data-prev]:hover svg { transform: translateX(-3px); }
+}
+.pg__arrow:active { transform: scale(0.96); }
 
-    background: rgba(127,127,127,.08);
-
+.pg__bar { position: relative; flex: 1; height: 1px; background: var(--pg-line); }
+.pg__bar i {
+  position: absolute;
+  left: 0;
+  top: -0.5px;
+  width: 100%;
+  height: 2px;
+  background: var(--pg-accent);
+  transform-origin: left center;
+  transform: scaleX(var(--prog, 0.1667));
+  transition: transform 0.8s var(--pg-ease);
 }
 
-
-.photo-progress {
-
-    width: 100px;
-
-    height: 2px;
-
-    background: rgba(127,127,127,.2);
-
-    overflow: hidden;
-
+.pg__hint {
+  font-family: var(--pg-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pg-mute);
 }
 
+/* ---------- Contact sheet ---------- */
 
-.photo-progress-fill {
-
-    height: 100%;
-
-    width: 16.66%;
-
-    background: currentColor;
-
-    transition: width .5s ease;
-
+.pg__strip {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(0.5rem, 1.2vw, 0.9rem);
+  margin-top: clamp(1.6rem, 3.5vw, 2.8rem);
 }
 
-
-/* =========================================================
-   IMAGE STAGE
-========================================================= */
-
-.photo-stage {
-
-    position: relative;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    min-height: 650px;
-
+.pg__thumb {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  padding: 0;
+  border: 0;
+  background: var(--pg-soft);
+  cursor: pointer;
+  overflow: hidden;
+}
+.pg__thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.05);
+  opacity: 0.6;
+  transition: filter 0.5s ease, opacity 0.5s ease, transform 0.8s var(--pg-ease);
+}
+.pg__thumb::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: var(--pg-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.6s var(--pg-ease);
+}
+.pg__thumb span {
+  position: absolute;
+  left: 0.6rem;
+  bottom: 0.55rem;
+  z-index: 1;
+  color: #fff;
+  font-family: var(--pg-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
+}
+.pg__thumb.is-active img { filter: none; opacity: 1; }
+.pg__thumb.is-active::after { transform: scaleX(1); }
+.pg__thumb.is-missing img { display: none; }
+@media (hover: hover) {
+  .pg__thumb:hover img { filter: none; opacity: 1; transform: scale(1.05); }
 }
 
+/* ---------- Marquee ---------- */
 
-.photo-frame {
+.pg__marquee {
+  overflow: hidden;
+  margin-top: clamp(3rem, 7vw, 5.5rem);
+  border-block: 1px solid var(--pg-line);
+}
+.pg__track {
+  display: flex;
+  width: max-content;
+  animation: pg-marquee 34s linear infinite;
+}
+.pg__marquee:hover .pg__track { animation-play-state: paused; }
+.pg__group { display: flex; flex: none; align-items: center; }
+.pg__group span {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 0;
+  font-weight: 300;
+  font-size: clamp(2.4rem, 7vw, 5.6rem);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  font-variation-settings: "opsz" 144;
+}
+.pg__group span::after {
+  content: "";
+  width: 0.28em;
+  height: 0.28em;
+  margin: 0 0.7em;
+  background: var(--pg-accent);
+  transform: rotate(45deg);
+}
+.pg__group span.is-out {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px currentColor;
+}
+@keyframes pg-marquee { to { transform: translateX(-50%); } }
 
-    position: relative;
+/* ---------- Viewer (always dark, whatever the page theme) ---------- */
 
-    width: min(100%, 580px);
+.pg__lb {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  overscroll-behavior: contain;
+}
+.pg__lb::backdrop { background: rgba(8, 9, 12, 0.95); }
+.pg__lb[open] { animation: pg-fade 0.4s ease; }
+@keyframes pg-fade { from { opacity: 0; } to { opacity: 1; } }
 
-    aspect-ratio: 4 / 5;
-
-    overflow: hidden;
-
-    transform:
-        rotate(-2deg);
-
-    box-shadow:
-        0 35px 90px rgba(0,0,0,.25);
-
-    transition:
-        transform .5s ease;
-
+.pg__lb-inner {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  padding: clamp(64px, 9vh, 90px) clamp(16px, 7vw, 110px);
+}
+.pg__lb-fig {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+  max-width: 100%;
+  max-height: 100%;
+}
+.pg__lb-img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100vh - 200px);
+  max-height: calc(100dvh - 200px);
+  object-fit: contain;
+  touch-action: pan-y;
+}
+.pg__lb-cap {
+  font-family: var(--pg-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.75);
 }
 
-
-.photo-frame:hover {
-
-    transform:
-        rotate(0deg)
-        scale(1.015);
-
+.pg__lb-close,
+.pg__lb-nav {
+  appearance: none;
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 2px;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.pg__lb-close { top: clamp(12px, 3vh, 28px); right: clamp(12px, 3vw, 36px); }
+.pg__lb-nav { top: 50%; margin-top: -26px; }
+.pg__lb-nav--prev { left: clamp(10px, 2vw, 28px); }
+.pg__lb-nav--next { right: clamp(10px, 2vw, 28px); }
+.pg__lb svg { width: 22px; height: 22px; }
+.pg__lb button:focus-visible { outline-color: #fff; }
+@media (hover: hover) {
+  .pg__lb-close:hover,
+  .pg__lb-nav:hover { background: var(--pg-accent); border-color: var(--pg-accent); }
 }
 
+html.pg-lock { overflow: hidden; }
 
-.photo-image {
+/* ---------- Reveal motion (only when JS runs) ---------- */
 
-    width: 100%;
+.pg--js [data-reveal]:not([data-split]) {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.9s var(--pg-ease), transform 0.9s var(--pg-ease);
+}
+.pg--js [data-reveal]:not([data-split]).is-in { opacity: 1; transform: none; }
 
-    height: 100%;
+.pg__w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+.pg__w > span {
+  display: inline-block;
+  transition: transform 1s var(--pg-ease);
+  transition-delay: calc(var(--i, 0) * 65ms);
+}
+.pg--js [data-split]:not(.is-in) .pg__w > span { transform: translateY(110%); }
+.pg--js .pg__info:not(.is-active) .pg__w > span { transform: translateY(110%); }
+.pg--js .pg__info.is-active .pg__w > span { transition-delay: calc(0.25s + var(--i, 0) * 60ms); }
 
-    background-size: cover;
+/* ---------- Tablet / mobile ---------- */
 
-    background-position: center;
-
-    transition:
-        opacity .35s ease,
-        transform .6s ease;
-
+@media (max-width: 899px) {
+  .pg__stage { grid-template-columns: minmax(0, 1fr); row-gap: 2rem; }
+  .pg__frame { aspect-ratio: 4 / 3; }
+  .pg__sub { margin-left: 0; }
+  .pg__side { gap: 1.6rem; }
+  .pg__count { font-size: clamp(2.6rem, 11vw, 4rem); }
 }
 
+@media (max-width: 640px) {
+  .pg__frame { aspect-ratio: 4 / 5; }
 
-.photo-frame-number {
+  .pg__strip {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 34%;
+    overflow-x: auto;
+    padding-bottom: 0.8rem;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+  }
+  .pg__strip li { scroll-snap-align: center; }
 
-    position: absolute;
-
-    right: 20px;
-
-    bottom: 18px;
-
-    font-family: monospace;
-
-    font-size: 11px;
-
-    letter-spacing: 2px;
-
-    color: white;
-
-    opacity: .7;
-
+  .pg__arrow { width: 52px; height: 52px; }
+  .pg__lb-nav { top: auto; bottom: clamp(14px, 3vh, 28px); margin-top: 0; }
+  .pg__lb-img { max-height: calc(100vh - 260px); max-height: calc(100dvh - 260px); }
 }
 
-
-.photo-shadow {
-
-    position: absolute;
-
-    width: 70%;
-
-    height: 50px;
-
-    bottom: 40px;
-
-    background: rgba(0,0,0,.25);
-
-    filter: blur(35px);
-
-    z-index: -1;
-
+@media (hover: none) {
+  .pg__cross { display: none; }
 }
 
+/* ---------- Reduced motion ---------- */
 
-/* =========================================================
-   FILM STRIP
-========================================================= */
-
-.photo-filmstrip {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 14px;
-
+@media (prefers-reduced-motion: reduce) {
+  .pg *,
+  .pg *::before,
+  .pg *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+  .pg--js [data-reveal]:not([data-split]) { opacity: 1; transform: none; }
+  .pg--js [data-split] .pg__w > span,
+  .pg--js .pg__info .pg__w > span { transform: none !important; }
+  .pg__slide img { transform: scale(1.02); }
+  .pg__track { width: auto; flex-wrap: wrap; justify-content: center; }
+  .pg__group + .pg__group { display: none; }
+  .pg__cross { display: none; }
+  .pg__lb[open] { animation: none; }
 }
-
-
-.photo-thumb {
-
-    position: relative;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    width: 100px;
-
-    height: 75px;
-
-    padding: 5px;
-
-    border: none;
-
-    background: transparent;
-
-    cursor: pointer;
-
-    opacity: .4;
-
-    transition:
-        opacity .35s ease,
-        transform .35s ease;
-
-}
-
-
-.photo-thumb:hover {
-
-    opacity: .8;
-
-    transform:
-        translateX(-8px);
-
-}
-
-
-.photo-thumb.active {
-
-    opacity: 1;
-
-    transform:
-        translateX(-15px);
-
-}
-
-
-.photo-thumb > span {
-
-    position: absolute;
-
-    left: -25px;
-
-    font-size: 9px;
-
-    opacity: .6;
-
-}
-
-
-.thumb-image {
-
-    width: 100%;
-
-    height: 100%;
-
-    background-size: cover;
-
-    background-position: center;
-
-}
-
-
-/* =========================================================
-   PLACEHOLDER IMAGES
-   Replace these with your own images
-========================================================= */
-
-.thumb-one {
-
-    background:
-        linear-gradient(
-            135deg,
-            #222,
-            #777
-        );
-
-}
-
-
-.thumb-two {
-
-    background:
-        linear-gradient(
-            135deg,
-            #39444f,
-            #aaa
-        );
-
-}
-
-
-.thumb-three {
-
-    background:
-        linear-gradient(
-            135deg,
-            #51463b,
-            #c2a989
-        );
-
-}
-
-
-.thumb-four {
-
-    background:
-        linear-gradient(
-            135deg,
-            #202020,
-            #9a9a9a
-        );
-
-}
-
-
-.thumb-five {
-
-    background:
-        linear-gradient(
-            135deg,
-            #3d443c,
-            #b0b5a9
-        );
-
-}
-
-
-.thumb-six {
-
-    background:
-        linear-gradient(
-            135deg,
-            #34313a,
-            #aaa0b5
-        );
-
-}
-
-
-/* =========================================================
-   BOTTOM
-========================================================= */
-
-.photography-bottom {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    margin-top: 80px;
-
-    padding-top: 25px;
-
-    border-top:
-        1px solid rgba(127,127,127,.18);
-
-    font-size: 10px;
-
-    letter-spacing: 3px;
-
-    opacity: .4;
-
-}
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media (max-width: 1000px) {
-
-    .photo-experience {
-
-        grid-template-columns:
-            1fr
-            1fr;
-
-    }
-
-
-    .photo-stage {
-
-        order: -1;
-
-        min-height: 500px;
-
-    }
-
-
-    .photo-filmstrip {
-
-        grid-column: 1 / -1;
-
-        flex-direction: row;
-
-        overflow-x: auto;
-
-        padding: 10px 0 20px;
-
-    }
-
-
-    .photo-thumb {
-
-        min-width: 100px;
-
-    }
-
-}
-
-
-@media (max-width: 650px) {
-
-    .photography-section {
-
-        padding:
-            100px 20px 60px;
-
-    }
-
-
-    .photography-header {
-
-        display: block;
-
-    }
-
-
-    .photography-heading-wrap {
-
-        width: 100%;
-
-        margin-top: 30px;
-
-    }
-
-
-    .photo-experience {
-
-        display: block;
-
-    }
-
-
-    .photo-stage {
-
-        min-height: auto;
-
-        margin: 50px 0;
-
-    }
-
-
-    .photo-frame {
-
-        width: 90%;
-
-    }
-
-
-    .photo-info h3 {
-
-        font-size: 42px;
-
-    }
-
-
-    .photo-filmstrip {
-
-        margin-top: 40px;
-
-    }
-
-}
-
 
 
 
@@ -9083,271 +9026,171 @@ html.bs-lock { overflow: hidden; }
 
 
 
-<!-- =========================================================
-     PHOTOGRAPHY
-========================================================= -->
+<!-- ============ PHOTOGRAPHY SECTION (replace your old #photography <section>) ============ -->
+<section class="pg" id="photography" data-pg aria-labelledby="pg-title">
+  <div class="pg__wrap">
 
-<section class="photography-section" id="photography">
+    <!-- ===== Heading ===== -->
+    <header class="pg__head">
+      <p class="pg__kicker" data-reveal>
+        <span class="pg__kicker-l">
+          <span class="pg__num">06</span>
+          <span class="pg__rule" aria-hidden="true"></span>
+          <span>Photography</span>
+        </span>
+        <span class="pg__kicker-r">Observe · Frame · Preserve</span>
+      </p>
 
-    <div class="photography-container">
+      <h2 id="pg-title" class="pg__title" data-split data-reveal>I don't just take pictures.</h2>
 
-        <!-- HEADER -->
-        <div class="photography-header">
+      <p class="pg__sub" data-reveal>I collect moments, places and fragments of everyday life.</p>
+    </header>
 
-            <div class="photography-label">
-                06 / PHOTOGRAPHY
-            </div>
+    <!-- ===== Stage ===== -->
+    <div class="pg__stage" data-stage role="group" aria-roledescription="carousel" aria-label="Photography collection">
 
-            <div class="photography-heading-wrap">
+      <!-- Viewfinder frame -->
+      <div class="pg__frame" data-frame data-dir="1">
+        <ol class="pg__slides">
+          <!-- EDIT: change each src and alt to your real photograph -->
+          <li class="pg__slide is-active" data-n="01">
+            <img src="photography/01.jpg" alt="Old Dhaka — A City That Refuses To Forget" width="1600" height="1280" decoding="async">
+          </li>
+          <li class="pg__slide" data-n="02">
+            <img src="photography/02.jpg" alt="Photograph 02" width="1600" height="1280" loading="lazy" decoding="async">
+          </li>
+          <li class="pg__slide" data-n="03">
+            <img src="photography/03.jpg" alt="Photograph 03" width="1600" height="1280" loading="lazy" decoding="async">
+          </li>
+          <li class="pg__slide" data-n="04">
+            <img src="photography/04.jpg" alt="Photograph 04" width="1600" height="1280" loading="lazy" decoding="async">
+          </li>
+          <li class="pg__slide" data-n="05">
+            <img src="photography/05.jpg" alt="Photograph 05" width="1600" height="1280" loading="lazy" decoding="async">
+          </li>
+          <li class="pg__slide" data-n="06">
+            <img src="photography/06.jpg" alt="Photograph 06" width="1600" height="1280" loading="lazy" decoding="async">
+          </li>
+        </ol>
 
-                <h2>
-                    I don't just
-                    <span>take pictures.</span>
-                </h2>
+        <span class="pg__corner pg__corner--tl" aria-hidden="true"></span>
+        <span class="pg__corner pg__corner--tr" aria-hidden="true"></span>
+        <span class="pg__corner pg__corner--bl" aria-hidden="true"></span>
+        <span class="pg__corner pg__corner--br" aria-hidden="true"></span>
 
-                <p>
-                    I collect moments, places and
-                    fragments of everyday life.
-                </p>
+        <span class="pg__cross" data-cross aria-hidden="true">View</span>
 
-            </div>
+        <button class="pg__open" type="button" data-open aria-label="View this photograph full screen"></button>
+      </div>
 
+      <!-- Side: counter, caption, controls -->
+      <div class="pg__side">
+        <p class="pg__count" aria-hidden="true">
+          <span class="pg__count-cur" data-cur>01</span><span class="pg__count-tot"> / 06</span>
+        </p>
+
+        <div class="pg__infos" data-infos>
+          <!-- EDIT: one <article> per photograph, same order as the slides above -->
+          <article class="pg__info is-active">
+            <p class="pg__cat">Old Dhaka</p>
+            <h3 class="pg__name" data-words>A City That Refuses To Forget</h3>
+            <p class="pg__desc">Some places don't simply exist. They carry layers of memory, people and time.</p>
+            <p class="pg__meta">2026 / Street</p>
+          </article>
+
+          <article class="pg__info">
+            <p class="pg__cat">Frame 02</p>
+            <h3 class="pg__name" data-words>Title of photograph 02</h3>
+            <p class="pg__desc">Write one or two lines about this photograph.</p>
+            <p class="pg__meta">2026 / Category</p>
+          </article>
+
+          <article class="pg__info">
+            <p class="pg__cat">Frame 03</p>
+            <h3 class="pg__name" data-words>Title of photograph 03</h3>
+            <p class="pg__desc">Write one or two lines about this photograph.</p>
+            <p class="pg__meta">2026 / Category</p>
+          </article>
+
+          <article class="pg__info">
+            <p class="pg__cat">Frame 04</p>
+            <h3 class="pg__name" data-words>Title of photograph 04</h3>
+            <p class="pg__desc">Write one or two lines about this photograph.</p>
+            <p class="pg__meta">2026 / Category</p>
+          </article>
+
+          <article class="pg__info">
+            <p class="pg__cat">Frame 05</p>
+            <h3 class="pg__name" data-words>Title of photograph 05</h3>
+            <p class="pg__desc">Write one or two lines about this photograph.</p>
+            <p class="pg__meta">2026 / Category</p>
+          </article>
+
+          <article class="pg__info">
+            <p class="pg__cat">Frame 06</p>
+            <h3 class="pg__name" data-words>Title of photograph 06</h3>
+            <p class="pg__desc">Write one or two lines about this photograph.</p>
+            <p class="pg__meta">2026 / Category</p>
+          </article>
         </div>
 
-
-        <!-- MAIN INTERACTIVE AREA -->
-        <div class="photo-experience">
-
-
-            <!-- LEFT SIDE -->
-            <div class="photo-info">
-
-                <div class="photo-index">
-
-                    <span id="photoCurrent">
-                        01
-                    </span>
-
-                    <span>
-                        /
-                    </span>
-
-                    <span id="photoTotal">
-                        06
-                    </span>
-
-                </div>
-
-
-                <div
-                    class="photo-location"
-                    id="photoLocation"
-                >
-                    OLD DHAKA
-                </div>
-
-
-                <h3
-                    id="photoTitle"
-                >
-                    A City That Refuses To Forget
-                </h3>
-
-
-                <p
-                    id="photoDescription"
-                >
-                    Some places don't simply exist.
-                    They carry layers of memory,
-                    people and time.
-                </p>
-
-
-                <div class="photo-meta">
-
-                    <span id="photoYear">
-                        2026
-                    </span>
-
-                    <span>
-                        /
-                    </span>
-
-                    <span id="photoType">
-                        STREET
-                    </span>
-
-                </div>
-
-
-                <div class="photo-controls">
-
-                    <button
-                        id="photoPrev"
-                        aria-label="Previous photograph"
-                    >
-                        ←
-                    </button>
-
-
-                    <div class="photo-progress">
-
-                        <div
-                            id="photoProgress"
-                            class="photo-progress-fill"
-                        ></div>
-
-                    </div>
-
-
-                    <button
-                        id="photoNext"
-                        aria-label="Next photograph"
-                    >
-                        →
-                    </button>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- CENTER IMAGE -->
-            <div class="photo-stage">
-
-                <div class="photo-frame">
-
-                    <div
-                        class="photo-image"
-                        id="photoImage"
-                    ></div>
-
-                    <div class="photo-frame-number">
-                        01
-                    </div>
-
-                </div>
-
-
-                <div class="photo-shadow"></div>
-
-            </div>
-
-
-
-            <!-- RIGHT FILM STRIP -->
-            <div class="photo-filmstrip">
-
-                <button
-                    class="photo-thumb active"
-                    data-photo="0"
-                >
-
-                    <span>
-                        01
-                    </span>
-
-                    <div class="thumb-image thumb-one"></div>
-
-                </button>
-
-
-                <button
-                    class="photo-thumb"
-                    data-photo="1"
-                >
-
-                    <span>
-                        02
-                    </span>
-
-                    <div class="thumb-image thumb-two"></div>
-
-                </button>
-
-
-                <button
-                    class="photo-thumb"
-                    data-photo="2"
-                >
-
-                    <span>
-                        03
-                    </span>
-
-                    <div class="thumb-image thumb-three"></div>
-
-                </button>
-
-
-                <button
-                    class="photo-thumb"
-                    data-photo="3"
-                >
-
-                    <span>
-                        04
-                    </span>
-
-                    <div class="thumb-image thumb-four"></div>
-
-                </button>
-
-
-                <button
-                    class="photo-thumb"
-                    data-photo="4"
-                >
-
-                    <span>
-                        05
-                    </span>
-
-                    <div class="thumb-image thumb-five"></div>
-
-                </button>
-
-
-                <button
-                    class="photo-thumb"
-                    data-photo="5"
-                >
-
-                    <span>
-                        06
-                    </span>
-
-                    <div class="thumb-image thumb-six"></div>
-
-                </button>
-
-            </div>
-
+        <div class="pg__ctrl">
+          <button class="pg__arrow" type="button" data-prev aria-label="Previous photograph">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 12H4M10 6l-6 6 6 6"/></svg>
+          </button>
+          <span class="pg__bar" aria-hidden="true"><i></i></span>
+          <button class="pg__arrow" type="button" data-next aria-label="Next photograph">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+          </button>
         </div>
 
-
-        <!-- BOTTOM STATEMENT -->
-
-        <div class="photography-bottom">
-
-            <span>
-                OBSERVE
-            </span>
-
-            <span>
-                FRAME
-            </span>
-
-            <span>
-                PRESERVE
-            </span>
-
-        </div>
-
+        <p class="pg__hint" aria-hidden="true">Drag, swipe or use the arrow keys</p>
+      </div>
     </div>
 
+    <p class="pg__sr" role="status" aria-live="polite" data-live></p>
+
+    <!-- ===== Contact sheet ===== -->
+    <ul class="pg__strip" data-strip data-reveal aria-label="Choose a photograph">
+      <li><button class="pg__thumb is-active" type="button" data-go="0" aria-label="Photograph 1" aria-current="true"><img src="photography/01.jpg" alt="" loading="lazy" decoding="async"><span>01</span></button></li>
+      <li><button class="pg__thumb" type="button" data-go="1" aria-label="Photograph 2"><img src="photography/02.jpg" alt="" loading="lazy" decoding="async"><span>02</span></button></li>
+      <li><button class="pg__thumb" type="button" data-go="2" aria-label="Photograph 3"><img src="photography/03.jpg" alt="" loading="lazy" decoding="async"><span>03</span></button></li>
+      <li><button class="pg__thumb" type="button" data-go="3" aria-label="Photograph 4"><img src="photography/04.jpg" alt="" loading="lazy" decoding="async"><span>04</span></button></li>
+      <li><button class="pg__thumb" type="button" data-go="4" aria-label="Photograph 5"><img src="photography/05.jpg" alt="" loading="lazy" decoding="async"><span>05</span></button></li>
+      <li><button class="pg__thumb" type="button" data-go="5" aria-label="Photograph 6"><img src="photography/06.jpg" alt="" loading="lazy" decoding="async"><span>06</span></button></li>
+    </ul>
+
+    <!-- ===== Marquee ===== -->
+    <div class="pg__marquee" data-reveal aria-hidden="true">
+      <div class="pg__track">
+        <div class="pg__group"><span>Observe</span><span class="is-out">Frame</span><span>Preserve</span><span class="is-out">Observe</span><span>Frame</span><span class="is-out">Preserve</span></div>
+        <div class="pg__group"><span>Observe</span><span class="is-out">Frame</span><span>Preserve</span><span class="is-out">Observe</span><span>Frame</span><span class="is-out">Preserve</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Full-screen viewer ===== -->
+  <dialog class="pg__lb" data-lb aria-label="Photograph viewer">
+    <div class="pg__lb-inner" data-lb-inner>
+      <button class="pg__lb-close" type="button" data-lb-close aria-label="Close viewer">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19"/></svg>
+      </button>
+      <figure class="pg__lb-fig">
+        <img class="pg__lb-img" data-lb-img alt="">
+        <figcaption class="pg__lb-cap" data-lb-cap></figcaption>
+      </figure>
+      <button class="pg__lb-nav pg__lb-nav--prev" type="button" data-lb-prev aria-label="Previous photograph">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 12H4M10 6l-6 6 6 6"/></svg>
+      </button>
+      <button class="pg__lb-nav pg__lb-nav--next" type="button" data-lb-next aria-label="Next photograph">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </dialog>
 </section>
+<!-- ============ END PHOTOGRAPHY SECTION ============ -->
+
+	
 <!-- =========================================================
      SECTION 08: BOOKSHELF
      বইগুলো JavaScript দিয়ে তৈরি হয় (নিচের script-এর BOOKS list থেকে)
@@ -12710,583 +12553,338 @@ if (writingSection) {
 
 
 /* =========================================================
-   PHOTOGRAPHY INTERACTION
-========================================================= */
+   PHOTOGRAPHY SECTION — vanilla JS, no dependencies
+   Nothing here reads or depends on the site theme.
+   ========================================================= */
+(() => {
+  'use strict';
 
+  const root = document.querySelector('[data-pg]');
+  if (!root) return;
 
-/* =========================================================
-   PHOTO DATA
-========================================================= */
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
 
-const photographyData = [
+  root.classList.add('pg--js');
 
-    {
+  const $ = (sel, ctx = root) => ctx.querySelector(sel);
+  const $$ = (sel, ctx = root) => Array.from(ctx.querySelectorAll(sel));
+  const pad = (n) => String(n).padStart(2, '0');
 
-        location:
-            "OLD DHAKA",
+  /* ---------- 1. Split headings into words ---------- */
+  $$('[data-split], [data-words]').forEach((el) => {
+    const text = el.textContent.trim().replace(/\s+/g, ' ');
+    el.setAttribute('aria-label', text);
+    el.textContent = '';
+    text.split(' ').forEach((word, i, arr) => {
+      const outer = document.createElement('span');
+      outer.className = 'pg__w';
+      outer.setAttribute('aria-hidden', 'true');
+      const inner = document.createElement('span');
+      inner.style.setProperty('--i', i);
+      inner.textContent = word;
+      outer.appendChild(inner);
+      el.appendChild(outer);
+      if (i < arr.length - 1) el.appendChild(document.createTextNode(' '));
+    });
+  });
 
-        title:
-            "A City That Refuses To Forget",
+  /* ---------- 2. Reveal on scroll ---------- */
+  const revealEls = $$('[data-reveal]');
+  if ('IntersectionObserver' in window && !reduce.matches) {
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-in');
+        obs.unobserve(entry.target);
+      });
+    }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('is-in'));
+  }
 
-        description:
-            "Some places don't simply exist. They carry layers of memory, people and time.",
+  /* ---------- 3. Carousel state ---------- */
+  const stage = $('[data-stage]');
+  const frame = $('[data-frame]');
+  const slides = $$('.pg__slide');
+  const infos = $$('.pg__info');
+  const thumbs = $$('[data-go]');
+  const strip = $('[data-strip]');
+  const cur = $('[data-cur]');
+  const live = $('[data-live]');
+  const total = slides.length;
+  if (!total || !frame) return;
 
-        year:
-            "2026",
+  let index = 0;
+  let leaveTimer = null;
 
-        type:
-            "STREET",
+  const titleOf = (i) => {
+    const h = $('.pg__name', infos[i]);
+    return h ? (h.getAttribute('aria-label') || h.textContent.trim()) : '';
+  };
+  const metaOf = (i) => {
+    const m = $('.pg__meta', infos[i]);
+    return m ? m.textContent.trim() : '';
+  };
 
-        image:
-            "images/photo-01.jpg"
+  // initial accessible state
+  slides.forEach((s, i) => {
+    s.setAttribute('role', 'group');
+    s.setAttribute('aria-roledescription', 'slide');
+    s.setAttribute('aria-label', (i + 1) + ' of ' + total);
+    s.setAttribute('aria-hidden', i === 0 ? 'false' : 'true');
+  });
+  infos.forEach((el, i) => {
+    el.inert = i !== 0;
+    el.setAttribute('aria-hidden', i === 0 ? 'false' : 'true');
+  });
+  stage.style.setProperty('--prog', (1 / total).toFixed(4));
 
-    },
+  // missing images get a tidy placeholder instead of a broken icon
+  const watchImage = (img, host) => {
+    const mark = () => host.classList.add('is-missing');
+    if (img.complete && img.naturalWidth === 0 && img.getAttribute('src')) mark();
+    img.addEventListener('error', mark);
+    img.addEventListener('load', () => host.classList.remove('is-missing'));
+  };
+  slides.forEach((s) => { const img = $('img', s); if (img) watchImage(img, s); });
+  thumbs.forEach((t) => { const img = $('img', t); if (img) watchImage(img, t); });
 
+  const preload = (i) => {
+    const img = $('img', slides[(i + total) % total]);
+    if (img && img.loading === 'lazy') img.loading = 'eager';
+  };
 
-    {
+  const centerThumb = (btn) => {
+    if (!strip || strip.scrollWidth <= strip.clientWidth + 2) return;
+    const left = btn.parentElement.offsetLeft - (strip.clientWidth - btn.offsetWidth) / 2;
+    strip.scrollTo({ left, behavior: reduce.matches ? 'auto' : 'smooth' });
+  };
 
-        location:
-            "DHAKA",
+  const go = (to, dir) => {
+    to = (to + total) % total;
+    if (to === index) return;
+    dir = dir || (to > index ? 1 : -1);
 
-        title:
-            "Between Concrete & Sky",
+    const from = index;
+    index = to;
+    frame.dataset.dir = String(dir);
+    clearTimeout(leaveTimer);
 
-        description:
-            "A city constantly growing upward while carrying the weight of everything beneath it.",
+    // tidy any slide left over from a rapid previous change
+    slides.forEach((s, i) => {
+      if (i !== from && i !== to) s.classList.remove('is-leaving', 'is-enter', 'is-active');
+    });
 
-        year:
-            "2026",
+    const sFrom = slides[from];
+    const sTo = slides[to];
 
-        type:
-            "CITY",
+    sTo.classList.remove('is-leaving', 'is-enter');
+    void sTo.offsetWidth; // restart the entry animation
+    sTo.classList.add('is-active');
+    if (!reduce.matches) sTo.classList.add('is-enter');
 
-        image:
-            "images/photo-02.jpg"
-
-    },
-
-
-    {
-
-        location:
-            "LALBAGH",
-
-        title:
-            "What Time Leaves Behind",
-
-        description:
-            "Architecture becomes a different kind of photograph when time becomes part of the subject.",
-
-        year:
-            "2026",
-
-        type:
-            "ARCHITECTURE",
-
-        image:
-            "images/photo-03.jpg"
-
-    },
-
-
-    {
-
-        location:
-            "AHsan MANZIL",
-
-        title:
-            "A Moment Between Moments",
-
-        description:
-            "Sometimes photography is simply about noticing what everyone else walks past.",
-
-        year:
-            "2026",
-
-        type:
-            "DOCUMENTARY",
-
-        image:
-            "images/photo-04.jpg"
-
-    },
-
-
-    {
-
-        location:
-            "GAZIPUR",
-
-        title:
-            "Away From The Noise",
-
-        description:
-            "A different rhythm begins when the city becomes distant.",
-
-        year:
-            "2026",
-
-        type:
-            "TRAVEL",
-
-        image:
-            "images/photo-05.jpg"
-
-    },
-
-
-    {
-
-        location:
-            "EVERYDAY",
-
-        title:
-            "Things Worth Remembering",
-
-        description:
-            "Not every photograph needs a dramatic subject. Sometimes the ordinary is enough.",
-
-        year:
-            "2026",
-
-        type:
-            "MOMENTS",
-
-        image:
-            "images/photo-06.jpg"
-
+    sFrom.classList.remove('is-active', 'is-enter');
+    if (!reduce.matches) {
+      sFrom.classList.add('is-leaving');
+      leaveTimer = setTimeout(() => sFrom.classList.remove('is-leaving'), 1100);
     }
 
-];
+    slides.forEach((s, i) => s.setAttribute('aria-hidden', i === to ? 'false' : 'true'));
 
+    infos.forEach((el, i) => {
+      const on = i === to;
+      el.classList.toggle('is-active', on);
+      el.inert = !on;
+      el.setAttribute('aria-hidden', on ? 'false' : 'true');
+    });
 
+    thumbs.forEach((b, i) => {
+      const on = i === to;
+      b.classList.toggle('is-active', on);
+      if (on) { b.setAttribute('aria-current', 'true'); centerThumb(b); }
+      else b.removeAttribute('aria-current');
+    });
 
-/* =========================================================
-   ELEMENTS
-========================================================= */
-
-const photoImage =
-    document.getElementById(
-        "photoImage"
-    );
-
-
-const photoLocation =
-    document.getElementById(
-        "photoLocation"
-    );
-
-
-const photoTitle =
-    document.getElementById(
-        "photoTitle"
-    );
-
-
-const photoDescription =
-    document.getElementById(
-        "photoDescription"
-    );
-
-
-const photoYear =
-    document.getElementById(
-        "photoYear"
-    );
-
-
-const photoType =
-    document.getElementById(
-        "photoType"
-    );
-
-
-const photoCurrent =
-    document.getElementById(
-        "photoCurrent"
-    );
-
-
-const photoTotal =
-    document.getElementById(
-        "photoTotal"
-    );
-
-
-const photoProgress =
-    document.getElementById(
-        "photoProgress"
-    );
-
-
-const photoPrev =
-    document.getElementById(
-        "photoPrev"
-    );
-
-
-const photoNext =
-    document.getElementById(
-        "photoNext"
-    );
-
-
-const photoFrameNumber =
-    document.querySelector(
-        ".photo-frame-number"
-    );
-
-
-const photoThumbs =
-    document.querySelectorAll(
-        ".photo-thumb"
-    );
-
-
-
-let currentPhoto = 0;
-
-
-
-/* =========================================================
-   LOAD PHOTO
-========================================================= */
-
-function loadPhoto(index) {
-
-    if (
-        index < 0 ||
-        index >= photographyData.length
-    ) {
-
-        return;
-
+    if (cur) {
+      cur.textContent = pad(to + 1);
+      cur.classList.remove('is-tick');
+      void cur.offsetWidth;
+      if (!reduce.matches) cur.classList.add('is-tick');
     }
-
-
-    const data =
-        photographyData[index];
-
-
-    currentPhoto = index;
-
-
-
-    /* EXIT ANIMATION */
-
-    photoImage.style.opacity =
-        "0";
-
-
-    photoImage.style.transform =
-        "scale(1.05)";
-
-
-    photoTitle.style.opacity =
-        "0";
-
-
-    photoDescription.style.opacity =
-        "0";
-
-
-
-    setTimeout(() => {
-
-
-        /* IMAGE */
-
-        photoImage.style.backgroundImage =
-            `url("${data.image}")`;
-
-
-        /* TEXT */
-
-        photoLocation.textContent =
-            data.location;
-
-
-        photoTitle.textContent =
-            data.title;
-
-
-        photoDescription.textContent =
-            data.description;
-
-
-        photoYear.textContent =
-            data.year;
-
-
-        photoType.textContent =
-            data.type;
-
-
-        photoCurrent.textContent =
-            String(index + 1)
-            .padStart(2, "0");
-
-
-        photoFrameNumber.textContent =
-            String(index + 1)
-            .padStart(2, "0");
-
-
-
-        /* PROGRESS */
-
-        const progress =
-            ((index + 1) /
-                photographyData.length) *
-            100;
-
-
-        photoProgress.style.width =
-            `${progress}%`;
-
-
-
-        /* THUMBS */
-
-        photoThumbs.forEach(
-            thumb => {
-
-                thumb.classList.remove(
-                    "active"
-                );
-
-            }
-        );
-
-
-        if (photoThumbs[index]) {
-
-            photoThumbs[index]
-                .classList.add(
-                    "active"
-                );
-
-        }
-
-
-
-        /* ENTER */
-
-        requestAnimationFrame(() => {
-
-            photoImage.style.opacity =
-                "1";
-
-
-            photoImage.style.transform =
-                "scale(1)";
-
-
-            photoTitle.style.opacity =
-                "1";
-
-
-            photoDescription.style.opacity =
-                "1";
-
-        });
-
-
-    }, 220);
-
-}
-
-
-
-/* =========================================================
-   THUMBNAILS
-========================================================= */
-
-photoThumbs.forEach(
-    thumb => {
-
-        thumb.addEventListener(
-            "click",
-            () => {
-
-                const index =
-                    Number(
-                        thumb.dataset.photo
-                    );
-
-
-                loadPhoto(index);
-
-            }
-        );
-
+    stage.style.setProperty('--prog', ((to + 1) / total).toFixed(4));
+    if (live) live.textContent = 'Photograph ' + (to + 1) + ' of ' + total + ': ' + titleOf(to);
+
+    preload(to + 1);
+    preload(to - 1);
+    if (lb && lb.open) fillViewer();
+  };
+
+  const next = () => go(index + 1, 1);
+  const prev = () => go(index - 1, -1);
+
+  $('[data-next]').addEventListener('click', next);
+  $('[data-prev]').addEventListener('click', prev);
+  thumbs.forEach((b) => b.addEventListener('click', () => go(Number(b.dataset.go))));
+  preload(1);
+
+  /* ---------- 4. Keyboard ---------- */
+  root.addEventListener('keydown', (e) => {
+    if (lb && lb.open) return;
+    if (!e.target.closest('.pg__stage, .pg__strip')) return;
+    if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+    else if (e.key === 'Home') { e.preventDefault(); go(0, -1); }
+    else if (e.key === 'End') { e.preventDefault(); go(total - 1, 1); }
+  });
+
+  /* ---------- 5. Swipe / drag on the frame ---------- */
+  let startX = null;
+  let startY = null;
+  let dragged = false;
+
+  frame.addEventListener('pointerdown', (e) => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    startX = e.clientX;
+    startY = e.clientY;
+    dragged = false;
+  });
+  frame.addEventListener('pointerup', (e) => {
+    if (startX === null) return;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+    startX = null;
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.3) {
+      dragged = true;
+      go(index + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1);
     }
-);
-
-
-
-/* =========================================================
-   NEXT
-========================================================= */
-
-if (photoNext) {
-
-    photoNext.addEventListener(
-        "click",
-        () => {
-
-            let next =
-                currentPhoto + 1;
-
-
-            if (
-                next >=
-                photographyData.length
-            ) {
-
-                next = 0;
-
-            }
-
-
-            loadPhoto(next);
-
-        }
-    );
-
-}
-
-
-
-/* =========================================================
-   PREVIOUS
-========================================================= */
-
-if (photoPrev) {
-
-    photoPrev.addEventListener(
-        "click",
-        () => {
-
-            let previous =
-                currentPhoto - 1;
-
-
-            if (previous < 0) {
-
-                previous =
-                    photographyData.length - 1;
-
-            }
-
-
-            loadPhoto(previous);
-
-        }
-    );
-
-}
-
-
-
-/* =========================================================
-   KEYBOARD
-========================================================= */
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if (event.key === "ArrowRight") {
-
-            photoNext.click();
-
-        }
-
-
-        if (event.key === "ArrowLeft") {
-
-            photoPrev.click();
-
-        }
-
-    }
-);
-
-
-
-/* =========================================================
-   MOUSE MOVE PARALLAX
-========================================================= */
-
-const photoStage =
-    document.querySelector(
-        ".photo-stage"
-    );
-
-
-if (photoStage) {
-
-    photoStage.addEventListener(
-        "mousemove",
-        event => {
-
-            const rect =
-                photoStage.getBoundingClientRect();
-
-
-            const x =
-                event.clientX -
-                rect.left;
-
-
-            const y =
-                event.clientY -
-                rect.top;
-
-
-            const rotateY =
-                ((x / rect.width) - .5) * 5;
-
-
-            const rotateX =
-                ((y / rect.height) - .5) * -5;
-
-
-            photoStage.style.transform =
-                `perspective(1000px)
-                 rotateX(${rotateX}deg)
-                 rotateY(${rotateY}deg)`;
-
-        }
-    );
-
-
-    photoStage.addEventListener(
-        "mouseleave",
-        () => {
-
-            photoStage.style.transform =
-                "perspective(1000px) rotateX(0deg) rotateY(0deg)";
-
-        }
-    );
-
-}
-
-
-
-/* =========================================================
-   INITIAL
-========================================================= */
-
-photoTotal.textContent =
-    String(
-        photographyData.length
-    ).padStart(2, "0");
-
-
-loadPhoto(0);
+  });
+  frame.addEventListener('pointercancel', () => { startX = null; });
+
+  /* ---------- 6. Viewfinder ring + parallax (desktop pointers only) ---------- */
+  if (finePointer.matches && !reduce.matches) {
+    root.classList.add('pg--ring');
+    const cross = $('[data-cross]');
+
+    let rx = 0, ry = 0, cx = 0, cy = 0;   // ring target / current
+    let tx = 0, ty = 0, px = 0, py = 0;   // parallax target / current
+    let over = false;
+    let raf = null;
+
+    const loop = () => {
+      cx += (rx - cx) * 0.2;
+      cy += (ry - cy) * 0.2;
+      px += (tx - px) * 0.08;
+      py += (ty - py) * 0.08;
+
+      cross.style.transform = 'translate3d(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px,0) translate(-50%,-50%)';
+      frame.style.setProperty('--tx', px.toFixed(2) + 'px');
+      frame.style.setProperty('--ty', py.toFixed(2) + 'px');
+
+      const settled = Math.abs(rx - cx) < 0.1 && Math.abs(ry - cy) < 0.1 &&
+                      Math.abs(tx - px) < 0.05 && Math.abs(ty - py) < 0.05;
+      raf = (over || !settled) ? requestAnimationFrame(loop) : null;
+    };
+    const start = () => { if (!raf) raf = requestAnimationFrame(loop); };
+
+    const place = (e) => {
+      const r = frame.getBoundingClientRect();
+      rx = e.clientX - r.left;
+      ry = e.clientY - r.top;
+      tx = -((rx / r.width) - 0.5) * 36;
+      ty = -((ry / r.height) - 0.5) * 36;
+    };
+
+    frame.addEventListener('pointerenter', (e) => {
+      if (e.pointerType !== 'mouse') return;
+      over = true;
+      place(e);
+      cx = rx;
+      cy = ry;
+      frame.classList.add('is-hover');
+      start();
+    });
+    frame.addEventListener('pointermove', (e) => {
+      if (e.pointerType !== 'mouse') return;
+      place(e);
+      start();
+    }, { passive: true });
+    frame.addEventListener('pointerleave', () => {
+      over = false;
+      tx = 0;
+      ty = 0;
+      frame.classList.remove('is-hover');
+      start();
+    });
+  }
+
+  /* ---------- 7. Full-screen viewer ---------- */
+  const lb = $('[data-lb]');
+  const lbImg = $('[data-lb-img]');
+  const lbCap = $('[data-lb-cap]');
+  let lastFocus = null;
+
+  function fillViewer() {
+    const img = $('img', slides[index]);
+    if (!img || !lbImg) return;
+    lbImg.src = img.currentSrc || img.src;
+    lbImg.alt = img.alt || '';
+    if (lbCap) lbCap.textContent = pad(index + 1) + ' / ' + pad(total) + ' — ' + titleOf(index) + ' — ' + metaOf(index);
+  }
+
+  const onViewerClosed = () => {
+    document.documentElement.classList.remove('pg-lock');
+    if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus({ preventScroll: true });
+  };
+
+  const openViewer = () => {
+    if (!lb || slides[index].classList.contains('is-missing')) return;
+    lastFocus = document.activeElement;
+    fillViewer();
+    document.documentElement.classList.add('pg-lock');
+    if (typeof lb.showModal === 'function') lb.showModal();
+    else lb.setAttribute('open', '');
+  };
+
+  const closeViewer = () => {
+    if (!lb) return;
+    if (typeof lb.close === 'function') lb.close();
+    else { lb.removeAttribute('open'); onViewerClosed(); }
+  };
+
+  if (lb) {
+    $('[data-open]').addEventListener('click', () => {
+      if (dragged) { dragged = false; return; }
+      openViewer();
+    });
+    lb.addEventListener('close', onViewerClosed);
+    $('[data-lb-close]').addEventListener('click', closeViewer);
+    $('[data-lb-next]').addEventListener('click', next);
+    $('[data-lb-prev]').addEventListener('click', prev);
+
+    // click on the dark area closes; clicks on the photo or buttons do not
+    $('[data-lb-inner]').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeViewer();
+    });
+
+    lb.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+    });
+
+    // swipe inside the viewer
+    let lx = null;
+    lbImg.addEventListener('pointerdown', (e) => { lx = e.clientX; });
+    lbImg.addEventListener('pointerup', (e) => {
+      if (lx === null) return;
+      const dx = e.clientX - lx;
+      lx = null;
+      if (Math.abs(dx) > 45) { if (dx < 0) next(); else prev(); }
+    });
+    lbImg.addEventListener('pointercancel', () => { lx = null; });
+  }
+})();
 
 
 
